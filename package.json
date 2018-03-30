@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon ./src/start.js",
-    "watch": "nodemon ./src/start.js --ignore public/",
+    "start": "nodemon ./start.js",
+    "watch": "nodemon ./start.js --ignore public/",
     "assets": "webpack -w --display-max-modules 0",
     "dev": "concurrently \"npm run watch\" \"npm run assets\" --names, --prefix-name"
   },
@@ -24,7 +24,9 @@
     "express-validator": "^5.1.0",
     "mongoose": "^5.0.12",
     "mongoose-mongodb-errors": "^0.0.2",
-    "passport": "^0.4.0"
+    "passport": "^0.4.0",
+    "util": "^0.10.3",
+    "util.promisify": "^1.0.0"
   },
   "devDependencies": {
     "autoprefixer": "^8.2.0",

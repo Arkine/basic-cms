@@ -1,3 +1,3 @@
 exports.loggedIn = (req, res) => {
-	res.json({ it: "works"});
+	res.send(req.body);
 }

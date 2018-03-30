@@ -6,7 +6,9 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const passport = require('passport');
-const promisify = require('es6-promisify');
+const util = require('util');
+const promisify = util.promisify;
+require('util.promisify').shim();
 const flash = require('connect-flash');
 const expressValidator = require('express-validator');
 
@@ -36,6 +38,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // Session data for visitors for sending flashes and keeping users logged in
 app.use(session({
+	secret: process.env.SECRET,
+	key: process.env.KEY,
 	resave: false,
 	saveUninitialized: false,
 	store: new MongoStore({ mongooseConnection: mongoose.connection })
