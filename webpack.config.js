@@ -34,7 +34,7 @@ const config = {
 	},
 	devtool: 'sourece-map',
 	output: {
-		path: path.resolve(__dirname, 'public', 'dist'),
+		path: path.resolve(__dirname, 'src', 'public', 'dist'),
 		filename: '[name].bundle.js'
 	},
 	module: {
