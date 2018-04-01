@@ -6,7 +6,22 @@ const { catchErrors } = require('../handlers/errorHandlers');
 const authController = require('../controllers/AuthController');
 const userController = require('../controllers/UserController');
 
-router.get('/', authController.loggedIn);
+// Home
+router.get('/', (req, res) => {
+	res.render('pages/home', {
+		title: 'Home Page'
+	});
+});
 
+
+router.get('/login', userController.loginForm);
+router.post('/login', authController.login);
+
+router.get('/register', userController.registerForm);
+router.post('/register',
+	userController.validateRegister,
+	catchErrors(userController.register),
+	authController.login
+);
 
 module.exports = router;

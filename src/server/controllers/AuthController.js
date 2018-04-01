@@ -1,5 +1,9 @@
-exports.loggedIn = (req, res) => {
-	res.render('index', {
-		title: 'Home'
-	});
-}
+const passport = require('passport');
+
+exports.login = passport.authenticate('local', {
+	failureRedirect: '/login',
+	failureFlash: 'Login Failed!',
+	successRedirect: '/',
+	successFlash: 'You are now logged in.'
+});
+

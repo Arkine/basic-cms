@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
 
-
 // Make sure we are running node 7.6+
 const [major, minor] = process.versions.node.split('.').map(parseFloat);
 if (major < 7 || (major === 7 && minor <=5)) {
@@ -18,7 +17,7 @@ mongoose.connection.on('error', (err) => {
 });
 
 // Import all of our models here
-// require('./models/User');
+require('./src/server/models/User');
 
 // Start our app!
 const app = require('./src/app');

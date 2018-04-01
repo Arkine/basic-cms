@@ -20,7 +20,7 @@ const postcss = {
 
 const styles = {
 	test: /\.(scss)$/,
-	use: ExtractTextPlugin.extract(['css-loader?sourceMap', postcss, 'sass-loader?soureceMap'])
+	use: ExtractTextPlugin.extract(['css-loader?sourceMap', postcss, 'sass-loader?sourceMap'])
 }
 
 // const uglify = new webpack.optimize.UglifyJsPlugin({ // eslint-disable-line
@@ -32,7 +32,7 @@ const config = {
 	entry: {
 		App: './src/public/javascripts/index.js'
 	},
-	devtool: 'sourece-map',
+	devtool: 'source-map',
 	output: {
 		path: path.resolve(__dirname, 'src', 'public', 'dist'),
 		filename: '[name].bundle.js'

@@ -15,7 +15,7 @@ const expressValidator = require('express-validator');
 const routes = require('./server/routes');
 const helpers = require('./helpers');
 const errorHandlers = require('./server/handlers/errorHandlers');
-// require('./handlers/passport');
+require('./server/handlers/passport');
 
 const app = express();
 
@@ -31,10 +31,10 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // Expose methods for validating data
-// app.use(expressValidator());
+app.use(expressValidator());
 
 // Populates req.cookies
-// app.use(cookieParser());
+app.use(cookieParser());
 
 // Session data for visitors for sending flashes and keeping users logged in
 app.use(session({
@@ -44,6 +44,10 @@ app.use(session({
 	saveUninitialized: false,
 	store: new MongoStore({ mongooseConnection: mongoose.connection })
 }));
+
+// // Passport JS is what we use to handle our logins
+app.use(passport.initialize());
+app.use(passport.session());
 
 // The flash middleware let's us use req.flash('messagetype', 'message'), which will then pass that message to the next page the user requests
 app.use(flash());
@@ -71,7 +75,7 @@ app.use('/', routes);
 // app.use(errorHandlers.notFound);
 
 // One of our error handlers will see if these errors are just validation errors
-// app.use(errorHandlers.flashValidationErrors);
+app.use(errorHandlers.flashValidationErrors);
 
 // Otherwise this was a really bad error we didn't expect! Shoot eh
 if (app.get('env') === 'development') {
