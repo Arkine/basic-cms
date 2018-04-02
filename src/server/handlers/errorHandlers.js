@@ -1,4 +1,4 @@
-exports.developmentErrors = (req, res, next) => {
+exports.developmentErrors = (err, req, res, next) => {
 	err.stack = err.stack || '';
 	const errorDetails = {
 		message: err.message,
@@ -16,7 +16,7 @@ exports.developmentErrors = (req, res, next) => {
 };
 
 
-exports.productionErrors = (req, res, next) => {
+exports.productionErrors = (err, req, res, next) => {
 	res.status(err.status || 500);
 	res.render('error', {
 		message: err.message,

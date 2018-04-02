@@ -48,7 +48,8 @@ exports.validateRegister = (req, res, next) => {
 exports.register = async (req, res, next) => {
 	const user = new User({
 		email: req.body.email,
-		username: req.body.username
+		username: req.body.username,
+		createdAt: Date.now()
 	});
 
 	const register = User.registerAsync(user, req.body.password);
@@ -88,4 +89,10 @@ exports.updateAccount = async (req, res) => {
 	req.flash('success', 'Your account has been updated!');
 
 	res.redirect('/account');
+};
+
+exports.forgotPassword = (req, res) => {
+	res.render('pages/passwordReset', {
+		title: 'Reset Password'
+	});
 };

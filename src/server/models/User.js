@@ -35,7 +35,10 @@ const userSchema = new Schema({
 	role: String
 });
 
-userSchema.plugin(passportLocalMongoose, { usernameField: 'email' });
+userSchema.plugin(passportLocalMongoose, {
+	usernameField: 'email',
+	lastLoginField: 'lastLogin'
+});
 userSchema.plugin(mongodbErrorHandler);
 
 userSchema.statics.registerAsync = function (data, password) {

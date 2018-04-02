@@ -35,8 +35,11 @@ router.post('/register',
 // account page
 router.get('/account', authController.isLoggedIn, userController.account);
 router.post('/account', catchErrors(userController.updateAccount));
-// router.post('/account/forgot', catchErrors(authController.forgot));
+
+// password Reset
+router.get('/password-reset', userController.forgotPassword);
+router.post('/password-reset', catchErrors(authController.forgotPassword));
 // router.get('/account/reset/:token', catchErrors(authController.reset));
-// router.post('/account/reset/:token', authController.confir
+// router.post('/account/reset/:token', authController.confirmPasswordReset);
 
 module.exports = router;

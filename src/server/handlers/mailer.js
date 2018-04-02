@@ -3,10 +3,12 @@ const pug = require('pug');
 const juice = require('juice');
 const htmlToText = require('html-to-text');
 const util = require('util');
+const promisify = util.promisify;
+require('util.promisify').shim();
 
 const transport = nodemailer.createTransport({
 	host: process.env.MAIL_HOST,
-	post: process.env.MAIL_PORT,
+	port: process.env.MAIL_PORT,
 	auth: {
 		user: process.env.MAIL_USER,
 		pass: process.env.MAIL_PASS
@@ -20,3 +22,27 @@ const generateHTML = (filename, options = {}) => {
 
 	return inlined;
 }
+
+exports.send = async (options) => {
+	console.log('opts', options.user.email);
+	const html = generateHTML(options.filename, options);
+	const text = htmlToText.fromString(html);
+
+	const mailOptions = {
+		from: `noreply@ovw.com`,
+		subject: options.subject,
+		to: options.user.email,
+		html,
+		text
+	};
+
+	// const sendMail = promisify(transport.sendMail, transport);
+	transport.sendMail(mailOptions)
+		.then(results => {
+			return results;
+		})
+		.catch(err => {
+			console.error('there was an error', err);
+		});
+	// return sendMail(mailOptions);
+};
