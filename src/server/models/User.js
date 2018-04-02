@@ -18,7 +18,9 @@ const userSchema = new Schema({
 	username: {
 		type: String,
 		required: 'Please supply a username.',
-		trim: true
+		trim: true,
+		unique: true,
+		lowercase: true
 	},
 	resetPasswordToken: String,
 	resetPasswordExpires: Date,

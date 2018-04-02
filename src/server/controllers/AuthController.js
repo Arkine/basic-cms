@@ -13,4 +13,21 @@ exports.logout = (req, res) => {
 	req.flash('success', 'You are now logged out.');
 
 	res.redirect('/');
+};
+
+exports.isRegistered = (req, res, next) => {
+	if (req.isAuthenticated()) {
+		res.redirect('/account');
+	}
+
+	next();
 }
+
+exports.isLoggedIn = (req, res, next) => {
+	if (req.isAuthenticated()) {
+		return next();
+	}
+
+	req.flash('error', 'You must be logged in to do that!');
+	res.redirect('/login');
+};

@@ -1,0 +1,16 @@
+html {
+	font-size: 20px;
+}
+
+body {
+	background:#efefef;
+}
+
+.inner {
+	max-width: $row-width;
+	margin: 0 auto;
+
+	@media all and (max-width: $row-width) {
+		padding: 2rem;
+	}
+}

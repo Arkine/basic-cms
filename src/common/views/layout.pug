@@ -14,12 +14,14 @@ html
 						a(href=item.slug alt=item.title) #{item.title}
 				if !user
 					li.nav__item
-						a(href="/login") Login
+						a(href="/login" alt="Login") Login
 					li.nav__item
-						a(href="/register") Register
+						a(href="/register" alt="Register") Register
 				if user
 					li.nav__item
-						a(href="/logout") Logout
+						a(href="/logout" alt="Logout") Logout
+					li.nav__item
+						a(href="/account" alt="My account") My Account
 
 
 		block messages

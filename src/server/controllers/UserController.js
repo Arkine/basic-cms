@@ -23,7 +23,7 @@ exports.validateRegister = (req, res, next) => {
 	req.sanitizeBody('email').normalizeEmail({
 		remove_dots: false,
 		remove_extension: false,
-		gmail_remove_subaddress: false 
+		gmail_remove_subaddress: false
 	});
 
 	req.checkBody('password', 'Password cannot be blank').notEmpty();
@@ -51,7 +51,41 @@ exports.register = async (req, res, next) => {
 		username: req.body.username
 	});
 
-	await User.registerAsync(user, req.body.password);
+	const register = User.registerAsync(user, req.body.password);
 
-	next();
+	register
+		.then(data => {
+			next();
+		})
+		.catch(err => {
+			req.flash('error', `${err.message}`);
+			res.redirect('/register');
+		});
+};
+
+exports.account = (req, res, next) => {
+	res.render('pages/user/account', {
+		title: 'My Account'
+	});
+};
+
+exports.updateAccount = async (req, res) => {
+	const updates = {
+		username: req.body.username,
+		email: req.body.email
+	};
+
+	const user = await User.findOneAndUpdate(
+		{ _id: req.user._id },
+		{ $set: updates },
+		{
+			new: true,
+			runValidators: true,
+			context: 'query'
+		}
+	);
+
+	req.flash('success', 'Your account has been updated!');
+
+	res.redirect('/account');
 };
