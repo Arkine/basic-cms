@@ -13,10 +13,18 @@ router.get('/', (req, res) => {
 	});
 });
 
+/*
+User
+ */
 
+// login
 router.get('/login', userController.loginForm);
 router.post('/login', authController.login);
 
+// logout
+router.get('/logout', authController.logout);
+
+// register
 router.get('/register', userController.registerForm);
 router.post('/register',
 	userController.validateRegister,

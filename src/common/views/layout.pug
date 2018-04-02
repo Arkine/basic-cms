@@ -12,6 +12,14 @@ html
 				each item in h.menu
 					li.nav__item
 						a(href=item.slug alt=item.title) #{item.title}
+				if !user
+					li.nav__item
+						a(href="/login") Login
+					li.nav__item
+						a(href="/register") Register
+				if user
+					li.nav__item
+						a(href="/logout") Logout
 
 
 		block messages

@@ -21,6 +21,5 @@ exports.menu = [
   { slug: '/', title: 'Home', icon: null },
   { slug: '/teams', title: 'Teams', icon: null },
   { slug: '/events', title: 'Events', icon: null },
-  { slug: '/leaderboards', title: 'Leaderboards', icon: null },
-  { slug: '/login', title: 'Login', icon: null },
+  { slug: '/leaderboards', title: 'Leaderboards', icon: null }
 ];
