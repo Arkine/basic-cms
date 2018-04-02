@@ -14,7 +14,8 @@ const javascript = {
 const postcss = {
 	loader: 'postcss-loader',
 	options: {
-		plugins() { return [autoprefixer({ browsers: 'last 3 versions' })]}
+		plugins() { return [autoprefixer({ browsers: 'last 3 versions' })]},
+		sourceMap: 'inline'
 	}
 }
 
