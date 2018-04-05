@@ -13,6 +13,7 @@ const flash = require('connect-flash');
 const expressValidator = require('express-validator');
 
 const routes = require('./server/routes');
+
 const helpers = require('./helpers');
 const errorHandlers = require('./server/handlers/errorHandlers');
 require('./server/handlers/passport');

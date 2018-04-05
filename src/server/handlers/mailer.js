@@ -36,13 +36,11 @@ exports.send = async (options) => {
 		text
 	};
 
-	// const sendMail = promisify(transport.sendMail, transport);
 	transport.sendMail(mailOptions)
 		.then(results => {
 			return results;
 		})
 		.catch(err => {
-			console.error('there was an error', err);
+			console.error('there was an error sending mail', err);
 		});
-	// return sendMail(mailOptions);
 };
