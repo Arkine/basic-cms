@@ -29,7 +29,7 @@ const userSchema = new Schema({
 	thumbnail: {
 		type: String
 	},
-	guild: mongoose.Schema.ObjectId,
+	team: mongoose.Schema.ObjectId,
 	guildRole: String,
 	friends: [mongoose.Schema.ObjectId],
 	role: String

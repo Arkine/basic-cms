@@ -6,7 +6,11 @@
     "start": "nodemon ./start.js",
     "watch": "nodemon ./start.js --ignore public/",
     "assets": "webpack -w --display-max-modules 0",
-    "dev": "concurrently \"npm run watch\" \"npm run assets\" --names, --prefix-name"
+    "dev": "concurrently \"npm run watch\" \"npm run assets\" --names, --prefix-name",
+    "create-data": "node ./src/data/create-sample-data.js --create",
+    "load-data" : "node ./src/data/create-sample-data.js --load",
+    "delete-data" : "node ./src/data/create-sample-data.js --delete",
+    "sample" : "concurrently \"npm run create-data\" \"npm run load-data\""
   },
   "author": "",
   "license": "ISC",
