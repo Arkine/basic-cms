@@ -24,7 +24,6 @@ const generateHTML = (filename, options = {}) => {
 }
 
 exports.send = async (options) => {
-	console.log('opts', options.user.email);
 	const html = generateHTML(options.filename, options);
 	const text = htmlToText.fromString(html);
 
