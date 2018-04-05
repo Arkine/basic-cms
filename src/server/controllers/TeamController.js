@@ -1,5 +1,5 @@
-exports.getTeam = (req, res) => {
-	res.render('pages/team', {
-		title: 'Team Page'
+exports.getTeams = (req, res) => {
+	res.render('pages/teams', {
+		title: 'Teams Page'
 	});
 }
