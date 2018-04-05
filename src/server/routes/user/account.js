@@ -18,7 +18,10 @@ router.post('/login', authController.login);
 router.get('/logout', authController.logout);
 
 // register
-router.get('/register', authController.isRegistered, userController.registerForm);
+router.get('/register',
+	authController.isRegistered,
+	userController.registerForm
+);
 router.post('/register',
 	userController.validateRegister,
 	catchErrors(userController.register),
@@ -26,13 +29,19 @@ router.post('/register',
 );
 
 // account page
-router.get('/account', authController.isLoggedIn, userController.account);
+router.get('/account',
+	authController.isLoggedIn,
+	userController.account
+);
 router.post('/account', catchErrors(userController.updateAccount));
 
 // password Reset
 router.get('/password-reset', userController.forgotPassword);
 router.post('/password-reset', catchErrors(authController.forgotPassword));
 router.get('/account/reset/:token', catchErrors(authController.reset));
-// router.post('/account/reset/:token', authController.confirmPasswordReset);
+router.post('/account/reset/:token',
+	authController.confirmedPasswords,
+	catchErrors(authController.update)
+);
 
 module.exports = router;
