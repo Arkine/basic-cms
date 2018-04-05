@@ -66,6 +66,8 @@ function createData() {
 
 }
 
+
+// TODO: Get load data to load data into DB
 async function loadData() {
 	console.log('Loading Sample Data...');
 

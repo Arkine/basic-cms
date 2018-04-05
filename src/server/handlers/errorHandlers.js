@@ -12,6 +12,7 @@ exports.developmentErrors = (err, req, res, next) => {
 		},
 		'application/json': () => res.json(errorDetails)
 	});
+
 	next();
 };
 
@@ -42,4 +43,15 @@ exports.flashValidationErrors = (err, req, res, next) => {
 	errorKeys.forEach(key => req.flash('error', err.errors[key].message));
 
 	res.redirect('back');
-}
+};
+
+/*
+  Not Found Error Handler
+
+  If we hit a route that is not found, we mark it as 404 and pass it along to the next error handler to display
+*/
+exports.notFound = (req, res, next) => {
+	const err = new Error('Not Found');
+	err.status = 404;
+	next(err);
+};
