@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const passport = require('passport');
+
 const User = mongoose.model('User');
 const crypto = require('crypto');
 const util = require('util');
@@ -13,6 +14,13 @@ exports.login = passport.authenticate('local', {
 	failureFlash: 'Email or Password is incorrect.',
 	successRedirect: '/',
 	successFlash: 'You are now logged in.'
+});
+
+exports.loginBnet = passport.authenticate('bnet', {
+	failureRedirect: '/login',
+	failureFlash: 'There was an error logging into your Battle.net account.',
+	successRedirect: '/',
+	successFlash: 'Your are now logged in.'
 });
 
 exports.logout = (req, res) => {

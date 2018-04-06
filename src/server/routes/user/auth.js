@@ -10,6 +10,11 @@ const userController = require('../../controllers/UserController');
 router.get('/login', userController.loginForm);
 router.post('/login', authController.login);
 
+// Bnet login
+router.get('/auth/bnet', authController.loginBnet);
+router.get('/auth/bnet/callback', authController.loginBnet);
+
+
 // logout
 router.get('/logout', authController.logout);
 
@@ -24,5 +29,8 @@ router.post('/register',
 	catchErrors(userController.register),
 	authController.login
 );
+
+
+// TODO: Implement an OAuth strat for Battle.net logins
 
 module.exports = router;
