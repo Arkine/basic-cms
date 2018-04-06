@@ -48,6 +48,8 @@ The following outlines the minimum requirements to be written into the core:
 	3. Routing
 		* Client
 		* Admin
+	4. Virtualization
+		* Docker?
 6. Deployment
 	* Platform Selection (Digital Ocean, Now, Heroku)
 	* Strategy (git)
