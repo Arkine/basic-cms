@@ -1,4 +1,4 @@
-# Node Overwatch Guild
+# Node Overwatch
 ## Requirements
 	1. Node 7.6+
 	2. MongoDB
@@ -15,8 +15,8 @@ The following outlines the minimum requirements to be written into the core:
 	* Delete
 	* Permissions
 	* Modeling
-	* Guild roles
-2. Guild
+	* Team roles
+2. Team
 	* Create
 	* Update
 	* Delete
@@ -36,8 +36,9 @@ The following outlines the minimum requirements to be written into the core:
 	1. Database
 		* Server Implementation
 		* Templating Engine (PUG)
-		* Auth
+		* Auth (Battle.net)
 		* MongoClient
+		* Enforce HTTPS
 	2. Client
 		* Templating
 		* Styles
@@ -45,7 +46,7 @@ The following outlines the minimum requirements to be written into the core:
 	3. Routing
 		* Client
 		* Admin
-	4. Deployment
-		* Platform Selection (Digital Ocean, Now, Heroku)
-		* Strategy
+6. Deployment
+	* Platform Selection (Digital Ocean, Now, Heroku)
+	* Strategy (git)
 	
