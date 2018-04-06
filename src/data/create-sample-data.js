@@ -1,6 +1,7 @@
-require('dotenv').config({ path: __dirname + '/../variables.env' });
+require('dotenv').config({ path: __dirname + '/../../variables.env' });
 const fs = require('fs');
 const faker = require('faker');
+const path = require('path');
 
 const mongoose = require('mongoose');
 mongoose.connect(process.env.DATABASE);
@@ -9,6 +10,30 @@ mongoose.Promise = global.Promise;
 // import all of our models - they need to be imported only once
 const User = require('../server/models/User');
 const Team = require('../server/models/Team');
+
+const Seedr = require('mongoose-seedr');
+
+function seed() {
+	console.log('seeding...');
+
+	const users = path.join(__dirname, 'users.json');
+	const teams = path.join(__dirname, 'teams.json');
+
+	const seed = new Seedr({
+		dbUrl: process.env.DATABASE,
+		seed: [
+			{
+				documents: users,
+				collection: 'users'
+			},
+			{
+				documents: teams,
+				collection: 'teams'
+			}
+		]
+	});
+
+}
 
 async function deleteData() {
 	console.log('Deleting Sample Data...');
@@ -67,27 +92,6 @@ function createData() {
 }
 
 
-// TODO: Get load data to load data into DB
-async function loadData() {
-	console.log('Loading Sample Data...');
-
-	const users = JSON.parse(fs.readFileSync(__dirname + '/users.json', 'utf8'));
-	const teams = JSON.parse(fs.readFileSync(__dirname + '/teams.json', 'utf8'));
-
-	try {
-		await User.insertMany(users);
-		await Team.insertMany(teams);
-
-		console.log('Sample Data Loaded!');
-
-		process.exit();
-	} catch (e) {
-		console.log('There was an error loading sample data!');
-		console.log(e);
-
-		process.exit();
-	}
-}
 
 if (process.argv.includes('--delete')) {
 	deleteData();
@@ -98,5 +102,5 @@ if (process.argv.includes('--create')) {
 }
 
 if (process.argv.includes('--load')) {
-	loadData();
+	seed();
 }

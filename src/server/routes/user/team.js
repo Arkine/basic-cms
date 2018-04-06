@@ -9,4 +9,9 @@ const teamController = require('../../controllers/TeamController');
 
 router.get('/teams', teamController.getTeams);
 
+router.get('/teams/create', 
+	authController.isLoggedIn,
+	teamController.createTeamForm
+);
+
 module.exports = router;

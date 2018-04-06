@@ -1,3 +1,5 @@
 import '../scss/style.scss';
 
-console.log('javascripts index...')
+
+
+console.log('javascripts index...');

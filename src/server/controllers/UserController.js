@@ -52,16 +52,26 @@ exports.register = async (req, res, next) => {
 		createdAt: Date.now()
 	});
 
-	const register = User.registerAsync(user, req.body.password);
+	const register = promisify(User.register).bind(User);
 
-	register
-		.then(data => {
-			next();
-		})
-		.catch(err => {
-			req.flash('error', `${err.message}`);
-			res.redirect('/register');
-		});
+	// TODO: Handle duplicate email error
+	// Redirect errors back to register page
+	try {
+		await register(user, req.body.password);
+	} catch(error) {
+		res.json(error);
+		// req.flash('error', error);
+		// res.render('pages/register', {
+		// 	title: "Register",
+		// 	body: req.body,
+		// 	flashes: req.flash()
+		// });
+
+		return;
+	}
+
+
+	next();
 };
 
 exports.account = (req, res, next) => {

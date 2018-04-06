@@ -10,7 +10,7 @@ const mail = require('../handlers/mailer');
 
 exports.login = passport.authenticate('local', {
 	failureRedirect: '/login',
-	failureFlash: 'Login Failed!',
+	failureFlash: 'Email or Password is incorrect.',
 	successRedirect: '/',
 	successFlash: 'You are now logged in.'
 });
@@ -48,8 +48,6 @@ exports.forgotPassword = async (req, res, next) => {
 		req.flash('success', 'A password reset has been emailed to you');
 		return res.redirect('/login');
 	}
-
-	// console.log('user', user)
 
 	// 2. Set reset tokens and expiry on their acct
 	user.resetPasswordToken = crypto.randomBytes(20).toString('hex');
