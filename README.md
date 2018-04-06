@@ -30,6 +30,7 @@ The following outlines the minimum requirements to be written into the core:
 	* Permissions
 4. Services
 	1. Overwatch
+		* API?
 		* Get User Data
 		* Get Hero Data?
 		* Get Map Data?
@@ -64,6 +65,7 @@ The following outlines the minimum requirements to be written into the core:
 	* Right now SSL cert is generated locally. In live mode we will need to add LetsEncrypt certs. __NOTE:__ HTTPS will not work without a proper cert.
 4. Deployment
 	* TODO
+
 
 
 
