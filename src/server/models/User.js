@@ -7,6 +7,11 @@ const validator = require('validator');
 const mongodbErrorHandler = require('mongoose-mongodb-errors');
 const passportLocalMongoose = require('passport-local-mongoose');
 
+// const roles = {
+// 	"admin",
+// 	"user"
+// };
+
 const userSchema = new Schema({
 	email: {
 		type: String,
