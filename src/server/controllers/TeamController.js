@@ -66,8 +66,8 @@ exports.createTeam = async (req, res, next) => {
 
 	const team = await newTeam.save();
 
-	req.flash('success', 'Successfully created team!');
+	req.team = team;
 
-	res.redirect(`/teams/${team.slug}`);
+	next();
 };
 

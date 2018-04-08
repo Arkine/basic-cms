@@ -16,7 +16,8 @@ router.get('/teams/create',
 );
 router.post('/teams/create', 
 	teamController.validateCreateTeam,
-	catchErrors(teamController.createTeam)
+	catchErrors(teamController.createTeam),
+	catchErrors(userController.addTeam)
 );
 
 router.get('/teams/:slug', catchErrors(teamController.getTeamBySlug));
