@@ -4,8 +4,8 @@ mixin createTeamForm()
 		input(type="text" name="name")
 		label(for="console") Console
 		select(name="console")
-			each console in consoles
-				option(value=console.type) #{console.type}
+			each console in consoleTypes
+				option(value=console) #{console}
 		label(for="description") Description
 		textarea(name="description", cols="30", rows="10")
 		input(type="submit" value="Submit")

@@ -1,7 +1,12 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 mongoose.Promise = global.Promise;
-const slug = require('slugs');
+
+const validator = require('validator');
+
+const { checkUniqueSlug } = require('./helpers');
+
+const consoleTypes = ['PC', 'XBOX', 'PS'];
 
 const teamSchema = new Schema({
 	name: {
@@ -16,7 +21,7 @@ const teamSchema = new Schema({
 	},
 	console: {
 		type: String,
-		enum: ['PC', 'XBOX', 'PS'],
+		enum: consoleTypes,
 		default: 'PC'
 	},
 	slug: String,
@@ -36,25 +41,8 @@ const teamSchema = new Schema({
 
 });
 
-teamSchema.pre('save', async function(next) {
-	if (!this.isModified('name')) {
-		return next(); // skip it
-	}
-
-	console.log(this);
-
-	this.slug = slug(this.name);
-	// Find other teams with same name to reduce slug collision
-	const slugRegEx = new RegExp(`^(${this.slug})((-[0-9]*$)?)$`, 'i');
-
-	const teamsWithSlug = await this.constructor.find({ slug: slugRegEx });
-	
-	if (teamsWithSlug.length) {
-		this.slug = `${this.slug}-${teamsWithSlug.length + 1}`;
-	}
-
-	next();
-});
+teamSchema.pre('save', checkUniqueSlug);
 
 
 exports.module = mongoose.model('Team', teamSchema);
+exports.consoleTypes = consoleTypes;

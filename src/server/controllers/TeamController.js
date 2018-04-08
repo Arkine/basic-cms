@@ -4,12 +4,9 @@ const util = require('util');
 const promisify = util.promisify;
 require('util.promisify').shim();
 
+const { consoleTypes } = require('../models/Team');
+
 const viewsRoot = 'pages/team';
-const consoles = [
-	{ type: 'PC' },
-	{ type: 'XBOX' },
-	{ type: 'PS' }
-];
 
 exports.getTeams = (req, res) => {
 	res.render(`${viewsRoot}/teams`, {
@@ -34,7 +31,7 @@ exports.getTeamBySlug = async (req, res, next) => {
 exports.createTeamForm = async (req, res) => {
 	res.render(`${viewsRoot}/create`, {
 		title: 'Create a Team',
-		consoles
+		consoleTypes
 	});
 };
 
@@ -58,7 +55,7 @@ exports.validateCreateTeam = (req, res, next) => {
 };
 
 exports.createTeam = async (req, res, next) => {
-	// res.json(req.body);
+
 	const newTeam = new Team({
 		name: req.body.name,
 		owner: req.user._id,
