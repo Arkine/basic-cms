@@ -9,9 +9,16 @@ const teamController = require('../../controllers/TeamController');
 
 router.get('/teams', teamController.getTeams);
 
+
 router.get('/teams/create', 
 	authController.isLoggedIn,
 	teamController.createTeamForm
 );
+router.post('/teams/create', 
+	teamController.validateCreateTeam,
+	catchErrors(teamController.createTeam)
+);
+
+router.get('/teams/:slug', catchErrors(teamController.getTeamBySlug));
 
 module.exports = router;

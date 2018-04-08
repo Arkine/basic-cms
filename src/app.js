@@ -13,7 +13,7 @@ const flash = require('connect-flash');
 const expressValidator = require('express-validator');
 
 const http = require('http');
-const enforce = require('express-sslify');
+// const enforce = require('express-sslify');
 // const fs = require('fs');
 
 const routes = require('./server/routes');
@@ -24,9 +24,9 @@ require('./server/handlers/passport');
 
 const app = express();
 
-
-if(process.env.NODE_ENV === 'production') {
-	app.use(enforce.HTTPS());
+// enforce HTTPS
+if (process.env.NODE_ENV === 'production') {
+	// app.use(enforce.HTTPS());
 
 	app.use((req, res, next) => {
 		if (req.secure) {

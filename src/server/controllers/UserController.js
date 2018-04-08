@@ -59,13 +59,13 @@ exports.register = async (req, res, next) => {
 	try {
 		await register(user, req.body.password);
 	} catch(error) {
-		res.json(error);
-		// req.flash('error', error);
-		// res.render('pages/register', {
-		// 	title: "Register",
-		// 	body: req.body,
-		// 	flashes: req.flash()
-		// });
+		// res.json(error);
+		req.flash('error', error.message);
+		res.render('pages/register', {
+			title: "Register",
+			body: req.body,
+			flashes: req.flash()
+		});
 
 		return;
 	}

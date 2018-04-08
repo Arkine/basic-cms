@@ -1,5 +1,11 @@
 mixin createTeamForm()
 	form.form(method="POST")
-		label(for="team-name") Team Name
-		input(type="text" name="team-name")
+		label(for="name") Team Name
+		input(type="text" name="name")
+		label(for="console") Console
+		select(name="console")
+			each console in consoles
+				option(value=console.type) #{console.type}
+		label(for="description") Description
+		textarea(name="description", cols="30", rows="10")
 		input(type="submit" value="Submit")
