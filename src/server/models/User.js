@@ -34,7 +34,7 @@ const userSchema = new Schema({
 		default: Date.now()
 	},
 	lastLogin: Date,
-	thumbnail: String,
+	photo: String,
 	team: mongoose.Schema.ObjectId,
 	guildRole: String,
 	friends: [{

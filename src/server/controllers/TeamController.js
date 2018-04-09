@@ -16,6 +16,14 @@ const s3 = new AWS.S3();
 const multer = require('multer');
 const multerS3 = require('multer-s3');
 const upload = multer({
+	fileFilter(req, file, next) {
+		const isPhoto = file.mimetype.startsWith('image/');
+		if (isPhoto) {
+			next(null, true);
+		} else {
+			next({ message: 'That file type isn\'t allowed' } , false);
+		}
+	},
 	storage: multerS3({
 		s3: s3,
 		bucket: process.env.AWS_BUCKET_NAME,
@@ -115,15 +123,23 @@ exports.createTeamForm = async (req, res) => {
 };
 
 exports.createTeam = async (req, res, next) => {
+	// const newTeam = new Team({
+	// 	name: req.body.name,
+	// 	owner: req.user._id,
+	// 	createdAt: Date.now(),
+	// 	thumbnail: req.file.location,
+	// 	description: req.body.description,
+	// 	members: [req.user._id]
+	// });
 
-	const newTeam = new Team({
-		name: req.body.name,
-		owner: req.user._id,
-		createdAt: Date.now(),
-		thumbnail: req.body.photo,
-		description: req.body.description,
-		members: [req.user._id]
-	});
+	req.body.owner = req.user._id;
+	req.body.members = [req.user._id];
+
+	if (req.file) {
+		req.body.photo = req.file.location
+	}
+
+	const newTeam = new Team(req.body);
 
 	const team = await newTeam.save();
 

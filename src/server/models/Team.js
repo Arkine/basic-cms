@@ -19,7 +19,7 @@ const teamSchema = new Schema({
 		type: Date,
 		default: Date.now()
 	},
-	thumbnail: String,
+	photo: String,
 	console: {
 		type: String,
 		enum: consoleTypes,

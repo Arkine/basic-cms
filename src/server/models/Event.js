@@ -9,7 +9,7 @@ const eventSchema = new Schema({
 		default: Date.now()
 	},
 	description: String,
-	thumbnail: String,
+	photo: String,
 	slug: String
 });
 
