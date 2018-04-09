@@ -1,11 +1,12 @@
 mixin createTeamForm()
 	form.form(method="POST")
+		//- pre= JSON.stringify(body)
 		label(for="name") Team Name
-		input(type="text" name="name")
+		input(type="text" name="name" value=body.name)
 		label(for="console") Console
-		select(name="console")
+		select(name="console" value=body.console)
 			each console in consoleTypes
 				option(value=console) #{console}
 		label(for="description") Description
-		textarea(name="description", cols="30", rows="10")
+		textarea(name="description", cols="30", rows="10") #{body.description}
 		input(type="submit" value="Submit")

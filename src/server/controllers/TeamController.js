@@ -42,9 +42,15 @@ exports.getTeams = async (req, res) => {
 };
 
 exports.getTeamById = async (req, res, next) => {
-	const team = await Team.findById({ _id: req.user.team });
+	if (!req.user || !req.user.team) {
+		return next(); // Skip if no team
+	}
 
+
+	const team = await Team.findById({ _id: req.user.team });
+	console.log(team);
 	req.team = team;
+
 
 	next();
 };
@@ -72,8 +78,12 @@ exports.createTeamForm = async (req, res) => {
 // TODO: Create a more consistent error handler for form errors
 exports.validateCreateTeam = (req, res, next) => {
 	req.sanitizeBody('name');
+	req.check('name', 'Team name must be between 3 - 20 characters long').len(4, 6);
+	// req.check('name', 'Team name can only contain Alphanumeric characters').regex('[a-z][A-Z]','i');
+
 	req.sanitizeBody('description');
 	req.checkBody('name', 'You must supply a team name!').notEmpty();
+
 
 	const errors = req.validationErrors();
 	if (errors) {
