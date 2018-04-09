@@ -29,7 +29,10 @@ const userSchema = new Schema({
 	},
 	resetPasswordToken: String,
 	resetPasswordExpires: Date,
-	createdAt: Date,
+	created: {
+		type: Date,
+		default: Date.now()
+	},
 	lastLogin: Date,
 	thumbnail: {
 		type: String

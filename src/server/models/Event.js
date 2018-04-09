@@ -4,7 +4,10 @@ const Schema = mongoose.Schema;
 const eventSchema = new Schema({
 	title: String,
 	author: mongoose.Schema.ObjectId,
-	dateCreated: Date,
+	created: {
+		type: Date,
+		default: Date.now()
+	},
 	description: String,
 	thumbnail: String,
 	slug: String

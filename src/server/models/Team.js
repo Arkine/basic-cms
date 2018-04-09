@@ -15,12 +15,15 @@ const teamSchema = new Schema({
 		required: 'You must supply a team name!'
 	},
 	owner: mongoose.Schema.ObjectId,
-	createdAt: Date,
+	created: {
+		type: Date,
+		default: Date.now()
+	},
 	thumbnail: {
 		type: String
 	},
 	console: {
-		type: [String],
+		type: String,
 		enum: consoleTypes,
 		default: 'PC'
 	},
