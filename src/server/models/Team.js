@@ -12,7 +12,10 @@ const teamSchema = new Schema({
 	name: {
 		type: String,
 		trim: true,
-		required: 'You must supply a team name!'
+		required: 'You must supply a team name!',
+		validate: [
+			{ validator: validator.isAlpha, msg: 'Team name must only contain letters!' }
+		]
 	},
 	owner: mongoose.Schema.ObjectId,
 	created: {
