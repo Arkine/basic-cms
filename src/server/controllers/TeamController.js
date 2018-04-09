@@ -78,7 +78,8 @@ exports.validateCreateTeam = (req, res, next) => {
 		res.render(`${viewsRoot}/create`, {
 			title: "Register",
 			body: req.body,
-			flashes: req.flash()
+			flashes: req.flash(),
+			consoleTypes
 		});
 
 		return;

@@ -3,6 +3,7 @@ extends layout
 block content
 	.inner
 		h1 There was an error
+		pre= body
 		h2= status
 		p= message
 		pre.error!= stackHighlighted
