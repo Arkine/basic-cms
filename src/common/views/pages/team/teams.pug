@@ -9,8 +9,8 @@ block content
 					a(href="/teams/create") Create A team
 				if user.team
 					a(href=`/teams/${team.slug}`) View your team
-				each team in teams
-					.team
-						.team__meta
-							.team__title
-								a.link-mask(href=`/teams/${team.slug}`) #{team.name}
+			each team in teams
+				.team
+					.team__meta
+						.team__title
+							a.link-mask(href=`/teams/${team.slug}`) #{team.name}

@@ -3,12 +3,30 @@ const util = require('util');
 const promisify = util.promisify;
 require('util.promisify').shim();
 const validator = require('validator');
+const jimp = require('jimp');
+const uuid = require('uuid');
+const multer = require('multer');
+const multerOptions = {
+	storage: multer.memoryStorage(),
+	fileFilter(req, file, next) {
+		const isPhoto = file.mimetype.startsWith('image/');
+		if (isPhoto) {
+			next(null, true);
+		} else {
+			next({ message: 'That file type isn\'t allowed' } , false);
+		}
+	}
+}
 
 const Team = mongoose.model('Team');
 
 const { consoleTypes } = require('../models/Team');
 
 const viewsRoot = 'pages/team';
+
+// exports.getTeam = async (req, res, next) => {
+// 	const Team = await Team.find
+// };
 
 exports.getTeams = async (req, res) => {
 	const page = req.params.page || 1;
@@ -28,7 +46,7 @@ exports.getTeams = async (req, res) => {
 
 	if (!teams.length && skip) {
 		req.flash('info', 'The requested page no longer exists.');
-		res.redirect(`/stores/pages/${pages}`);
+		res.redirect(`/teams/pages/${pages}`);
 	}
 
 	res.render(`${viewsRoot}/teams`, {
@@ -41,28 +59,28 @@ exports.getTeams = async (req, res) => {
 	});
 };
 
-exports.getTeamById = async (req, res, next) => {
+exports.getUserTeam = async (req, res, next) => {
 	if (!req.user || !req.user.team) {
 		return next(); // Skip if no team
 	}
 
-
 	const team = await Team.findById({ _id: req.user.team });
-	console.log(team);
-	req.team = team;
 
+	req.team = team;
 
 	next();
 };
 
 exports.getTeamBySlug = async (req, res, next) => {
-	const team = await Team.findOne({ slug: req.params.slug });
+	const team = await Team.findOne({ slug: req.params.slug })
+				.populate('members') // Takes the IDs and gets the data
+				.exec();
 
 	if (!team) {
 		return next();
 	}
 
-	res.render('pages/team/team', {
+	res.render(`${viewsRoot}/team`, {
 		title: team.name,
 		team
 	});
@@ -71,19 +89,39 @@ exports.getTeamBySlug = async (req, res, next) => {
 exports.createTeamForm = async (req, res) => {
 	res.render(`${viewsRoot}/create`, {
 		title: 'Create a Team',
+		body: req.body,
 		consoleTypes
 	});
+};
+
+exports.createTeam = async (req, res, next) => {
+
+	const newTeam = new Team({
+		name: req.body.name,
+		owner: req.user._id,
+		thumbnail: req.user.thumbnail,
+		createdAt: Date.now(),
+		description: req.body.description,
+		members: [req.user._id]
+	});
+
+	const team = await newTeam.save();
+
+	req.team = team;
+
+	next();
 };
 
 // TODO: Create a more consistent error handler for form errors
 exports.validateCreateTeam = (req, res, next) => {
 	req.sanitizeBody('name');
-	req.check('name', 'Team name must be between 3 - 20 characters long').len(4, 6);
-	// req.check('name', 'Team name can only contain Alphanumeric characters').regex('[a-z][A-Z]','i');
+	req.check('name', 'Team name must be between 3 - 50 characters long').len(3, 50);
+	// req.checkBody('name', 'You must supply a team name!').notEmpty();
+	// req.checkBody('name', 'Team name must be Alphanumeric!').isAlpha();
+	// TODO: Error if name doesn't contain letters,numbers or spaces
+	// req.check('name', 'Team name can only contain Alphanumeric characters').matches(/^$/, "i");
 
 	req.sanitizeBody('description');
-	req.checkBody('name', 'You must supply a team name!').notEmpty();
-
 
 	const errors = req.validationErrors();
 	if (errors) {
@@ -101,20 +139,22 @@ exports.validateCreateTeam = (req, res, next) => {
 	next();
 };
 
-exports.createTeam = async (req, res, next) => {
+exports.upload = multer(multerOptions).single('thumbnail');
 
-	const newTeam = new Team({
-		name: req.body.name,
-		owner: req.user._id,
-		createdAt: Date.now(),
-		description: req.body.description,
-		members: [req.user._id]
-	});
+exports.resize = async (req, res, next) => {
+	if (!req.file) {
+		return next();
+	}
 
-	const team = await newTeam.save();
+	const extension = req.file.mimetype.split('/')[1];
 
-	req.team = team;
+	req.body.photo = `${uuid.v4()}.${extension}`;
+
+	const photo = await jimp.read(req.file.buffer);
+
+	//resize(H, W)
+	await photo.resize(800, jimp.AUTO);
+	await photo.write(`./public/uploads/${req.body.photo}`);
 
 	next();
 };
-

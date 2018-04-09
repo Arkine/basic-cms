@@ -34,12 +34,13 @@ const userSchema = new Schema({
 		default: Date.now()
 	},
 	lastLogin: Date,
-	thumbnail: {
-		type: String
-	},
+	thumbnail: String,
 	team: mongoose.Schema.ObjectId,
 	guildRole: String,
-	friends: [mongoose.Schema.ObjectId],
+	friends: [{
+		type: mongoose.Schema.ObjectId,
+		ref: 'User'
+	}],
 	role: String
 });
 

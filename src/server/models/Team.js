@@ -19,9 +19,7 @@ const teamSchema = new Schema({
 		type: Date,
 		default: Date.now()
 	},
-	thumbnail: {
-		type: String
-	},
+	thumbnail: String,
 	console: {
 		type: String,
 		enum: consoleTypes,
@@ -40,7 +38,10 @@ const teamSchema = new Schema({
 		type: Number,
 		default: 0
 	},
-	members: [mongoose.Schema.ObjectId]
+	members: [{
+		type: mongoose.Schema.ObjectId,
+		ref: 'User'
+	}]
 });
 
 teamSchema.pre('save', checkUniqueSlug);

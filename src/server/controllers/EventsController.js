@@ -4,7 +4,7 @@ const viewsRoot = 'pages/events';
 
 exports.events = (req, res) => {
 	res.render(`${viewsRoot}/events`, {
-		title: 'Events page'
+		title: 'Events'
 	});
 };
 

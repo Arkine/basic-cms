@@ -5,4 +5,7 @@ include ../../mixins/team/_createTeamForm
 block content
 	.inner
 		h1 #{title}
+		.legend
+			ul.legend__wrapper
+				li.legend__item Team name must be between 3-50 characters in length.
 		+createTeamForm()

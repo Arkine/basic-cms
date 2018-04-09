@@ -8,21 +8,26 @@ const userController = require('../../controllers/UserController');
 const teamController = require('../../controllers/TeamController');
 
 router.get('/teams',
-	catchErrors(teamController.getTeamById),
+	teamController.upload,
+	catchErrors(teamController.resize),
+	catchErrors(teamController.getUserTeam),
 	catchErrors(teamController.getTeams)
 );
 
-router.get('/teams/create', 
+router.get('/teams/create',
 	authController.isLoggedIn,
 	teamController.createTeamForm
 );
 
-router.post('/teams/create', 
+router.post('/teams/create',
+	authController.isLoggedIn,
 	teamController.validateCreateTeam,
 	catchErrors(teamController.createTeam),
 	catchErrors(userController.addTeam)
 );
 
-router.get('/teams/:slug', catchErrors(teamController.getTeamBySlug));
+router.get('/teams/:slug',
+	catchErrors(teamController.getTeamBySlug)
+);
 
 module.exports = router;
