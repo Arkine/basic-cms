@@ -12,11 +12,11 @@ router.get('/teams',
 	catchErrors(teamController.getTeams)
 );
 
-
 router.get('/teams/create', 
 	authController.isLoggedIn,
 	teamController.createTeamForm
 );
+
 router.post('/teams/create', 
 	teamController.validateCreateTeam,
 	catchErrors(teamController.createTeam),

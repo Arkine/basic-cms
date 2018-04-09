@@ -20,7 +20,7 @@ const teamSchema = new Schema({
 		type: String
 	},
 	console: {
-		type: String,
+		type: [String],
 		enum: consoleTypes,
 		default: 'PC'
 	},
@@ -37,12 +37,10 @@ const teamSchema = new Schema({
 		type: Number,
 		default: 0
 	},
-	members: [mongoose.Schema.ObjectId],
-
+	members: [mongoose.Schema.ObjectId]
 });
 
 teamSchema.pre('save', checkUniqueSlug);
-
 
 exports.module = mongoose.model('Team', teamSchema);
 exports.consoleTypes = consoleTypes;
