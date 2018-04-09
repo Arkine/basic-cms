@@ -1,10 +1,10 @@
 mixin createTeamForm()
-	form.form(method="POST")
+	form.form(action=`/teams/create` method="POST" enctype="multipart/form-data")
 		//- pre= JSON.stringify(body)
 		label(for="name") Team Name
 			input(type="text" name="name" value=body.name)
-		label(for="thumbnail") Team Banner Photo
-			input(type="file" name="thumbnail")
+		label(for="photo") Team Banner Photo
+			input(type="file" name="photo" id="photo" accept="image/gif, image/png, image/jpeg")
 		label(for="console") Console
 			select(name="console" value=body.console)
 				each console in consoleTypes

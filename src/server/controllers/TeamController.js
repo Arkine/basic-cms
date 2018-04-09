@@ -72,9 +72,7 @@ exports.getUserTeam = async (req, res, next) => {
 };
 
 exports.getTeamBySlug = async (req, res, next) => {
-	const team = await Team.findOne({ slug: req.params.slug })
-				.populate('members') // Takes the IDs and gets the data
-				.exec();
+	const team = await Team.findOne({ slug: req.params.slug });
 
 	if (!team) {
 		return next();
@@ -99,8 +97,8 @@ exports.createTeam = async (req, res, next) => {
 	const newTeam = new Team({
 		name: req.body.name,
 		owner: req.user._id,
-		thumbnail: req.user.thumbnail,
 		createdAt: Date.now(),
+		thumbnail: req.body.photo,
 		description: req.body.description,
 		members: [req.user._id]
 	});
@@ -114,6 +112,7 @@ exports.createTeam = async (req, res, next) => {
 
 // TODO: Create a more consistent error handler for form errors
 exports.validateCreateTeam = (req, res, next) => {
+	// console.log(req.body)
 	req.sanitizeBody('name');
 	req.check('name', 'Team name must be between 3 - 50 characters long').len(3, 50);
 	// req.checkBody('name', 'You must supply a team name!').notEmpty();
@@ -139,9 +138,10 @@ exports.validateCreateTeam = (req, res, next) => {
 	next();
 };
 
-exports.upload = multer(multerOptions).single('thumbnail');
+exports.upload = multer(multerOptions).single('photo');
 
 exports.resize = async (req, res, next) => {
+
 	if (!req.file) {
 		return next();
 	}
@@ -154,7 +154,7 @@ exports.resize = async (req, res, next) => {
 
 	//resize(H, W)
 	await photo.resize(800, jimp.AUTO);
-	await photo.write(`./public/uploads/${req.body.photo}`);
+	await photo.write(`./public/images/${req.body.photo}`);
 
 	next();
 };

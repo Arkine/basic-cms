@@ -8,8 +8,6 @@ const userController = require('../../controllers/UserController');
 const teamController = require('../../controllers/TeamController');
 
 router.get('/teams',
-	teamController.upload,
-	catchErrors(teamController.resize),
 	catchErrors(teamController.getUserTeam),
 	catchErrors(teamController.getTeams)
 );
@@ -21,6 +19,8 @@ router.get('/teams/create',
 
 router.post('/teams/create',
 	authController.isLoggedIn,
+	teamController.upload,
+	catchErrors(teamController.resize),
 	teamController.validateCreateTeam,
 	catchErrors(teamController.createTeam),
 	catchErrors(userController.addTeam)
