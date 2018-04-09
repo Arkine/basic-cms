@@ -16,7 +16,6 @@ exports.developmentErrors = (err, req, res, next) => {
 	next();
 };
 
-
 exports.productionErrors = (err, req, res, next) => {
 	res.status(err.status || 500);
 	res.render('error', {
@@ -26,7 +25,6 @@ exports.productionErrors = (err, req, res, next) => {
 
 	next();
 };
-
 
 exports.catchErrors = (fn) => {
 	return function(req, res, next) {

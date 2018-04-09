@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const util = require('util');
 const promisify = util.promisify;
 require('util.promisify').shim();
+const validator = require('validator');
 
 const Team = mongoose.model('Team');
 
@@ -68,15 +69,17 @@ exports.createTeamForm = async (req, res) => {
 	});
 };
 
+// TODO: Create a more consistent error handler for form errors
 exports.validateCreateTeam = (req, res, next) => {
 	req.sanitizeBody('name');
+	req.sanitizeBody('description');
 	req.checkBody('name', 'You must supply a team name!').notEmpty();
 
 	const errors = req.validationErrors();
 	if (errors) {
 		req.flash('error', errors.map(err => err.msg));
 		res.render(`${viewsRoot}/create`, {
-			title: "Register",
+			title: "Create a Team",
 			body: req.body,
 			flashes: req.flash(),
 			consoleTypes
