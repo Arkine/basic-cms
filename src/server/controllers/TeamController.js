@@ -5,18 +5,40 @@ require('util.promisify').shim();
 const validator = require('validator');
 const jimp = require('jimp');
 const uuid = require('uuid');
+const fs = require('fs');
+const AWS = require('aws-sdk');
+AWS.config.update({
+	accessKeyId: process.env.AWS_ACCESS_KEY,
+	secretAccessKey: process.env.AWS_SECRET_KEY
+});
+const s3 = new AWS.S3();
+
 const multer = require('multer');
-const multerOptions = {
-	storage: multer.memoryStorage(),
-	fileFilter(req, file, next) {
-		const isPhoto = file.mimetype.startsWith('image/');
-		if (isPhoto) {
-			next(null, true);
-		} else {
-			next({ message: 'That file type isn\'t allowed' } , false);
+const multerS3 = require('multer-s3');
+const upload = multer({
+	storage: multerS3({
+		s3: s3,
+		bucket: process.env.AWS_BUCKET_NAME,
+		metaData: (req, file, cb) => {
+			cb(null, { fieldName: file.fieldName })
+		},
+		key: (req, file, cb) => {
+			cb(null, Date.now().toString())
 		}
-	}
-}
+	})
+});
+
+// const multerOptions = {
+// 	storage: multer.memoryStorage(),
+// 	fileFilter(req, file, next) {
+// 		const isPhoto = file.mimetype.startsWith('image/');
+// 		if (isPhoto) {
+// 			next(null, true);
+// 		} else {
+// 			next({ message: 'That file type isn\'t allowed' } , false);
+// 		}
+// 	}
+// }
 
 const Team = mongoose.model('Team');
 
@@ -138,23 +160,26 @@ exports.validateCreateTeam = (req, res, next) => {
 	next();
 };
 
-exports.upload = multer(multerOptions).single('photo');
+exports.uploadPhoto = upload.single('photo');
 
-exports.resize = async (req, res, next) => {
 
-	if (!req.file) {
-		return next();
-	}
+// Local photo upload strat
+// exports.uploadPhoto = multer(multerOptions).single('photo');
+// exports.resize = async (req, res, next) => {
 
-	const extension = req.file.mimetype.split('/')[1];
+// 	if (!req.file) {
+// 		return next();
+// 	}
 
-	req.body.photo = `${uuid.v4()}.${extension}`;
+// 	const extension = req.file.mimetype.split('/')[1];
 
-	const photo = await jimp.read(req.file.buffer);
+// 	req.body.photo = `${uuid.v4()}.${extension}`;
 
-	//resize(H, W)
-	await photo.resize(800, jimp.AUTO);
-	await photo.write(`./public/images/${req.body.photo}`);
+// 	const photo = await jimp.read(req.file.buffer);
 
-	next();
-};
+// 	//resize(H, W)
+// 	await photo.resize(800, jimp.AUTO);
+// 	await photo.write(`./public/images/${req.body.photo}`);
+
+// 	next();
+// };

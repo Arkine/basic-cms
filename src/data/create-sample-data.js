@@ -1,4 +1,4 @@
-require('dotenv').config({ path: __dirname + '/../../variables.env' });
+require('dotenv').config({ path: __dirname + '/../../env/variables.env' });
 const fs = require('fs');
 const faker = require('faker');
 const path = require('path');

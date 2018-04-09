@@ -45,6 +45,7 @@ const teamSchema = new Schema({
 });
 
 teamSchema.pre('save', checkUniqueSlug);
+
 function autoPopulate(next) {
 	this.populate('members');
 	next();

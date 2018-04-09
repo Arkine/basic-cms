@@ -17,10 +17,20 @@ router.get('/teams/create',
 	teamController.createTeamForm
 );
 
+// Local file storage strat
+// router.post('/teams/create',
+// 	authController.isLoggedIn,
+// 	teamController.upload,
+// 	catchErrors(teamController.resize),
+// 	teamController.validateCreateTeam,
+// 	catchErrors(teamController.createTeam),
+// 	catchErrors(userController.addTeam)
+// );
+
+// S3 storage strat
 router.post('/teams/create',
 	authController.isLoggedIn,
-	teamController.upload,
-	catchErrors(teamController.resize),
+	teamController.uploadPhoto,
 	teamController.validateCreateTeam,
 	catchErrors(teamController.createTeam),
 	catchErrors(userController.addTeam)

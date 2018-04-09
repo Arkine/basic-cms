@@ -4,3 +4,5 @@ node_modules/
 .idea
 variables.env
 encryption/
+public/uploads
+env/variables.env
