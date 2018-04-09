@@ -13,6 +13,7 @@ exports.getTeams = async (req, res) => {
 	const page = req.params.page || 1;
 	const limit = 20;
 	const skip = (page * limit) - limit;
+	const { team } = req;
 
 	const teamsPromise = Team
 		.find()
@@ -34,12 +35,20 @@ exports.getTeams = async (req, res) => {
 		teams,
 		pages,
 		page,
+		team,
 		count
 	});
 };
 
+exports.getTeamById = async (req, res, next) => {
+	const team = await Team.findById({ _id: req.user.team });
+
+	req.team = team;
+
+	next();
+};
+
 exports.getTeamBySlug = async (req, res, next) => {
-	console.log(req.params)
 	const team = await Team.findOne({ slug: req.params.slug });
 
 	if (!team) {

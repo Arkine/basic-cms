@@ -7,7 +7,10 @@ const authController = require('../../controllers/AuthController');
 const userController = require('../../controllers/UserController');
 const teamController = require('../../controllers/TeamController');
 
-router.get('/teams', catchErrors(teamController.getTeams));
+router.get('/teams',
+	catchErrors(teamController.getTeamById),
+	catchErrors(teamController.getTeams)
+);
 
 
 router.get('/teams/create', 

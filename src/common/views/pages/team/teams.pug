@@ -7,7 +7,9 @@ block content
 			if !user.team
 				a(href="/teams/create") Create A team
 			if user.team
-				pre= user.team
+				a(href=`/teams/${team.slug}}`) View your team
 			each team in teams
 				.team
-					pre #{team}
+					.team__meta
+						.team__title
+							a.link-mask(href=`/teams/${team.slug}`) #{team.name}
