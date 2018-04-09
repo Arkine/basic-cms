@@ -1,8 +1,10 @@
 const mongoose = require('mongoose');
-const User = mongoose.model('User');
 const util = require('util');
 const promisify = util.promisify;
 require('util.promisify').shim();
+
+const User = mongoose.model('User');
+const Team = mongoose.model('Team');
 
 exports.loginForm = (req, res) => {
 	res.render('pages/login', {
@@ -74,9 +76,12 @@ exports.register = async (req, res, next) => {
 	next();
 };
 
-exports.account = (req, res, next) => {
+exports.account = async (req, res, next) => {
+	const team = await Team.findOne({ _id: req.user.team });
+
 	res.render('pages/user/account', {
-		title: 'My Account'
+		title: 'My Account',
+		team
 	});
 };
 
@@ -116,7 +121,6 @@ exports.addTeam = async (req, res, next) => {
 		req.user._id,
 		updates,
 		{ new: true }
-
 	);
 
 	if (!user) {

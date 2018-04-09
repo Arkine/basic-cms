@@ -9,7 +9,7 @@ const userController = require('../../controllers/UserController');
 // account page
 router.get('/account',
 	authController.isLoggedIn,
-	userController.account
+	catchErrors(userController.account)
 );
 router.post('/account', catchErrors(userController.updateAccount));
 

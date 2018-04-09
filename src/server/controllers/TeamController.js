@@ -1,16 +1,40 @@
 const mongoose = require('mongoose');
-const Team = mongoose.model('Team');
 const util = require('util');
 const promisify = util.promisify;
 require('util.promisify').shim();
+
+const Team = mongoose.model('Team');
 
 const { consoleTypes } = require('../models/Team');
 
 const viewsRoot = 'pages/team';
 
-exports.getTeams = (req, res) => {
+exports.getTeams = async (req, res) => {
+	const page = req.params.page || 1;
+	const limit = 20;
+	const skip = (page * limit) - limit;
+
+	const teamsPromise = Team
+		.find()
+		.skip(skip)
+		.limit(limit)
+		.sort({'created': 'desc'});
+
+	const countPromise = Team.count();
+	const [teams, count] = await Promise.all([teamsPromise, countPromise]);
+	const pages = Math.ceil(count / limit);
+
+	if (!teams.length && skip) {
+		req.flash('info', 'The requested page no longer exists.');
+		res.redirect(`/stores/pages/${pages}`);
+	}
+
 	res.render(`${viewsRoot}/teams`, {
-		title: 'Teams Page'
+		title: 'Teams',
+		teams,
+		pages,
+		page,
+		count
 	});
 };
 
