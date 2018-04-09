@@ -3,9 +3,6 @@ const util = require('util');
 const promisify = util.promisify;
 require('util.promisify').shim();
 const validator = require('validator');
-const jimp = require('jimp');
-const uuid = require('uuid');
-const fs = require('fs');
 const AWS = require('aws-sdk');
 AWS.config.update({
 	accessKeyId: process.env.AWS_ACCESS_KEY,
@@ -36,27 +33,11 @@ const upload = multer({
 	})
 });
 
-// const multerOptions = {
-// 	storage: multer.memoryStorage(),
-// 	fileFilter(req, file, next) {
-// 		const isPhoto = file.mimetype.startsWith('image/');
-// 		if (isPhoto) {
-// 			next(null, true);
-// 		} else {
-// 			next({ message: 'That file type isn\'t allowed' } , false);
-// 		}
-// 	}
-// }
-
 const Team = mongoose.model('Team');
 
 const { consoleTypes } = require('../models/Team');
 
 const viewsRoot = 'pages/team';
-
-// exports.getTeam = async (req, res, next) => {
-// 	const Team = await Team.find
-// };
 
 exports.getTeams = async (req, res) => {
 	const page = req.params.page || 1;
@@ -123,15 +104,6 @@ exports.createTeamForm = async (req, res) => {
 };
 
 exports.createTeam = async (req, res, next) => {
-	// const newTeam = new Team({
-	// 	name: req.body.name,
-	// 	owner: req.user._id,
-	// 	createdAt: Date.now(),
-	// 	thumbnail: req.file.location,
-	// 	description: req.body.description,
-	// 	members: [req.user._id]
-	// });
-
 	req.body.owner = req.user._id;
 	req.body.members = [req.user._id];
 
@@ -148,15 +120,9 @@ exports.createTeam = async (req, res, next) => {
 	next();
 };
 
-// TODO: Create a more consistent error handler for form errors
 exports.validateCreateTeam = (req, res, next) => {
-	// console.log(req.body)
 	req.sanitizeBody('name');
 	req.check('name', 'Team name must be between 3 - 50 characters long').len(3, 50);
-	// req.checkBody('name', 'You must supply a team name!').notEmpty();
-	// req.checkBody('name', 'Team name must be Alphanumeric!').isAlpha();
-	// TODO: Error if name doesn't contain letters,numbers or spaces
-	// req.check('name', 'Team name can only contain Alphanumeric characters').matches(/^$/, "i");
 
 	req.sanitizeBody('description');
 
@@ -177,25 +143,3 @@ exports.validateCreateTeam = (req, res, next) => {
 };
 
 exports.uploadPhoto = upload.single('photo');
-
-
-// Local photo upload strat
-// exports.uploadPhoto = multer(multerOptions).single('photo');
-// exports.resize = async (req, res, next) => {
-
-// 	if (!req.file) {
-// 		return next();
-// 	}
-
-// 	const extension = req.file.mimetype.split('/')[1];
-
-// 	req.body.photo = `${uuid.v4()}.${extension}`;
-
-// 	const photo = await jimp.read(req.file.buffer);
-
-// 	//resize(H, W)
-// 	await photo.resize(800, jimp.AUTO);
-// 	await photo.write(`./public/images/${req.body.photo}`);
-
-// 	next();
-// };
