@@ -9,6 +9,7 @@ require('util.promisify').shim();
 
 const mail = require('../handlers/mailer');
 
+// Local
 exports.login = passport.authenticate('local', {
 	failureRedirect: '/login',
 	failureFlash: 'Email or Password is incorrect.',
@@ -16,6 +17,7 @@ exports.login = passport.authenticate('local', {
 	successFlash: 'You are now logged in.'
 });
 
+// Battle.net
 exports.loginBnet = passport.authenticate('bnet', {
 	failureRedirect: '/login',
 	failureFlash: 'There was an error logging into your Battle.net account.',
@@ -64,7 +66,7 @@ exports.forgotPassword = async (req, res, next) => {
 	await user.save();
 
 	// 3. Send email w/ token
-	const resetURL = `http://${req.headers.host}/account/reset/${user.resetPasswordToken}`;
+	const resetURL = `${req.protocol}://${req.headers.host}/account/reset/${user.resetPasswordToken}`;
 
 	mail.send({
 		user,
