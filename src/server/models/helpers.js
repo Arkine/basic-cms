@@ -18,3 +18,20 @@ exports.checkUniqueSlug = async function(next) {
 
 	next();
 };
+
+
+exports.hasLength = function(fieldName, minLength, maxLength) {
+	minLength = minLength || 0;
+	maxLength = maxLength || Infinity;
+	return {
+		validator : function(value) {
+			if (value === undefined) {
+				return true;
+			}
+			const total = value.length;
+
+			return total >= minLength && total <= maxLength;
+		},
+		message : `${fieldName} field length must be between ${minLength} and ${maxLength} characters in length.`
+	}
+}

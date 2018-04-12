@@ -4,7 +4,7 @@ mongoose.Promise = global.Promise;
 const slug = require('slugs');
 const validator = require('validator');
 
-const { checkUniqueSlug } = require('./helpers');
+const { checkUniqueSlug, hasLength } = require('./helpers');
 
 const consoleTypes = ['PC', 'XBOX', 'PS'];
 
@@ -12,7 +12,8 @@ const teamSchema = new Schema({
 	name: {
 		type: String,
 		trim: true,
-		required: 'You must supply a team name!'
+		required: 'You must supply a team name!',
+		validate: hasLength('Team Name', 3, 50)
 	},
 	owner: mongoose.Schema.ObjectId,
 	created: {
@@ -47,13 +48,13 @@ const teamSchema = new Schema({
 teamSchema.pre('save', checkUniqueSlug);
 teamSchema.pre('find', autoPopulate);
 teamSchema.pre('findOne', autoPopulate);
-// teamSchema.pre('findOneAndUpdate', checkUniqueSlug);
 
 function autoPopulate(next) {
 	this.populate('members');
 	next();
 }
 
+// This is the same functionally as the checkUniqueSlug in our helper. Just needed to bring it into context
 teamSchema.statics.getUniqueSlug = async function(currentName, newName) {
 	if (currentName === newName) {
 		return newName;
