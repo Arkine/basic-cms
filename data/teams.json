@@ -1,182 +1,197 @@
 [
   {
-    "name": "Mann Inc",
-    "createdAt": "2018-02-06T20:08:59.282Z",
+    "name": "Oberbrunner - Smitham",
+    "created": "2018-02-19T17:35:58.436Z",
     "owner": "5ac2570dabea552aba2c22a2",
-    "thumbnail": "http://lorempixel.com/640/480/city",
-    "description": "Eum eveniet ducimus. Et veniam omnis veritatis harum sit ipsum. Itaque natus eum minima omnis eos. Culpa repellat dolorem omnis et illo ipsa voluptatem et. Nobis id ut harum labore ad provident et voluptatem.\n \rFacere dignissimos quam qui sed consequuntur. Atque qui facere distinctio harum at autem eum est. Architecto eos cumque veniam dolorum nostrum.\n \rQui blanditiis commodi officiis quia deserunt blanditiis in doloremque. Omnis et ad et. Corrupti sunt non est quia. Et sed accusamus totam ex illo.",
-    "wins": 93,
-    "losses": 66049,
+    "photo": "http://lorempixel.com/640/480/city",
+    "description": "Voluptatem facere est. Modi consequatur eum eligendi. Ipsum atque repellendus explicabo porro et et omnis accusamus eius.\n \rAspernatur reiciendis praesentium veritatis. Sit nihil minima quod nihil et vero. Quos qui amet aperiam sit nihil ducimus quia numquam. Eum cumque at dolorem aut blanditiis qui.\n \rEum accusantium qui nesciunt et aut dolorum. Cumque sapiente doloremque et iusto quidem. Sint consequuntur et fugiat suscipit quam. Nemo possimus voluptas reprehenderit maxime id inventore. Consequatur sed nulla. Voluptatem similique et ut.",
+    "wins": 60909,
+    "losses": 25220,
     "members": [
       "5ac2570dabea552aba2c22a2"
-    ]
+    ],
+    "slug": "oberbrunner---smitham"
   },
   {
-    "name": "Nicolas LLC",
-    "createdAt": "2017-07-26T11:47:04.670Z",
+    "name": "Becker - Dickens",
+    "created": "2017-04-13T03:38:12.256Z",
     "owner": "5ac2570dabea552aba2c22a2",
-    "thumbnail": "http://lorempixel.com/640/480/city",
-    "description": "Enim optio officiis. Aut est veritatis. Sint debitis deserunt. Consectetur saepe similique voluptatem.\n \rDolor necessitatibus recusandae dolore est aliquid error. Libero iusto tempora doloribus atque ut a mollitia. Nihil delectus vel consequatur aliquid. Vel a beatae temporibus unde in animi facere. Nisi inventore assumenda voluptas.\n \rDignissimos sit voluptatibus facere laboriosam ut et. Sint quis error omnis. Libero sint minus fuga. Non quis quia est quia distinctio. Et amet error et et. Iusto qui totam eos et corporis consectetur dolorem.",
-    "wins": 54131,
-    "losses": 59345,
+    "photo": "http://lorempixel.com/640/480/city",
+    "description": "Totam dolor ut sequi dolorem et qui minima qui. Exercitationem soluta explicabo similique eveniet ratione quasi dolor est dolorem. Ut excepturi dolore eum.\n \rLaudantium atque consequatur perferendis illo cupiditate iste. Dolor minus sed eos dolor sit aut. Dicta ut suscipit fuga quis ut dolores facere.\n \rEst ab magnam inventore culpa ex pariatur impedit ut. Cupiditate et illum officia et fuga dicta quia. Dicta repudiandae eligendi tempore rem eius.",
+    "wins": 86233,
+    "losses": 34445,
     "members": [
       "5ac2570dabea552aba2c22a2"
-    ]
+    ],
+    "slug": "becker---dickens"
   },
   {
-    "name": "O'Hara - Marks",
-    "createdAt": "2017-07-14T08:57:40.153Z",
+    "name": "Wiegand LLC",
+    "created": "2017-07-02T20:16:02.298Z",
     "owner": "5ac2570dabea552aba2c22a2",
-    "thumbnail": "http://lorempixel.com/640/480/city",
-    "description": "Labore necessitatibus quae quidem nisi sint aut laborum facere. Eos animi sit doloremque ex maiores quaerat aut beatae. Eaque quidem voluptatibus recusandae consequatur amet in quam. Impedit officia ducimus tenetur maxime minus. Est quae sed numquam consequatur atque illum dolores et.\n \rEa sit nesciunt et aperiam. Natus voluptas aut magnam rerum quas animi. Odit voluptatem quia et eos saepe. Culpa vel nostrum. Et quae ut minima non in a ducimus ipsum qui. Quisquam delectus aspernatur pariatur eius quibusdam inventore.\n \rConsectetur id ipsam ab qui et omnis nemo repellat. Aliquam blanditiis qui esse sed eligendi quia suscipit sunt. Et unde porro minima doloremque ratione. Tenetur similique sint nihil laudantium qui officiis esse. Autem optio cumque error voluptatem. Quis error tempora dolores.",
-    "wins": 22021,
-    "losses": 29005,
+    "photo": "http://lorempixel.com/640/480/city",
+    "description": "Qui nulla sunt sed repudiandae id. Explicabo quis nisi voluptates aut mollitia doloribus. Numquam et et maiores perspiciatis consequatur consequatur exercitationem. Accusantium est dolor labore laudantium dolor sunt voluptas porro ex. Non ex commodi ut omnis voluptatibus. Quae quo rem at ducimus.\n \rUt ea illo suscipit mollitia. Earum repellat unde aut. Architecto non nihil inventore iste. Doloribus quaerat voluptatem voluptas et in.\n \rIpsam similique est. Sit placeat deserunt voluptatum. Debitis pariatur mollitia aliquid. Consequatur nihil cupiditate rerum.",
+    "wins": 22993,
+    "losses": 97209,
     "members": [
       "5ac2570dabea552aba2c22a2"
-    ]
+    ],
+    "slug": "wiegand-llc"
   },
   {
-    "name": "Greenfelder - Rutherford",
-    "createdAt": "2017-07-21T04:50:56.901Z",
+    "name": "Larkin, Sawayn and Rosenbaum",
+    "created": "2017-12-23T10:21:01.892Z",
     "owner": "5ac2570dabea552aba2c22a2",
-    "thumbnail": "http://lorempixel.com/640/480/city",
-    "description": "Qui autem ad deleniti autem quia quis amet facilis. Corporis in dolore ipsum. Placeat suscipit non. Incidunt vel quas voluptates provident. Et atque quos perspiciatis.\n \rLaudantium est corporis et sed tempora accusantium consequatur rem labore. Eos vero minima officia qui voluptatem. Explicabo facilis ut aperiam consequatur cupiditate. Odit excepturi aut odio animi nobis quibusdam qui necessitatibus. Iste quidem labore tenetur non minus voluptatem sed magnam.\n \rEx et ut incidunt et odit ut animi blanditiis delectus. Ut quia dolorem vero ea et fuga quos. In est voluptatem non officia occaecati eveniet unde. Laboriosam quos et similique omnis reiciendis et adipisci. Fuga fugiat doloremque repellendus. Quae nisi officia vitae dolores exercitationem tenetur voluptas omnis quod.",
-    "wins": 39236,
-    "losses": 42688,
+    "photo": "http://lorempixel.com/640/480/city",
+    "description": "Voluptatem repellat rerum. Excepturi dolores ut placeat alias. Accusantium tempore quisquam ipsum aut quidem. Nemo reiciendis accusantium ad labore quo temporibus dolorem accusamus totam. In vero ullam ut. Deleniti rerum delectus placeat quos sequi.\n \rEveniet est accusantium ipsam quos unde aut. Minima molestiae at et velit quia vel rerum aliquam velit. Saepe inventore sit occaecati dolorum aut qui voluptatem et aut. Nostrum eum consequatur. Perferendis est sit corporis et aut velit quae aliquam velit. Non id consequatur nesciunt porro laborum voluptatem nemo.\n \rPlaceat voluptatibus inventore saepe. Sit qui voluptates adipisci laboriosam excepturi eum qui error rerum. Facere commodi sunt optio voluptatem laborum quisquam aut. Eos distinctio eum delectus illum repellendus dolore numquam. Libero enim dolore numquam dicta voluptatum eos sunt. Aliquam rerum ut inventore dicta.",
+    "wins": 69195,
+    "losses": 16651,
     "members": [
       "5ac2570dabea552aba2c22a2"
-    ]
+    ],
+    "slug": "larkin-sawayn-and-rosenbaum"
   },
   {
-    "name": "Macejkovic - Abbott",
-    "createdAt": "2017-06-13T21:55:45.447Z",
+    "name": "Thiel, Boyer and Gulgowski",
+    "created": "2017-10-10T01:26:31.854Z",
     "owner": "5ac2570dabea552aba2c22a2",
-    "thumbnail": "http://lorempixel.com/640/480/city",
-    "description": "Voluptatem necessitatibus atque error alias repudiandae. Quo id magnam qui quia et quos facere. Iusto consequatur aliquid explicabo. Reprehenderit in eveniet sit debitis quae. Expedita esse hic illum sunt vero provident. Quas in explicabo iusto ab provident officia.\n \rVero amet fugit. Voluptatem natus sed quae. Voluptatum voluptatem dolorem eum iusto occaecati voluptatem nam. Veniam officia nisi dignissimos incidunt non porro nam occaecati illo.\n \rSed qui quia temporibus. Iste accusantium doloribus sed placeat. Sit consequuntur eligendi adipisci. Qui iste velit eos nam error voluptas aut voluptatum officia. Magni voluptatum aut dolores aut qui quia id in aut. Incidunt nam cumque aut animi cupiditate.",
-    "wins": 8084,
-    "losses": 7784,
+    "photo": "http://lorempixel.com/640/480/city",
+    "description": "Culpa enim iure sit magnam distinctio at enim. Blanditiis temporibus fuga rerum rerum aut sint temporibus exercitationem. Facere minima voluptatem totam saepe. Expedita sed omnis et est et pariatur ut sapiente. Distinctio nemo est. Eius ex perspiciatis.\n \rQuas reiciendis perspiciatis dolores. Illum facilis aliquam reiciendis illum et occaecati voluptatem nemo. Qui dolor quod quo accusantium. Itaque reprehenderit sed ipsum sapiente laboriosam. Non perspiciatis odit ipsum doloremque. Quo enim voluptatem dolores et similique hic.\n \rEt et ut modi neque soluta occaecati. Ipsam aut optio optio et. Iste officia tempore. Iusto eius minima consectetur necessitatibus aut neque vitae. Illo distinctio voluptatum consequuntur mollitia labore animi placeat cum.",
+    "wins": 11053,
+    "losses": 69354,
     "members": [
       "5ac2570dabea552aba2c22a2"
-    ]
+    ],
+    "slug": "thiel-boyer-and-gulgowski"
   },
   {
-    "name": "Lebsack, Crona and Abernathy",
-    "createdAt": "2018-01-03T22:28:14.724Z",
+    "name": "Roob and Sons",
+    "created": "2017-07-27T19:12:23.297Z",
     "owner": "5ac2570dabea552aba2c22a2",
-    "thumbnail": "http://lorempixel.com/640/480/city",
-    "description": "Est consectetur molestiae nulla voluptatibus saepe. Voluptatem nostrum quasi debitis. Incidunt voluptate sed sapiente aperiam corrupti et.\n \rSint enim voluptatum quidem dolorem. Quibusdam itaque ratione aut dolor id. Sequi voluptatem hic sit occaecati. Consequatur quos et dolores doloremque.\n \rAmet ut voluptatem magni sunt velit facere quo. Quasi nisi rem a eius libero earum. Dolorum est velit totam maxime fuga excepturi. Eum accusamus optio.",
-    "wins": 33283,
-    "losses": 85497,
+    "photo": "http://lorempixel.com/640/480/city",
+    "description": "Quam ut magnam et. Sequi et in consectetur neque libero. Vel veritatis at ad recusandae voluptatem.\n \rVoluptatem molestiae illum omnis inventore accusamus odio neque et. Ab ea est quo sit voluptates in et repellat. Rem alias explicabo modi voluptas et omnis ut nam provident. Dolorum dicta quae labore velit dolor.\n \rImpedit consequatur explicabo eos nemo quam itaque at. Fugit vel rerum est dicta. Ea rerum eveniet minima dolor.",
+    "wins": 45395,
+    "losses": 51135,
     "members": [
       "5ac2570dabea552aba2c22a2"
-    ]
+    ],
+    "slug": "roob-and-sons"
   },
   {
-    "name": "Rogahn - Weber",
-    "createdAt": "2017-07-27T01:59:01.488Z",
+    "name": "Collier, Schuppe and Raynor",
+    "created": "2018-02-05T22:25:34.165Z",
     "owner": "5ac2570dabea552aba2c22a2",
-    "thumbnail": "http://lorempixel.com/640/480/city",
-    "description": "Assumenda reiciendis voluptatibus dolorem sed. Aut voluptatem dolorem non amet expedita fugit hic odit doloribus. Veritatis et saepe quo quo. Maxime placeat sed nam eveniet corrupti illum sapiente. Et excepturi nisi cupiditate.\n \rQuam qui sint non nostrum doloremque totam exercitationem. Sequi est corrupti iusto maiores voluptatem. Error molestiae odio aliquid. Sit dolorem nisi minima quia voluptas pariatur. Iure quisquam facere quia illum tempora accusamus ducimus. Est magnam temporibus minus aspernatur aperiam consequatur.\n \rAut voluptatum maxime. Vel ipsum ut quidem eum fugiat nulla. Est suscipit nostrum enim minus aliquid. Et dolorem voluptas iure et possimus est sit qui sunt.",
-    "wins": 61123,
-    "losses": 16329,
+    "photo": "http://lorempixel.com/640/480/city",
+    "description": "Eos et voluptas culpa odit quia illo similique. Et ratione itaque porro optio et. Exercitationem numquam dolor sunt iusto sunt aperiam. Commodi enim vitae deleniti earum ad assumenda assumenda recusandae.\n \rMinus impedit sit porro eaque voluptas in. Laboriosam quis sapiente debitis voluptatem qui nostrum assumenda eaque quo. Necessitatibus occaecati sed ad ad.\n \rVoluptates et et quia facere repellendus dolore mollitia distinctio. Deleniti sequi magnam cumque porro. Est nemo iure velit in perspiciatis deleniti.",
+    "wins": 46614,
+    "losses": 63527,
     "members": [
       "5ac2570dabea552aba2c22a2"
-    ]
+    ],
+    "slug": "collier-schuppe-and-raynor"
   },
   {
-    "name": "Wilderman LLC",
-    "createdAt": "2017-09-18T22:40:02.197Z",
+    "name": "Doyle, Beer and Hodkiewicz",
+    "created": "2017-12-11T20:35:02.754Z",
     "owner": "5ac2570dabea552aba2c22a2",
-    "thumbnail": "http://lorempixel.com/640/480/city",
-    "description": "Laborum culpa ex nemo officiis enim iusto repudiandae ut. Sapiente odio quas quaerat illum ex eos qui quos. Error architecto qui voluptate qui. Ipsa qui corporis. Necessitatibus accusamus qui cumque praesentium dolores id voluptas. Rem facilis perspiciatis et dolor eligendi et sed.\n \rTotam architecto eos. Ut vitae aliquid ut. Qui quam omnis. Omnis dicta reiciendis non magni omnis modi consectetur.\n \rFacere voluptas non cumque. Sed distinctio eaque placeat qui. Qui consequatur et ipsam quis perspiciatis.",
-    "wins": 2421,
-    "losses": 71009,
+    "photo": "http://lorempixel.com/640/480/city",
+    "description": "Nemo nihil et dicta aliquam et pariatur eligendi voluptas dolor. Sunt molestiae necessitatibus impedit. Et non sed ullam exercitationem earum ducimus dolor nisi.\n \rPossimus totam sunt in. Harum qui accusamus consectetur. Neque laudantium eius aut omnis ratione officia repellat. Dolores quia ullam odit perspiciatis in cupiditate ipsum.\n \rQuae fugit facilis aut ut nostrum sint aut eius. Cupiditate et neque. Sunt rem architecto cumque dolorem. Praesentium repellendus nihil voluptatum enim. Vero explicabo earum ipsa et.",
+    "wins": 31171,
+    "losses": 38032,
     "members": [
       "5ac2570dabea552aba2c22a2"
-    ]
+    ],
+    "slug": "doyle-beer-and-hodkiewicz"
   },
   {
-    "name": "McLaughlin, Feest and Boyer",
-    "createdAt": "2017-04-30T20:55:00.915Z",
+    "name": "Ferry - Yost",
+    "created": "2017-09-09T18:09:33.652Z",
     "owner": "5ac2570dabea552aba2c22a2",
-    "thumbnail": "http://lorempixel.com/640/480/city",
-    "description": "Aspernatur ipsa est praesentium maxime dignissimos fuga iusto. Debitis doloribus ut et. Dolor eius voluptate beatae vel aut. Temporibus id aut ex nihil autem qui.\n \rExcepturi ipsa sunt sint et sunt dolor fuga sint. Nihil saepe molestias molestias aut nesciunt id. Qui qui ipsam veritatis suscipit repellendus. Vel tenetur amet. Sint harum et.\n \rVoluptatem omnis ad fuga eius at ad eum dolorem. Omnis tempora dolore dolores est corrupti cumque fugit architecto. Non incidunt quibusdam hic. Qui itaque sed nihil.",
-    "wins": 9882,
-    "losses": 47079,
+    "photo": "http://lorempixel.com/640/480/city",
+    "description": "Suscipit cumque quia facilis occaecati sit a veritatis impedit libero. Ea libero et ipsum vero voluptate eveniet qui et. Voluptatem animi natus ab quia. Praesentium et accusamus temporibus eveniet. Commodi et corrupti et nisi veritatis maiores earum ex.\n \rFugiat aut ut. Perferendis et reiciendis sint placeat aut sapiente voluptatum ratione. Qui quam sed blanditiis. Qui vero a quis earum pariatur qui deleniti ipsa. Rerum et nihil libero non unde in. Consequuntur tenetur molestiae optio dolorum explicabo deleniti vero.\n \rRerum et voluptatum a dignissimos et a. Et rerum id omnis voluptatem omnis ut. Asperiores quia repudiandae ex adipisci atque.",
+    "wins": 62561,
+    "losses": 45028,
     "members": [
       "5ac2570dabea552aba2c22a2"
-    ]
+    ],
+    "slug": "ferry---yost"
   },
   {
-    "name": "Gerlach LLC",
-    "createdAt": "2018-01-31T00:42:21.491Z",
+    "name": "O'Keefe, Satterfield and Heller",
+    "created": "2017-11-08T12:40:07.901Z",
     "owner": "5ac2570dabea552aba2c22a2",
-    "thumbnail": "http://lorempixel.com/640/480/city",
-    "description": "Sunt consequatur accusantium ex quis est esse. Et nulla vero velit pariatur labore dolores ducimus. Ullam totam voluptatum nobis. Recusandae odit enim. Illum molestiae quibusdam.\n \rRerum placeat aliquid aperiam nam nesciunt vel aut. Fuga beatae cumque qui aliquam iusto sit. Porro ut molestiae. Earum excepturi voluptatem autem. Ducimus similique labore omnis quibusdam consectetur quasi minima necessitatibus. Vero ipsa ut assumenda commodi commodi.\n \rQuo eius aperiam dolor vel. Et dolor modi rem qui quasi dolorum odit. Sunt aut voluptatum aut.",
-    "wins": 62175,
-    "losses": 22252,
+    "photo": "http://lorempixel.com/640/480/city",
+    "description": "Error quo molestiae et. Neque neque sequi suscipit aut omnis. Harum debitis unde. Atque qui beatae et. Eos porro voluptatum optio et vel aliquam eum rerum fuga. Assumenda impedit repellendus omnis in enim omnis eos est et.\n \rMolestiae in sunt iste fuga laudantium quia similique beatae dignissimos. Cum maiores tempora quisquam earum placeat eveniet alias eaque rem. Consequuntur aut sapiente.\n \rEos sunt qui consectetur. Reiciendis sint unde aperiam maxime illo sit qui aut numquam. Ratione ipsa sunt.",
+    "wins": 14573,
+    "losses": 18489,
     "members": [
       "5ac2570dabea552aba2c22a2"
-    ]
+    ],
+    "slug": "okeefe-satterfield-and-heller"
   },
   {
-    "name": "Blanda, O'Hara and Gerhold",
-    "createdAt": "2017-06-04T21:40:36.050Z",
+    "name": "Romaguera, Blick and Tromp",
+    "created": "2017-05-06T17:53:52.262Z",
     "owner": "5ac2570dabea552aba2c22a2",
-    "thumbnail": "http://lorempixel.com/640/480/city",
-    "description": "Minus sed voluptatibus labore corporis consequatur aut eveniet. Consequatur voluptatibus alias. Qui fugit enim rerum eos commodi ullam qui. Sint labore iure aperiam ut. Et et et quis dolorum quibusdam porro sit quisquam qui. Quis in dolorem.\n \rPerspiciatis est cum voluptatum fugiat vel praesentium ullam est aspernatur. Aut harum et et modi iure sapiente sequi quod. Dolorum ullam cupiditate eveniet quo eos tenetur quaerat.\n \rVoluptatem eum esse voluptas quos natus sit. Facere quibusdam fugiat quia maiores. Repudiandae aperiam possimus dolores sapiente in.",
-    "wins": 37646,
-    "losses": 84268,
+    "photo": "http://lorempixel.com/640/480/city",
+    "description": "Omnis omnis labore sunt ullam suscipit. Non maiores debitis et voluptas doloremque voluptate. Sunt quasi similique ad ut exercitationem eaque sequi.\n \rNihil unde consequatur omnis nemo error. Eos et inventore qui eligendi aliquam ducimus qui. Est molestiae quis veritatis unde qui. Possimus repudiandae necessitatibus. Ad ea eius esse totam iusto sit natus. Error est consequuntur consequatur.\n \rUt qui voluptatibus molestias minima quas veritatis porro dignissimos. Excepturi sed temporibus similique adipisci commodi. Dolores nulla asperiores accusamus omnis quia rem. Quae illo maxime corporis. Totam et qui labore est a rem eos non.",
+    "wins": 56162,
+    "losses": 50012,
     "members": [
       "5ac2570dabea552aba2c22a2"
-    ]
+    ],
+    "slug": "romaguera-blick-and-tromp"
   },
   {
-    "name": "Kihn, Medhurst and Bednar",
-    "createdAt": "2017-04-11T19:25:13.639Z",
+    "name": "Haley - Schowalter",
+    "created": "2017-05-11T04:27:53.278Z",
     "owner": "5ac2570dabea552aba2c22a2",
-    "thumbnail": "http://lorempixel.com/640/480/city",
-    "description": "Aliquid repudiandae rem aut porro corporis est perspiciatis. Voluptatem aperiam aliquid. Natus qui est asperiores a animi saepe. Incidunt reiciendis sed at enim aut necessitatibus quasi qui voluptates. Nihil perspiciatis vel corporis ex modi sed aut et. Id aspernatur harum optio.\n \rSequi neque repudiandae. Optio sint excepturi iste illum voluptatibus. Laudantium veritatis impedit eum aperiam id qui dolor earum.\n \rSit alias enim voluptas ea. Beatae qui eligendi ipsum minus maiores ducimus deleniti assumenda consequuntur. Nulla deserunt necessitatibus et mollitia sequi. Quia ea molestiae culpa totam molestiae numquam. Et doloribus dicta quia voluptatem eos nemo ducimus dolorum. In voluptate nihil reprehenderit quia ipsa quis ipsa atque.",
-    "wins": 91808,
-    "losses": 39435,
+    "photo": "http://lorempixel.com/640/480/city",
+    "description": "Qui dolorem eos cupiditate. Rerum vel fugit quaerat qui corporis voluptatum fugit. Distinctio illo ea vel possimus nulla. Molestiae nostrum qui molestias autem omnis optio vel officia. Eius rerum est molestiae. Labore modi officiis maiores enim porro maxime nihil deserunt.\n \rImpedit blanditiis quo veritatis aut perferendis explicabo. Quo suscipit consequatur ut consectetur. Veritatis et omnis quis molestiae eos non odit. Doloremque eos nihil laborum commodi autem tenetur non consequuntur quia. Rerum id quod praesentium minus quam doloremque aliquam doloribus excepturi.\n \rAnimi accusamus suscipit iusto. Et corrupti qui illo alias consequuntur. Architecto omnis unde dolore consectetur voluptas. Nostrum consectetur similique nobis quam et.",
+    "wins": 50382,
+    "losses": 4663,
     "members": [
       "5ac2570dabea552aba2c22a2"
-    ]
+    ],
+    "slug": "haley---schowalter"
   },
   {
-    "name": "Funk, Blick and Monahan",
-    "createdAt": "2018-02-27T02:08:43.753Z",
+    "name": "Torp, Cassin and Schaden",
+    "created": "2017-12-30T08:19:22.505Z",
     "owner": "5ac2570dabea552aba2c22a2",
-    "thumbnail": "http://lorempixel.com/640/480/city",
-    "description": "Minima ad ut minus numquam dicta. Reiciendis numquam eum non eius. Rem sit velit quia sint sed sit adipisci neque consequatur. Iste et iusto asperiores. Et recusandae quisquam vel autem ratione nemo.\n \rQuas aspernatur eum ut illum voluptas quam et molestiae. Quis atque dolorum consequatur qui quod iusto quaerat enim. Voluptatibus pariatur id. Doloremque corporis debitis est quisquam aut. Iure voluptates dolore in unde ut repellat. Quaerat incidunt quae distinctio et.\n \rNam error accusamus numquam expedita ut. Officia officiis perspiciatis voluptatum minus fugit. Ut quae quia tempora error autem laborum non odio.",
-    "wins": 10559,
-    "losses": 71192,
+    "photo": "http://lorempixel.com/640/480/city",
+    "description": "Vel quis sunt occaecati qui beatae harum pariatur pariatur sunt. Incidunt perspiciatis aut ad ut totam consectetur maiores. Reiciendis magni quia modi saepe modi magni deserunt assumenda.\n \rQuia non quisquam sapiente voluptatem voluptatibus libero explicabo est beatae. Ut veritatis veniam et sunt. Quia alias dignissimos debitis hic facilis sit suscipit aut tenetur. Qui non tempora id repellendus est aut est. Sed ut praesentium cum soluta.\n \rNeque qui corrupti quam et. Harum facilis aut quia asperiores aspernatur sed voluptatibus. Consequatur aut sint eum.",
+    "wins": 99583,
+    "losses": 61104,
     "members": [
       "5ac2570dabea552aba2c22a2"
-    ]
+    ],
+    "slug": "torp-cassin-and-schaden"
   },
   {
-    "name": "Skiles Inc",
-    "createdAt": "2017-08-18T08:02:39.924Z",
+    "name": "Wilderman, Towne and Waters",
+    "created": "2017-05-28T05:21:05.091Z",
     "owner": "5ac2570dabea552aba2c22a2",
-    "thumbnail": "http://lorempixel.com/640/480/city",
-    "description": "Ea nulla maiores provident perspiciatis sunt sint fugiat. Maiores ipsam eos itaque incidunt ut deserunt. Deserunt qui dolores aut perspiciatis sunt ipsa soluta repellat. Est voluptatem vel eos nam sed odio nihil ut odio.\n \rDelectus in tempore ad consectetur. Qui aliquam et animi dolorem commodi voluptates et quidem. Velit nulla rerum ut quis numquam recusandae tempore. Praesentium maiores earum aut qui aperiam.\n \rEaque eum sequi cum. Quia soluta deleniti aut repudiandae. Omnis et quis in incidunt incidunt tempore rerum in.",
-    "wins": 39755,
-    "losses": 60619,
+    "photo": "http://lorempixel.com/640/480/city",
+    "description": "Nihil voluptatum libero at natus. Temporibus neque ut eos commodi voluptatum modi in et. Optio molestias officiis ut quibusdam nam. Ullam et id officiis. Culpa provident culpa et velit cupiditate.\n \rSaepe molestias aliquid. Et laborum officiis modi quia. Est non corporis rerum ut accusantium quia voluptatum. Illum deleniti ut id.\n \rAnimi harum animi consequatur expedita non unde illo. Distinctio consectetur saepe eum doloribus recusandae nesciunt architecto accusantium et. Dolore accusamus mollitia ipsam placeat. Quod aspernatur voluptas assumenda illo est dignissimos enim aperiam.",
+    "wins": 6230,
+    "losses": 27626,
     "members": [
       "5ac2570dabea552aba2c22a2"
-    ]
+    ],
+    "slug": "wilderman-towne-and-waters"
   },
   {
-    "name": "Dare - Bayer",
-    "createdAt": "2017-06-12T12:35:11.284Z",
+    "name": "Hane, Jacobi and Hudson",
+    "created": "2017-10-11T03:40:19.193Z",
     "owner": "5ac2570dabea552aba2c22a2",
-    "thumbnail": "http://lorempixel.com/640/480/city",
-    "description": "Fugiat ut quaerat eligendi voluptatem quod ducimus maxime nam magnam. Ex exercitationem qui consequatur consequuntur aut consequatur fugiat. Corporis eveniet est et sunt eos et sapiente commodi suscipit. Accusantium ut aut facilis earum ut necessitatibus pariatur delectus odit.\n \rOmnis illum molestias excepturi tempora. Optio aut odio. Omnis id aut facere impedit. Rerum fugiat occaecati aliquam provident eos autem sint sit nam. Modi temporibus est eaque quod et id blanditiis rerum quis.\n \rEst tempora possimus nobis animi aut explicabo. Qui sapiente repellat est voluptatem eos eaque doloribus sit. Voluptas aut voluptatem molestiae dolor quis. Velit et ut. Pariatur totam corporis atque sed sunt ut.",
-    "wins": 53987,
-    "losses": 78229,
+    "photo": "http://lorempixel.com/640/480/city",
+    "description": "Nobis nemo incidunt ipsum tempore reiciendis labore voluptas sed. Rem quia culpa magnam voluptas eius doloribus voluptas. Autem et voluptas voluptatem incidunt atque expedita omnis aut vel.\n \rNon velit ullam officiis qui voluptas perspiciatis sit. Error consequuntur nam odit et totam ea tenetur expedita quos. Dolorem itaque ut. Qui et ratione dolores voluptas quas vel qui perspiciatis aut.\n \rVitae cupiditate error optio. Nobis molestiae rem eos asperiores quia repellat officia in architecto. Ipsa ducimus est optio fugit ipsum. Et sequi rem unde voluptatem quae voluptatem tenetur velit soluta.",
+    "wins": 11928,
+    "losses": 42453,
     "members": [
       "5ac2570dabea552aba2c22a2"
-    ]
+    ],
+    "slug": "hane-jacobi-and-hudson"
   }
 ]

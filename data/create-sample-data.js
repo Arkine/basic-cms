@@ -9,13 +9,14 @@ mongoose.connect(process.env.DATABASE);
 mongoose.Promise = global.Promise;
 
 // import all of our models - they need to be imported only once
+
 const User = require('../src/server/models/User');
 const Team = require('../src/server/models/Team');
 const Event = require('../src/server/models/Event');
 
 const Seedr = require('mongoose-seedr');
 
-function seed() {
+async function seed() {
 	console.log('seeding...');
 
 	const users = path.join(__dirname, 'users.json');
@@ -39,6 +40,7 @@ function seed() {
 			}
 		]
 	});
+
 
 }
 
@@ -94,6 +96,8 @@ function createData() {
 		team.wins = faker.random.number();
 		team.losses = faker.random.number();
 		team.members = ["5ac2570dabea552aba2c22a2"];
+
+		team.slug = slug(team.name);
 
 		teamsArr.push(team);
 

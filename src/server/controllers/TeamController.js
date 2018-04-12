@@ -34,7 +34,7 @@ exports.getTeams = async (req, res) => {
 		res.redirect(`/teams/pages/${pages}`);
 	}
 
-	// console.log(teams);
+	console.log(teams);
 
 	res.render(`${viewsRoot}/teams`, {
 		title: 'Teams',
