@@ -45,7 +45,7 @@ const userSchema = new Schema({
 });
 
 userSchema.plugin(passportLocalMongoose, {
-	usernameField: 'username',
+	usernameField: 'email',
 	lastLoginField: 'last'
 });
 userSchema.plugin(mongodbErrorHandler);

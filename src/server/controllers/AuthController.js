@@ -118,12 +118,14 @@ exports.update = async (req, res) => {
 		}
 	});
 
+	console.log('old', req.body.password);
+
 	if (!user) {
 		req.flash('error', 'Password reset is invalid or has expired.');
 
 		return res.redirect('/login');
 	}
-
+	// const setPassword = promisify(user.setPassword).bind(user);
 	const setPassword = promisify(user.setPassword).bind(user);
 
 	await setPassword(req.body.password);
@@ -132,6 +134,8 @@ exports.update = async (req, res) => {
 	user.resetPasswordExpires = undefined;
 
 	const updatedUser = await user.save();
+
+	console.log('new:', updatedUser.hash);
 
 	await req.login(updatedUser);
 
