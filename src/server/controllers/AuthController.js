@@ -118,8 +118,6 @@ exports.update = async (req, res) => {
 		}
 	});
 
-	console.log('old', req.body.password);
-
 	if (!user) {
 		req.flash('error', 'Password reset is invalid or has expired.');
 

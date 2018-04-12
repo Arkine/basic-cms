@@ -96,18 +96,24 @@ exports.createTeam = async (req, res, next) => {
 
 exports.updateTeam = async (req, res, next) => {
 	const team = await Team.findOne({ slug: req.params.slug });
+	const newName = req.body.name;
 
 	if (!team) {
 		throw new Error('No team by that name found.');
 	}
 
 	if (req.user._id.toString() === team.owner.toString()) {
-		const updatedTeam = await team.update(req.body, {
-			new: true,
-			runValidators: true
-		});
+		const newSlug = await Team.getUniqueSlug(team.name, newName);
+		req.body.slug = newSlug;
 
-		// res.json(updatedTeam);
+		const updatedTeam = await Team.findOneAndUpdate(
+			{ _id: team._id },
+			req.body,
+			{
+				new: true, // Returns the new store instead of old one (findOneAndUpdate returns old store by default, force it to new)
+				runValidators: true
+			}
+		).exec();
 
 		req.flash('success', 'Updated your team!');
 

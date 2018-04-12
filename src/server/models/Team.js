@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 mongoose.Promise = global.Promise;
-
+const slug = require('slugs');
 const validator = require('validator');
 
 const { checkUniqueSlug } = require('./helpers');
@@ -47,11 +47,31 @@ const teamSchema = new Schema({
 teamSchema.pre('save', checkUniqueSlug);
 teamSchema.pre('find', autoPopulate);
 teamSchema.pre('findOne', autoPopulate);
-teamSchema.pre('findOneAndUpdate', checkUniqueSlug);
+// teamSchema.pre('findOneAndUpdate', checkUniqueSlug);
 
 function autoPopulate(next) {
 	this.populate('members');
 	next();
+}
+
+teamSchema.statics.getUniqueSlug = async function(currentName, newName) {
+	if (currentName === newName) {
+		return newName;
+	}
+
+	let newSlug = slug(newName);
+
+	// Find other teams with same name to reduce slug collision
+	const slugRegEx = new RegExp(`^(${newSlug})((-[0-9]*$)?)$`, 'i');
+
+	const itemsWithSlug = await this.find({ slug: slugRegEx });
+
+	if (itemsWithSlug.length) {
+		newSlug = `${newSlug}-${itemsWithSlug.length + 1}`;
+	}
+
+	return newSlug;
+
 }
 
 
