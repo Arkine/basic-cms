@@ -94,6 +94,23 @@ exports.createTeam = async (req, res, next) => {
 	next();
 };
 
+exports.userCanUpdate = async (req, res, next) => {
+	const team = await Team.findOne({ slug: req.params.slug });
+
+	const teamOwnerId = team.owner.toString();
+	const userId = req.user._id.toString();
+
+	if (userId !== teamOwnerId) {
+		req.flash('error', 'You must be the team owner to do that!');
+
+		res.redirect('back');
+
+		return;
+	}
+
+	next();
+};
+
 exports.updateTeam = async (req, res, next) => {
 	const team = await Team.findOne({ slug: req.params.slug });
 	const newName = req.body.name;
@@ -102,23 +119,23 @@ exports.updateTeam = async (req, res, next) => {
 		throw new Error('No team by that name found.');
 	}
 
-	if (req.user._id.toString() === team.owner.toString()) {
-		const newSlug = await Team.getUniqueSlug(team.name, newName);
-		req.body.slug = newSlug;
+	// if (req.user._id.toString() === team.owner.toString()) {
+	const newSlug = await Team.getUniqueSlug(team.name, newName);
+	req.body.slug = newSlug;
 
-		const updatedTeam = await Team.findOneAndUpdate(
-			{ _id: team._id },
-			req.body,
-			{
-				new: true, // Returns the new store instead of old one (findOneAndUpdate returns old store by default, force it to new)
-				runValidators: true
-			}
-		).exec();
+	const updatedTeam = await Team.findOneAndUpdate(
+		{ _id: team._id },
+		req.body,
+		{
+			new: true, // Returns the new store instead of old one (findOneAndUpdate returns old store by default, force it to new)
+			runValidators: true
+		}
+	).exec();
 
-		req.flash('success', 'Updated your team!');
+	req.flash('success', 'Updated your team!');
 
-		res.redirect(`/teams/${updatedTeam.slug}`);
-	}
+	res.redirect(`/teams/${updatedTeam.slug}`);
+	// }
 
 };
 
@@ -142,6 +159,10 @@ exports.validateCreateTeam = (req, res, next) => {
 	}
 
 	next();
+};
+
+exports.deleteTeam = async (req, res, next) => {
+
 };
 
 exports.uploadPhoto = upload.single('photo');
