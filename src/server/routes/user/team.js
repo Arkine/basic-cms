@@ -40,6 +40,7 @@ router.post('/teams/create',
 router.get('/teams/:slug',
 	catchErrors(teamController.getTeamBySlug)
 );
+
 router.post('/teams/:slug',
 	authController.isLoggedIn,
 	catchErrors(teamController.userCanUpdate),

@@ -1,6 +1,8 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
+const { checkUniqueSlug } = require('./helpers');
+
 const eventSchema = new Schema({
 	title: String,
 	author: mongoose.Schema.ObjectId,
@@ -13,4 +15,6 @@ const eventSchema = new Schema({
 	slug: String
 });
 
-exports.module = mongoose.model('Event', eventSchema);
+eventSchema.pre('save', checkUniqueSlug);
+
+module.exports = mongoose.model('Event', eventSchema);

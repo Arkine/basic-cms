@@ -121,7 +121,6 @@ exports.updateTeam = async (req, res, next) => {
 		throw new Error('No team by that name found.');
 	}
 
-	// if (req.user._id.toString() === team.owner.toString()) {
 	const newSlug = await Team.getUniqueSlug(team.name, newName);
 	req.body.slug = newSlug;
 
@@ -137,8 +136,6 @@ exports.updateTeam = async (req, res, next) => {
 	req.flash('success', 'Updated your team!');
 
 	res.redirect(`/teams/${updatedTeam.slug}`);
-	// }
-
 };
 
 exports.validateCreateTeam = (req, res, next) => {

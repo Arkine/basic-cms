@@ -75,5 +75,5 @@ teamSchema.statics.getUniqueSlug = async function(currentName, newName) {
 
 }
 
-exports.module = mongoose.model('Team', teamSchema);
+module.exports = mongoose.model('Team', teamSchema);
 exports.consoleTypes = consoleTypes;
