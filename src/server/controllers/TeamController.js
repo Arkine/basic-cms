@@ -34,6 +34,8 @@ exports.getTeams = async (req, res) => {
 		res.redirect(`/teams/pages/${pages}`);
 	}
 
+	// console.log(teams);
+
 	res.render(`${viewsRoot}/teams`, {
 		title: 'Teams',
 		teams,
@@ -161,7 +163,18 @@ exports.validateCreateTeam = (req, res, next) => {
 	next();
 };
 
-exports.deleteTeam = async (req, res, next) => {
+exports.deleteTeam = async (req, res) => {
+	const team = await Team.findOne({ slug: req.params.slug });
+
+	if (!team) {
+		throw new Error('No team found by that name!');
+	}
+
+	team.remove();
+
+	req.flash('success', 'Team has been deleted.');
+
+	res.redirect('/teams');
 
 };
 

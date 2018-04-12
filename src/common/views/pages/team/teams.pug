@@ -13,4 +13,5 @@ block content
 				.team
 					.team__meta
 						.team__title
-							a.link-mask(href=`/teams/${team.slug}`) #{team.name}
+							if team.slug
+								a.link-mask(href=`/teams/${team.slug}`) #{team.name}

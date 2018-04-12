@@ -108,6 +108,19 @@ exports.updateAccount = async (req, res) => {
 	res.redirect('/account');
 };
 
+exports.deleteTeam = async (req, res, next) => {
+	const user = await User.findOneAndUpdate(
+		{ _id: req.user._id },
+		{ $set: { team: undefined } },
+		{
+			new: true,
+			context: 'query'
+		}
+	);
+
+	next();
+};
+
 exports.forgotPassword = (req, res) => {
 	res.render('pages/passwordReset', {
 		title: 'Reset Password'
