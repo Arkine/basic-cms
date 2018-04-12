@@ -91,7 +91,7 @@ exports.reset = async (req, res, next) => {
 	if (!user) {
 		req.flash('error', 'Password reset is invalid or has expired');
 
-		return res.redirect('pages/login');
+		return res.redirect('/login');
 	}
 
 	res.render('pages/reset', {
@@ -121,7 +121,7 @@ exports.update = async (req, res) => {
 	if (!user) {
 		req.flash('error', 'Password reset is invalid or has expired.');
 
-		return res.redirect('/pages/login');
+		return res.redirect('/login');
 	}
 
 	const setPassword = promisify(user.setPassword).bind(user);

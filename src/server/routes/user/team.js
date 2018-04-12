@@ -39,5 +39,10 @@ router.post('/teams/create',
 router.get('/teams/:slug',
 	catchErrors(teamController.getTeamBySlug)
 );
+// team
+router.post('/teams/:slug',
+	authController.isLoggedIn,
+	catchErrors(teamController.updateTeam)
+);
 
 module.exports = router;

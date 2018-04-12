@@ -45,14 +45,15 @@ const teamSchema = new Schema({
 });
 
 teamSchema.pre('save', checkUniqueSlug);
+teamSchema.pre('find', autoPopulate);
+teamSchema.pre('findOne', autoPopulate);
+teamSchema.pre('findOneAndUpdate', checkUniqueSlug);
 
 function autoPopulate(next) {
 	this.populate('members');
 	next();
 }
 
-teamSchema.pre('find', autoPopulate);
-teamSchema.pre('findOne', autoPopulate);
 
 exports.module = mongoose.model('Team', teamSchema);
 exports.consoleTypes = consoleTypes;

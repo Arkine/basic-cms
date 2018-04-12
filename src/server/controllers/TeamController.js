@@ -11,6 +11,8 @@ const upload = require('../handlers/multers3');
 
 const viewsRoot = 'pages/team';
 
+
+
 exports.getTeams = async (req, res) => {
 	const page = req.params.page || 1;
 	const limit = 20;
@@ -90,6 +92,28 @@ exports.createTeam = async (req, res, next) => {
 	req.team = team;
 
 	next();
+};
+
+exports.updateTeam = async (req, res, next) => {
+	const team = await Team.findOne({ slug: req.params.slug });
+
+	if (!team) {
+		throw new Error('No team by that name found.');
+	}
+
+	if (req.user._id.toString() === team.owner.toString()) {
+		const updatedTeam = await team.update(req.body, {
+			new: true,
+			runValidators: true
+		});
+
+		// res.json(updatedTeam);
+
+		req.flash('success', 'Updated your team!');
+
+		res.redirect(`/teams/${updatedTeam.slug}`);
+	}
+
 };
 
 exports.validateCreateTeam = (req, res, next) => {

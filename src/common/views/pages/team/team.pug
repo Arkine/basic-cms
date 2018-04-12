@@ -3,5 +3,12 @@ extends ../../layout
 block content
 	.inner
 		h1 #{title}
-		pre= team
+		//- pre= user
+		//- pre= team
 		img(src=team.photo)
+		if user
+			pre= isEqual
+			if user._id.toString() === team.owner.toString()
+				form.form(method="POST")
+					label(for="name") Name
+						input(type="text" name="name" value=team.name)
