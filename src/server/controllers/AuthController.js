@@ -47,7 +47,9 @@ exports.isLoggedIn = (req, res, next) => {
 	}
 
 	req.flash('error', 'You must be logged in to do that!');
-	res.redirect('/login');
+	res.status(401);
+
+	res.redirect('/loginz');
 };
 
 exports.forgotPassword = async (req, res, next) => {
