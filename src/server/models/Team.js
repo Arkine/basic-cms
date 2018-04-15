@@ -7,6 +7,7 @@ const validator = require('validator');
 const { checkUniqueSlug, hasLength } = require('./helpers');
 
 const consoleTypes = ['PC', 'XBOX', 'PS'];
+const playStyles = ['Casual', 'Competitive'];
 
 const teamSchema = new Schema({
 	name: {
@@ -38,6 +39,11 @@ const teamSchema = new Schema({
 	losses: {
 		type: Number,
 		default: 0
+	},
+	playStyle: {
+		type: String,
+		enum: playStyles,
+		default: 'Casual'
 	},
 	members: [{
 		type: mongoose.Schema.ObjectId,
