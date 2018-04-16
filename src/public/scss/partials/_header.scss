@@ -12,11 +12,13 @@ header {
 
 			&__wrapper {
 				display: flex;
-				flex-flow: row nowrap;
-				justify-content: space-between;
-
-				display: flex;
 				flex-flow: row wrap;
+				justify-content: space-between;
+			}
+
+
+			&__item {
+				padding: 1rem;
 			}
 		}
 	}

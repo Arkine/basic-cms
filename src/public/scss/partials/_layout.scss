@@ -1,14 +1,6 @@
-html {
-	font-size: 20px;
-}
-
-body {
-	background:#efefef;
-}
-
 .inner {
 	max-width: $row-width;
-	margin: 0 auto;
+	margin: 2rem auto;
 
 	@media all and (max-width: $row-width) {
 		padding: 2rem;

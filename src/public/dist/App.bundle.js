@@ -2916,7 +2916,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 		}).join('');
 	};
 
-	(0, _typeAhead2.default)((0, _bling.$)('.search.teams'), searchResultsHTML);
+	(0, _typeAhead2.default)((0, _bling.$)('.search--teams'), searchResultsHTML);
 }
 
 console.log('javascripts indexzzz...');

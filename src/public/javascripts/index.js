@@ -15,7 +15,7 @@ import typeAhead from './modules/typeAhead';
 			`;
 		}).join('');
 	}
-	typeAhead($('.search.teams'), searchResultsHTML);
+	typeAhead($('.search--teams'), searchResultsHTML);
 }
 
 
