@@ -2,11 +2,11 @@
 	background-color: $color-orange;
 
 	padding: 0 1rem;
-	margin: 0 -1rem;
 
 	&__wrapper {
 		display: flex;
 		justify-content: flex-end;
+		margin: 0 -1rem;
 
 		.nav__item {
 			a {
