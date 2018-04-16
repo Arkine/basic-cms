@@ -1,5 +1,5 @@
 mixin searchTeams()
-	.search
+	.search.teams
 		form.form(action="/api/v1/search/teams" method="POST")
 			label(for="search")
 				input(type="text" name="search" placeholder="search")

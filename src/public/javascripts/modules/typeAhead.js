@@ -1,21 +1,10 @@
 import axios from 'axios';
 import dompurify from 'dompurify';
 
-function searchResultsHTML(teams) {
-	return teams.map(team => {
-		return `
-			<a href="/teams/${team.slug}" class="search__result">
-				<strong>${team.name}</strong>
-			</a>
-		`;
-	}).join('');
-}
-
-function typeAhead(search) {
+function typeAhead(search, view) {
 	if (!search) {
 		return;
 	}
-
 
 	const endpoint = search.querySelector('form').action;
 
@@ -49,7 +38,7 @@ function typeAhead(search) {
 		axios.get(`${endpoint}?q=${this.value}`, { signal })
 			.then(res => {
 				if (res.data.length) {
-					searchResults.innerHTML = dompurify.sanitize(searchResultsHTML(res.data));
+					searchResults.innerHTML = dompurify.sanitize(view(res.data));
 					return;
 				}
 

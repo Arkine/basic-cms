@@ -2,6 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const autoprefixer = require('autoprefixer');
+const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 
 const javascript = {
 	test: /\.(js)$/,
@@ -29,7 +30,7 @@ const styles = {
 // });
 
 const config = {
-	mode: 'none',
+	mode: 'development',
 	entry: {
 		App: './src/public/javascripts/index.js'
 	},
@@ -42,7 +43,12 @@ const config = {
 		rules: [javascript, styles]
 	},
 	plugins: [
-		new ExtractTextPlugin('style.css')
+		new ExtractTextPlugin('style.css'),
+		new BrowserSyncPlugin({
+			proxy: 'http://localhost:7777',
+			host: 'http://localhost',
+			port: 3000,
+		})
 	]
 };
 
