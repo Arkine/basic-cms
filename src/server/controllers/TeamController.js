@@ -4,14 +4,13 @@ const promisify = util.promisify;
 require('util.promisify').shim();
 const validator = require('validator');
 
-const Team = mongoose.model('Team');
+const Team = mongoose.model('Team'); 
+const consoleTypes = Team.schema.path('console').enumValues;
+const playStyles = Team.schema.path('playStyle').enumValues;
 
-const { consoleTypes } = require('../models/Team');
 const upload = require('../handlers/multers3');
 
 const viewsRoot = 'pages/team';
-
-
 
 exports.getTeams = async (req, res) => {
 	const page = req.params.page || 1;
@@ -75,7 +74,8 @@ exports.createTeamForm = async (req, res) => {
 	res.render(`${viewsRoot}/create`, {
 		title: 'Create a Team',
 		body: req.body,
-		consoleTypes
+		consoleTypes,
+		playStyles
 	});
 };
 
@@ -176,3 +176,21 @@ exports.deleteTeam = async (req, res) => {
 };
 
 exports.uploadPhoto = upload.single('photo');
+
+exports.searchTeams = async (req, res) => {
+	const teams = await Team.find(
+		{
+			$text: {
+				$search: req.query.q
+			}
+		}, 
+		{
+			score: { $meta: 'textScore' }
+		})
+		.sort({
+			score: { $meta: 'textScore' }
+		})
+		.limit(5);
+
+	res.json(teams);
+};

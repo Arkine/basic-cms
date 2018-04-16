@@ -6,7 +6,6 @@ require('util.promisify').shim();
 const User = mongoose.model('User');
 const Team = mongoose.model('Team');
 
-const teamController = require('./TeamController');
 
 exports.loginForm = (req, res) => {
 	res.render('pages/login', {

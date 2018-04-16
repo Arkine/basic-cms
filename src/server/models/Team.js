@@ -55,6 +55,11 @@ teamSchema.pre('save', checkUniqueSlug);
 teamSchema.pre('find', autoPopulate);
 teamSchema.pre('findOne', autoPopulate);
 
+// Define our indexes
+teamSchema.index({
+	name: 'text'
+});
+
 function autoPopulate(next) {
 	this.populate('members');
 	next();
@@ -82,4 +87,3 @@ teamSchema.statics.getUniqueSlug = async function(currentName, newName) {
 }
 
 module.exports = mongoose.model('Team', teamSchema);
-exports.consoleTypes = consoleTypes;

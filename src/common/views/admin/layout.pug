@@ -2,27 +2,28 @@ doctype html
 html
 	head
 		title= `${title} | ${h.siteName}`
-		link(rel="stylesheet", href="/dist/style.css")
+		link(rel="stylesheet", href="/dist/style.css");
 		link(rel="shortcut icon", href="/images/icons/favicon.ico")
 		meta(name="viewport" content="width=device-width, initial-scale=1")
 	body
 		block header
-			header.mini-header
-				.mini-header__wrapper
-					if !user
-						span.nav__item
-							a(href="/login" alt="Login") Sign In
-					if user
-						span.nav__item
-							a(href="/account" alt="My account") My Account
-						span.nav__item
-							a(href="/logout" alt="Logout") Logout
-
 			header.top
 				nav.nav__wrapper
-					each item in h.menu
-						.nav__item
-							a(href=item.slug alt=item.title) #{item.title}
+				each item in h.menu
+					li.nav__item
+						a(href=item.slug alt=item.title) #{item.title}
+				if !user
+					li.nav__item
+						a(href="/login" alt="Login") Login
+					li.nav__item
+						a(href="/register" alt="Register") Register
+				if user
+					li.nav__item
+						a(href="/logout" alt="Logout") Logout
+					li.nav__item
+						a(href="/account" alt="My account") My Account
+
+
 		block messages
 			if locals.flashes
 				.inner

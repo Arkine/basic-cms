@@ -1,3 +1,19 @@
 header {
-	background-color: green;
+	background-color: $color-gray;
+
+	&.top {
+		display: flex;
+		justify-content: space-between;
+
+		nav {
+			flex-grow: 1;
+
+			border: 1px solid red;
+
+			&__wrapper {
+				display: flex;
+				flex-flow: row wrap;
+			}
+		}
+	}
 }

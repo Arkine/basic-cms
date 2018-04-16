@@ -9,6 +9,10 @@ mixin createTeamForm()
 			select(name="console" value=body.console)
 				each console in consoleTypes
 					option(value=console) #{console}
+		label(for="playStyle" name="playStyle") Play Style
+			select(name="playStyle" value=body.playStyle)
+				each style in playStyles
+					option(value=style) #{style}
 		label(for="description") Description
 			textarea(name="description", cols="30", rows="10") #{body.description}
 		input(type="submit" value="Submit")

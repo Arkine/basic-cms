@@ -1,0 +1,7 @@
+mixin searchTeams()
+	.search
+		form.form(action="/api/v1/search/teams" method="POST")
+			label(for="search")
+				input(type="text" name="search" placeholder="search")
+			input(type="submit" value="Search")
+		.search__results

@@ -1,5 +1,8 @@
 extends ../layout
 
+include ../mixins/team/_searchTeams
+
 block content
 	.inner
-		h1 Home
+		+searchTeams()
+		
