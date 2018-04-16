@@ -16,11 +16,14 @@ function typeAhead(search) {
 		return;
 	}
 
-	
+
 	const endpoint = search.querySelector('form').action;
 
 	const searchInput = search.querySelector('input[name="search"]');
 	const searchResults = search.querySelector('.search__results');
+
+	let controller;
+	let signal;
 
 	searchInput.on('input', function() {
 		if (!this.value) {
@@ -33,9 +36,18 @@ function typeAhead(search) {
 		searchResults.style.display = 'block';
 		searchResults.innerHTML = '';
 
-		axios.get(`${endpoint}?q=${this.value}`)
+		if (controller !== undefined) {
+			// Abort the previous promise
+			controller.abort();
+		}
+
+		if ("AbortController" in window) {
+			controller = new AbortController;
+			signal = controller.signal;
+		}
+
+		axios.get(`${endpoint}?q=${this.value}`, { signal })
 			.then(res => {
-					console.log(res);
 				if (res.data.length) {
 					searchResults.innerHTML = dompurify.sanitize(searchResultsHTML(res.data));
 					return;

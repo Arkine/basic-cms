@@ -78,9 +78,9 @@
 
 __webpack_require__(1);
 
-var _bling = __webpack_require__(32);
+var _bling = __webpack_require__(3);
 
-var _typeAhead = __webpack_require__(3);
+var _typeAhead = __webpack_require__(4);
 
 var _typeAhead2 = _interopRequireDefault(_typeAhead);
 
@@ -89,15 +89,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 (0, _typeAhead2.default)((0, _bling.$)('.search'));
 
 console.log('javascripts indexzzz...');
-;
-
-var _temp = function () {
-  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
-    return;
-  }
-}();
-
-;
 
 /***/ }),
 /* 1 */
@@ -114,14 +105,44 @@ var _temp = function () {
 
 
 Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+// based on https://gist.github.com/paulirish/12fb951a8b893a454b32
+
+var $ = document.querySelector.bind(document);
+var $$ = document.querySelectorAll.bind(document);
+
+Node.prototype.on = window.on = function (name, fn) {
+  this.addEventListener(name, fn);
+};
+
+NodeList.prototype.__proto__ = Array.prototype; // eslint-disable-line
+
+NodeList.prototype.on = NodeList.prototype.addEventListener = function (name, fn) {
+  this.forEach(function (elem) {
+    elem.on(name, fn);
+  });
+};
+
+exports.$ = $;
+exports.$$ = $$;
+
+/***/ }),
+/* 4 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
 	value: true
 });
 
-var _axios = __webpack_require__(4);
+var _axios = __webpack_require__(5);
 
 var _axios2 = _interopRequireDefault(_axios);
 
-var _dompurify = __webpack_require__(31);
+var _dompurify = __webpack_require__(32);
 
 var _dompurify2 = _interopRequireDefault(_dompurify);
 
@@ -143,6 +164,9 @@ function typeAhead(search) {
 	var searchInput = search.querySelector('input[name="search"]');
 	var searchResults = search.querySelector('.search__results');
 
+	var controller = void 0;
+	var signal = void 0;
+
 	searchInput.on('input', function () {
 		var _this = this;
 
@@ -156,8 +180,17 @@ function typeAhead(search) {
 		searchResults.style.display = 'block';
 		searchResults.innerHTML = '';
 
-		_axios2.default.get(endpoint + '?q=' + this.value).then(function (res) {
-			console.log(res);
+		if (controller !== undefined) {
+			// Abort the previous promise
+			controller.abort();
+		}
+
+		if ("AbortController" in window) {
+			controller = new AbortController();
+			signal = controller.signal;
+		}
+
+		_axios2.default.get(endpoint + '?q=' + this.value, { signal: signal }).then(function (res) {
 			if (res.data.length) {
 				searchResults.innerHTML = _dompurify2.default.sanitize(searchResultsHTML(res.data));
 				return;
@@ -203,41 +236,7 @@ function typeAhead(search) {
 	});
 }
 
-var _default = typeAhead;
-exports.default = _default;
-;
-
-var _temp = function () {
-	if (typeof __REACT_HOT_LOADER__ === 'undefined') {
-		return;
-	}
-
-	__REACT_HOT_LOADER__.register(searchResultsHTML, 'searchResultsHTML', 'C:/Users/090907/Documents/work/basic-cms/src/public/javascripts/modules/typeAhead.js');
-
-	__REACT_HOT_LOADER__.register(typeAhead, 'typeAhead', 'C:/Users/090907/Documents/work/basic-cms/src/public/javascripts/modules/typeAhead.js');
-
-	__REACT_HOT_LOADER__.register(_default, 'default', 'C:/Users/090907/Documents/work/basic-cms/src/public/javascripts/modules/typeAhead.js');
-}();
-
-;
-
-/***/ }),
-/* 4 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-module.exports = __webpack_require__(5);
-;
-
-var _temp = function () {
-  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
-    return;
-  }
-}();
-
-;
+exports.default = typeAhead;
 
 /***/ }),
 /* 5 */
@@ -246,10 +245,19 @@ var _temp = function () {
 "use strict";
 
 
-var utils = __webpack_require__(6);
-var bind = __webpack_require__(7);
-var Axios = __webpack_require__(9);
-var defaults = __webpack_require__(10);
+module.exports = __webpack_require__(6);
+
+/***/ }),
+/* 6 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var utils = __webpack_require__(7);
+var bind = __webpack_require__(8);
+var Axios = __webpack_require__(10);
+var defaults = __webpack_require__(11);
 
 /**
  * Create an instance of Axios
@@ -282,36 +290,23 @@ axios.create = function create(instanceConfig) {
 };
 
 // Expose Cancel & CancelToken
-axios.Cancel = __webpack_require__(28);
-axios.CancelToken = __webpack_require__(29);
-axios.isCancel = __webpack_require__(25);
+axios.Cancel = __webpack_require__(29);
+axios.CancelToken = __webpack_require__(30);
+axios.isCancel = __webpack_require__(26);
 
 // Expose all/spread
 axios.all = function all(promises) {
   return Promise.all(promises);
 };
-axios.spread = __webpack_require__(30);
+axios.spread = __webpack_require__(31);
 
 module.exports = axios;
 
 // Allow use of default import syntax in TypeScript
 module.exports.default = axios;
-;
-
-var _temp = function () {
-  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
-    return;
-  }
-
-  __REACT_HOT_LOADER__.register(createInstance, 'createInstance', 'C:/Users/090907/Documents/work/basic-cms/node_modules/axios/lib/axios.js');
-
-  __REACT_HOT_LOADER__.register(axios, 'axios', 'C:/Users/090907/Documents/work/basic-cms/node_modules/axios/lib/axios.js');
-}();
-
-;
 
 /***/ }),
-/* 6 */
+/* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -319,8 +314,8 @@ var _temp = function () {
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var bind = __webpack_require__(7);
-var isBuffer = __webpack_require__(8);
+var bind = __webpack_require__(8);
+var isBuffer = __webpack_require__(9);
 
 /*global toString:true*/
 
@@ -617,58 +612,9 @@ module.exports = {
   extend: extend,
   trim: trim
 };
-;
-
-var _temp = function () {
-  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
-    return;
-  }
-
-  __REACT_HOT_LOADER__.register(toString, 'toString', 'C:/Users/090907/Documents/work/basic-cms/node_modules/axios/lib/utils.js');
-
-  __REACT_HOT_LOADER__.register(isArray, 'isArray', 'C:/Users/090907/Documents/work/basic-cms/node_modules/axios/lib/utils.js');
-
-  __REACT_HOT_LOADER__.register(isArrayBuffer, 'isArrayBuffer', 'C:/Users/090907/Documents/work/basic-cms/node_modules/axios/lib/utils.js');
-
-  __REACT_HOT_LOADER__.register(isFormData, 'isFormData', 'C:/Users/090907/Documents/work/basic-cms/node_modules/axios/lib/utils.js');
-
-  __REACT_HOT_LOADER__.register(isArrayBufferView, 'isArrayBufferView', 'C:/Users/090907/Documents/work/basic-cms/node_modules/axios/lib/utils.js');
-
-  __REACT_HOT_LOADER__.register(isString, 'isString', 'C:/Users/090907/Documents/work/basic-cms/node_modules/axios/lib/utils.js');
-
-  __REACT_HOT_LOADER__.register(isNumber, 'isNumber', 'C:/Users/090907/Documents/work/basic-cms/node_modules/axios/lib/utils.js');
-
-  __REACT_HOT_LOADER__.register(isUndefined, 'isUndefined', 'C:/Users/090907/Documents/work/basic-cms/node_modules/axios/lib/utils.js');
-
-  __REACT_HOT_LOADER__.register(isObject, 'isObject', 'C:/Users/090907/Documents/work/basic-cms/node_modules/axios/lib/utils.js');
-
-  __REACT_HOT_LOADER__.register(isDate, 'isDate', 'C:/Users/090907/Documents/work/basic-cms/node_modules/axios/lib/utils.js');
-
-  __REACT_HOT_LOADER__.register(isFile, 'isFile', 'C:/Users/090907/Documents/work/basic-cms/node_modules/axios/lib/utils.js');
-
-  __REACT_HOT_LOADER__.register(isBlob, 'isBlob', 'C:/Users/090907/Documents/work/basic-cms/node_modules/axios/lib/utils.js');
-
-  __REACT_HOT_LOADER__.register(isFunction, 'isFunction', 'C:/Users/090907/Documents/work/basic-cms/node_modules/axios/lib/utils.js');
-
-  __REACT_HOT_LOADER__.register(isStream, 'isStream', 'C:/Users/090907/Documents/work/basic-cms/node_modules/axios/lib/utils.js');
-
-  __REACT_HOT_LOADER__.register(isURLSearchParams, 'isURLSearchParams', 'C:/Users/090907/Documents/work/basic-cms/node_modules/axios/lib/utils.js');
-
-  __REACT_HOT_LOADER__.register(trim, 'trim', 'C:/Users/090907/Documents/work/basic-cms/node_modules/axios/lib/utils.js');
-
-  __REACT_HOT_LOADER__.register(isStandardBrowserEnv, 'isStandardBrowserEnv', 'C:/Users/090907/Documents/work/basic-cms/node_modules/axios/lib/utils.js');
-
-  __REACT_HOT_LOADER__.register(forEach, 'forEach', 'C:/Users/090907/Documents/work/basic-cms/node_modules/axios/lib/utils.js');
-
-  __REACT_HOT_LOADER__.register(merge, 'merge', 'C:/Users/090907/Documents/work/basic-cms/node_modules/axios/lib/utils.js');
-
-  __REACT_HOT_LOADER__.register(extend, 'extend', 'C:/Users/090907/Documents/work/basic-cms/node_modules/axios/lib/utils.js');
-}();
-
-;
 
 /***/ }),
-/* 7 */
+/* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -683,18 +629,9 @@ module.exports = function bind(fn, thisArg) {
     return fn.apply(thisArg, args);
   };
 };
-;
-
-var _temp = function () {
-  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
-    return;
-  }
-}();
-
-;
 
 /***/ }),
-/* 8 */
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -721,31 +658,18 @@ function isBuffer(obj) {
 function isSlowBuffer(obj) {
   return typeof obj.readFloatLE === 'function' && typeof obj.slice === 'function' && isBuffer(obj.slice(0, 0));
 }
-;
-
-var _temp = function () {
-  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
-    return;
-  }
-
-  __REACT_HOT_LOADER__.register(isBuffer, 'isBuffer', 'C:/Users/090907/Documents/work/basic-cms/node_modules/is-buffer/index.js');
-
-  __REACT_HOT_LOADER__.register(isSlowBuffer, 'isSlowBuffer', 'C:/Users/090907/Documents/work/basic-cms/node_modules/is-buffer/index.js');
-}();
-
-;
 
 /***/ }),
-/* 9 */
+/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var defaults = __webpack_require__(10);
-var utils = __webpack_require__(6);
-var InterceptorManager = __webpack_require__(22);
-var dispatchRequest = __webpack_require__(23);
+var defaults = __webpack_require__(11);
+var utils = __webpack_require__(7);
+var InterceptorManager = __webpack_require__(23);
+var dispatchRequest = __webpack_require__(24);
 
 /**
  * Create a new instance of Axios
@@ -819,27 +743,16 @@ utils.forEach(['post', 'put', 'patch'], function forEachMethodWithData(method) {
 });
 
 module.exports = Axios;
-;
-
-var _temp = function () {
-  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
-    return;
-  }
-
-  __REACT_HOT_LOADER__.register(Axios, 'Axios', 'C:/Users/090907/Documents/work/basic-cms/node_modules/axios/lib/core/Axios.js');
-}();
-
-;
 
 /***/ }),
-/* 10 */
+/* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(process) {
 
-var utils = __webpack_require__(6);
-var normalizeHeaderName = __webpack_require__(12);
+var utils = __webpack_require__(7);
+var normalizeHeaderName = __webpack_require__(13);
 
 var DEFAULT_CONTENT_TYPE = {
   'Content-Type': 'application/x-www-form-urlencoded'
@@ -855,10 +768,10 @@ function getDefaultAdapter() {
   var adapter;
   if (typeof XMLHttpRequest !== 'undefined') {
     // For browsers use XHR adapter
-    adapter = __webpack_require__(13);
+    adapter = __webpack_require__(14);
   } else if (typeof process !== 'undefined') {
     // For node use HTTP adapter
-    adapter = __webpack_require__(13);
+    adapter = __webpack_require__(14);
   }
   return adapter;
 }
@@ -926,27 +839,10 @@ utils.forEach(['post', 'put', 'patch'], function forEachMethodWithData(method) {
 });
 
 module.exports = defaults;
-;
-
-var _temp = function () {
-  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
-    return;
-  }
-
-  __REACT_HOT_LOADER__.register(DEFAULT_CONTENT_TYPE, 'DEFAULT_CONTENT_TYPE', 'C:/Users/090907/Documents/work/basic-cms/node_modules/axios/lib/defaults.js');
-
-  __REACT_HOT_LOADER__.register(setContentTypeIfUnset, 'setContentTypeIfUnset', 'C:/Users/090907/Documents/work/basic-cms/node_modules/axios/lib/defaults.js');
-
-  __REACT_HOT_LOADER__.register(getDefaultAdapter, 'getDefaultAdapter', 'C:/Users/090907/Documents/work/basic-cms/node_modules/axios/lib/defaults.js');
-
-  __REACT_HOT_LOADER__.register(defaults, 'defaults', 'C:/Users/090907/Documents/work/basic-cms/node_modules/axios/lib/defaults.js');
-}();
-
-;
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(11)))
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(12)))
 
 /***/ }),
-/* 11 */
+/* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1137,54 +1033,15 @@ process.chdir = function (dir) {
 process.umask = function () {
     return 0;
 };
-;
-
-var _temp = function () {
-    if (typeof __REACT_HOT_LOADER__ === 'undefined') {
-        return;
-    }
-
-    __REACT_HOT_LOADER__.register(process, 'process', 'C:/Users/090907/Documents/work/basic-cms/node_modules/process/browser.js');
-
-    __REACT_HOT_LOADER__.register(cachedSetTimeout, 'cachedSetTimeout', 'C:/Users/090907/Documents/work/basic-cms/node_modules/process/browser.js');
-
-    __REACT_HOT_LOADER__.register(cachedClearTimeout, 'cachedClearTimeout', 'C:/Users/090907/Documents/work/basic-cms/node_modules/process/browser.js');
-
-    __REACT_HOT_LOADER__.register(defaultSetTimout, 'defaultSetTimout', 'C:/Users/090907/Documents/work/basic-cms/node_modules/process/browser.js');
-
-    __REACT_HOT_LOADER__.register(defaultClearTimeout, 'defaultClearTimeout', 'C:/Users/090907/Documents/work/basic-cms/node_modules/process/browser.js');
-
-    __REACT_HOT_LOADER__.register(runTimeout, 'runTimeout', 'C:/Users/090907/Documents/work/basic-cms/node_modules/process/browser.js');
-
-    __REACT_HOT_LOADER__.register(runClearTimeout, 'runClearTimeout', 'C:/Users/090907/Documents/work/basic-cms/node_modules/process/browser.js');
-
-    __REACT_HOT_LOADER__.register(queue, 'queue', 'C:/Users/090907/Documents/work/basic-cms/node_modules/process/browser.js');
-
-    __REACT_HOT_LOADER__.register(draining, 'draining', 'C:/Users/090907/Documents/work/basic-cms/node_modules/process/browser.js');
-
-    __REACT_HOT_LOADER__.register(currentQueue, 'currentQueue', 'C:/Users/090907/Documents/work/basic-cms/node_modules/process/browser.js');
-
-    __REACT_HOT_LOADER__.register(queueIndex, 'queueIndex', 'C:/Users/090907/Documents/work/basic-cms/node_modules/process/browser.js');
-
-    __REACT_HOT_LOADER__.register(cleanUpNextTick, 'cleanUpNextTick', 'C:/Users/090907/Documents/work/basic-cms/node_modules/process/browser.js');
-
-    __REACT_HOT_LOADER__.register(drainQueue, 'drainQueue', 'C:/Users/090907/Documents/work/basic-cms/node_modules/process/browser.js');
-
-    __REACT_HOT_LOADER__.register(Item, 'Item', 'C:/Users/090907/Documents/work/basic-cms/node_modules/process/browser.js');
-
-    __REACT_HOT_LOADER__.register(noop, 'noop', 'C:/Users/090907/Documents/work/basic-cms/node_modules/process/browser.js');
-}();
-
-;
 
 /***/ }),
-/* 12 */
+/* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var utils = __webpack_require__(6);
+var utils = __webpack_require__(7);
 
 module.exports = function normalizeHeaderName(headers, normalizedName) {
   utils.forEach(headers, function processHeader(value, name) {
@@ -1194,30 +1051,21 @@ module.exports = function normalizeHeaderName(headers, normalizedName) {
     }
   });
 };
-;
-
-var _temp = function () {
-  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
-    return;
-  }
-}();
-
-;
 
 /***/ }),
-/* 13 */
+/* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var utils = __webpack_require__(6);
-var settle = __webpack_require__(14);
-var buildURL = __webpack_require__(17);
-var parseHeaders = __webpack_require__(18);
-var isURLSameOrigin = __webpack_require__(19);
-var createError = __webpack_require__(15);
-var btoa = typeof window !== 'undefined' && window.btoa && window.btoa.bind(window) || __webpack_require__(20);
+var utils = __webpack_require__(7);
+var settle = __webpack_require__(15);
+var buildURL = __webpack_require__(18);
+var parseHeaders = __webpack_require__(19);
+var isURLSameOrigin = __webpack_require__(20);
+var createError = __webpack_require__(16);
+var btoa = typeof window !== 'undefined' && window.btoa && window.btoa.bind(window) || __webpack_require__(21);
 
 module.exports = function xhrAdapter(config) {
   return new Promise(function dispatchXhrRequest(resolve, reject) {
@@ -1310,7 +1158,7 @@ module.exports = function xhrAdapter(config) {
     // This is only done if running in a standard browser environment.
     // Specifically not if we're in a web worker, or react-native.
     if (utils.isStandardBrowserEnv()) {
-      var cookies = __webpack_require__(21);
+      var cookies = __webpack_require__(22);
 
       // Add xsrf header
       var xsrfValue = (config.withCredentials || isURLSameOrigin(config.url)) && config.xsrfCookieName ? cookies.read(config.xsrfCookieName) : undefined;
@@ -1383,26 +1231,15 @@ module.exports = function xhrAdapter(config) {
     request.send(requestData);
   });
 };
-;
-
-var _temp = function () {
-  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
-    return;
-  }
-
-  __REACT_HOT_LOADER__.register(btoa, 'btoa', 'C:/Users/090907/Documents/work/basic-cms/node_modules/axios/lib/adapters/xhr.js');
-}();
-
-;
 
 /***/ }),
-/* 14 */
+/* 15 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var createError = __webpack_require__(15);
+var createError = __webpack_require__(16);
 
 /**
  * Resolve or reject a Promise based on response status.
@@ -1420,24 +1257,15 @@ module.exports = function settle(resolve, reject, response) {
     reject(createError('Request failed with status code ' + response.status, response.config, null, response.request, response));
   }
 };
-;
-
-var _temp = function () {
-  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
-    return;
-  }
-}();
-
-;
 
 /***/ }),
-/* 15 */
+/* 16 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var enhanceError = __webpack_require__(16);
+var enhanceError = __webpack_require__(17);
 
 /**
  * Create an Error with the specified message, config, error code, request and response.
@@ -1453,18 +1281,9 @@ module.exports = function createError(message, config, code, request, response) 
   var error = new Error(message);
   return enhanceError(error, config, code, request, response);
 };
-;
-
-var _temp = function () {
-  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
-    return;
-  }
-}();
-
-;
 
 /***/ }),
-/* 16 */
+/* 17 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1490,24 +1309,15 @@ module.exports = function enhanceError(error, config, code, request, response) {
   error.response = response;
   return error;
 };
-;
-
-var _temp = function () {
-  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
-    return;
-  }
-}();
-
-;
 
 /***/ }),
-/* 17 */
+/* 18 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var utils = __webpack_require__(6);
+var utils = __webpack_require__(7);
 
 function encode(val) {
   return encodeURIComponent(val).replace(/%40/gi, '@').replace(/%3A/gi, ':').replace(/%24/g, '$').replace(/%2C/gi, ',').replace(/%20/g, '+').replace(/%5B/gi, '[').replace(/%5D/gi, ']');
@@ -1564,26 +1374,15 @@ module.exports = function buildURL(url, params, paramsSerializer) {
 
   return url;
 };
-;
-
-var _temp = function () {
-  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
-    return;
-  }
-
-  __REACT_HOT_LOADER__.register(encode, 'encode', 'C:/Users/090907/Documents/work/basic-cms/node_modules/axios/lib/helpers/buildURL.js');
-}();
-
-;
 
 /***/ }),
-/* 18 */
+/* 19 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var utils = __webpack_require__(6);
+var utils = __webpack_require__(7);
 
 // Headers whose duplicates are ignored by node
 // c.f. https://nodejs.org/api/http.html#http_message_headers
@@ -1631,26 +1430,15 @@ module.exports = function parseHeaders(headers) {
 
   return parsed;
 };
-;
-
-var _temp = function () {
-  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
-    return;
-  }
-
-  __REACT_HOT_LOADER__.register(ignoreDuplicateOf, 'ignoreDuplicateOf', 'C:/Users/090907/Documents/work/basic-cms/node_modules/axios/lib/helpers/parseHeaders.js');
-}();
-
-;
 
 /***/ }),
-/* 19 */
+/* 20 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var utils = __webpack_require__(6);
+var utils = __webpack_require__(7);
 
 module.exports = utils.isStandardBrowserEnv() ?
 
@@ -1711,18 +1499,9 @@ function nonStandardBrowserEnv() {
     return true;
   };
 }();
-;
-
-var _temp = function () {
-  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
-    return;
-  }
-}();
-
-;
 
 /***/ }),
-/* 20 */
+/* 21 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1761,30 +1540,15 @@ function btoa(input) {
 }
 
 module.exports = btoa;
-;
-
-var _temp = function () {
-  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
-    return;
-  }
-
-  __REACT_HOT_LOADER__.register(chars, 'chars', 'C:/Users/090907/Documents/work/basic-cms/node_modules/axios/lib/helpers/btoa.js');
-
-  __REACT_HOT_LOADER__.register(E, 'E', 'C:/Users/090907/Documents/work/basic-cms/node_modules/axios/lib/helpers/btoa.js');
-
-  __REACT_HOT_LOADER__.register(btoa, 'btoa', 'C:/Users/090907/Documents/work/basic-cms/node_modules/axios/lib/helpers/btoa.js');
-}();
-
-;
 
 /***/ }),
-/* 21 */
+/* 22 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var utils = __webpack_require__(6);
+var utils = __webpack_require__(7);
 
 module.exports = utils.isStandardBrowserEnv() ?
 
@@ -1835,24 +1599,15 @@ function nonStandardBrowserEnv() {
     remove: function remove() {}
   };
 }();
-;
-
-var _temp = function () {
-  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
-    return;
-  }
-}();
-
-;
 
 /***/ }),
-/* 22 */
+/* 23 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var utils = __webpack_require__(6);
+var utils = __webpack_require__(7);
 
 function InterceptorManager() {
   this.handlers = [];
@@ -1902,31 +1657,20 @@ InterceptorManager.prototype.forEach = function forEach(fn) {
 };
 
 module.exports = InterceptorManager;
-;
-
-var _temp = function () {
-  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
-    return;
-  }
-
-  __REACT_HOT_LOADER__.register(InterceptorManager, 'InterceptorManager', 'C:/Users/090907/Documents/work/basic-cms/node_modules/axios/lib/core/InterceptorManager.js');
-}();
-
-;
 
 /***/ }),
-/* 23 */
+/* 24 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var utils = __webpack_require__(6);
-var transformData = __webpack_require__(24);
-var isCancel = __webpack_require__(25);
-var defaults = __webpack_require__(10);
-var isAbsoluteURL = __webpack_require__(26);
-var combineURLs = __webpack_require__(27);
+var utils = __webpack_require__(7);
+var transformData = __webpack_require__(25);
+var isCancel = __webpack_require__(26);
+var defaults = __webpack_require__(11);
+var isAbsoluteURL = __webpack_require__(27);
+var combineURLs = __webpack_require__(28);
 
 /**
  * Throws a `Cancel` if cancellation has been requested.
@@ -1986,26 +1730,15 @@ module.exports = function dispatchRequest(config) {
     return Promise.reject(reason);
   });
 };
-;
-
-var _temp = function () {
-  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
-    return;
-  }
-
-  __REACT_HOT_LOADER__.register(throwIfCancellationRequested, 'throwIfCancellationRequested', 'C:/Users/090907/Documents/work/basic-cms/node_modules/axios/lib/core/dispatchRequest.js');
-}();
-
-;
 
 /***/ }),
-/* 24 */
+/* 25 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var utils = __webpack_require__(6);
+var utils = __webpack_require__(7);
 
 /**
  * Transform the data for a request or a response
@@ -2023,18 +1756,9 @@ module.exports = function transformData(data, headers, fns) {
 
   return data;
 };
-;
-
-var _temp = function () {
-  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
-    return;
-  }
-}();
-
-;
 
 /***/ }),
-/* 25 */
+/* 26 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2043,18 +1767,9 @@ var _temp = function () {
 module.exports = function isCancel(value) {
   return !!(value && value.__CANCEL__);
 };
-;
-
-var _temp = function () {
-  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
-    return;
-  }
-}();
-
-;
 
 /***/ }),
-/* 26 */
+/* 27 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2074,18 +1789,9 @@ module.exports = function isAbsoluteURL(url) {
   return (/^([a-z][a-z\d\+\-\.]*:)?\/\//i.test(url)
   );
 };
-;
-
-var _temp = function () {
-  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
-    return;
-  }
-}();
-
-;
 
 /***/ }),
-/* 27 */
+/* 28 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2102,18 +1808,9 @@ var _temp = function () {
 module.exports = function combineURLs(baseURL, relativeURL) {
   return relativeURL ? baseURL.replace(/\/+$/, '') + '/' + relativeURL.replace(/^\/+/, '') : baseURL;
 };
-;
-
-var _temp = function () {
-  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
-    return;
-  }
-}();
-
-;
 
 /***/ }),
-/* 28 */
+/* 29 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2137,26 +1834,15 @@ Cancel.prototype.toString = function toString() {
 Cancel.prototype.__CANCEL__ = true;
 
 module.exports = Cancel;
-;
-
-var _temp = function () {
-  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
-    return;
-  }
-
-  __REACT_HOT_LOADER__.register(Cancel, 'Cancel', 'C:/Users/090907/Documents/work/basic-cms/node_modules/axios/lib/cancel/Cancel.js');
-}();
-
-;
 
 /***/ }),
-/* 29 */
+/* 30 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var Cancel = __webpack_require__(28);
+var Cancel = __webpack_require__(29);
 
 /**
  * A `CancelToken` is an object that can be used to request cancellation of an operation.
@@ -2211,20 +1897,9 @@ CancelToken.source = function source() {
 };
 
 module.exports = CancelToken;
-;
-
-var _temp = function () {
-  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
-    return;
-  }
-
-  __REACT_HOT_LOADER__.register(CancelToken, 'CancelToken', 'C:/Users/090907/Documents/work/basic-cms/node_modules/axios/lib/cancel/CancelToken.js');
-}();
-
-;
 
 /***/ }),
-/* 30 */
+/* 31 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2256,18 +1931,9 @@ module.exports = function spread(callback) {
     return callback.apply(null, arr);
   };
 };
-;
-
-var _temp = function () {
-  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
-    return;
-  }
-}();
-
-;
 
 /***/ }),
-/* 31 */
+/* 32 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3248,59 +2914,6 @@ var _typeof2 = typeof Symbol === "function" && typeof Symbol.iterator === "symbo
   return purify;
 });
 //# sourceMappingURL=purify.js.map
-
-;
-
-var _temp = function () {
-  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
-    return;
-  }
-}();
-
-;
-
-/***/ }),
-/* 32 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-// based on https://gist.github.com/paulirish/12fb951a8b893a454b32
-
-var $ = document.querySelector.bind(document);
-var $$ = document.querySelectorAll.bind(document);
-
-Node.prototype.on = window.on = function (name, fn) {
-  this.addEventListener(name, fn);
-};
-
-NodeList.prototype.__proto__ = Array.prototype; // eslint-disable-line
-
-NodeList.prototype.on = NodeList.prototype.addEventListener = function (name, fn) {
-  this.forEach(function (elem) {
-    elem.on(name, fn);
-  });
-};
-
-exports.$ = $;
-exports.$$ = $$;
-;
-
-var _temp = function () {
-  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
-    return;
-  }
-
-  __REACT_HOT_LOADER__.register($, "$", "C:/Users/090907/Documents/work/basic-cms/src/public/javascripts/modules/bling.js");
-
-  __REACT_HOT_LOADER__.register($$, "$$", "C:/Users/090907/Documents/work/basic-cms/src/public/javascripts/modules/bling.js");
-}();
-
-;
 
 /***/ })
 /******/ ]);
