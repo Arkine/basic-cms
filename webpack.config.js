@@ -62,7 +62,11 @@ const config = {
 			host: 'http://localhost',
 			port: 3000,
 			online: true,
-			files: ["src/public/**/*.scss", "src/**/*.js"]
+			files: [
+				{
+					match: ["src/public/**/*.scss", "src/**/*.js", "src/**/*.pug"]
+				}
+			]
 		})
 	]
 };
