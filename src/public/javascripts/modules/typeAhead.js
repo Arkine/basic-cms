@@ -42,7 +42,7 @@ function typeAhead(search) {
 		}
 
 		if ("AbortController" in window) {
-			controller = new AbortController;
+			controller = new AbortController();
 			signal = controller.signal;
 		}
 
