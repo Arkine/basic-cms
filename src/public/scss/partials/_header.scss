@@ -5,12 +5,16 @@ header {
 		display: flex;
 		justify-content: space-between;
 
-		nav {
+		.nav {
 			flex-grow: 1;
 
 			border: 1px solid blue;
 
 			&__wrapper {
+				display: flex;
+				flex-flow: row nowrap;
+				justify-content: space-between;
+
 				display: flex;
 				flex-flow: row wrap;
 			}

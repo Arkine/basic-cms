@@ -3,6 +3,7 @@ const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const autoprefixer = require('autoprefixer');
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
+const globImporter = require('node-sass-glob-importer');
 
 const javascript = {
 	test: /\.(js)$/,
@@ -20,9 +21,21 @@ const postcss = {
 	}
 }
 
+const globLoader = {
+	loader: 'sass-loader',
+	options: {
+		importer: globImporter()
+	}
+}
+
 const styles = {
 	test: /\.(scss)$/,
-	use: ExtractTextPlugin.extract(['css-loader?sourceMap', postcss, 'sass-loader?sourceMap'])
+	use: ExtractTextPlugin.extract([
+		'css-loader?sourceMap',
+		postcss,
+		'sass-loader?sourceMap',
+		globLoader
+	])
 }
 
 // const uglify = new webpack.optimize.UglifyJsPlugin({ // eslint-disable-line
@@ -48,6 +61,7 @@ const config = {
 			proxy: 'http://localhost:7777',
 			host: 'http://localhost',
 			port: 3000,
+			online: true
 		})
 	]
 };

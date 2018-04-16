@@ -1,9 +1,10 @@
 @import 'colors';
 @import 'variables';
 @import 'base';
-@import 'partials/header';
-@import 'partials/mini-header';
-@import 'partials/normalize';
-@import 'partials/forms';
-@import 'partials/layout';
-@import 'partials/search';
+@import 'partials/**/*.scss';
+// @import 'partials/header';
+// @import 'partials/mini-header';
+// @import 'partials/normalize';
+// @import 'partials/forms';
+// @import 'partials/layout';
+// @import 'partials/search';

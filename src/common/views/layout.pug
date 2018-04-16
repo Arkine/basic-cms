@@ -19,10 +19,11 @@ html
 							a(href="/logout" alt="Logout") Logout
 
 			header.top
-				nav.nav__wrapper
-					each item in h.menu
-						.nav__item
-							a(href=item.slug alt=item.title) #{item.title}
+				nav
+					.nav__wrapper
+						each item in h.menu
+							.nav__item
+								a(href=item.slug alt=item.title) #{item.title}
 		block messages
 			if locals.flashes
 				.inner
