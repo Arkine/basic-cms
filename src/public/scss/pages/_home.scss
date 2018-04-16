@@ -1,0 +1,10 @@
+main.home {
+	display: flex;
+	flex-flow: row wrap;
+	
+	.search-teams {
+		form {
+			width: 100%;
+		}
+	}
+}

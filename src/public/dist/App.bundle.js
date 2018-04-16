@@ -82,6 +82,15 @@
 
 
 module.exports = __webpack_require__(/*! ./lib/axios */ "./node_modules/axios/lib/axios.js");
+;
+
+var _temp = function () {
+  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+    return;
+  }
+}();
+
+;
 
 /***/ }),
 
@@ -267,6 +276,17 @@ module.exports = function xhrAdapter(config) {
     request.send(requestData);
   });
 };
+;
+
+var _temp = function () {
+  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+    return;
+  }
+
+  __REACT_HOT_LOADER__.register(btoa, 'btoa', 'C:/Users/090907/Documents/work/basic-cms/node_modules/axios/lib/adapters/xhr.js');
+}();
+
+;
 
 /***/ }),
 
@@ -330,6 +350,19 @@ module.exports = axios;
 
 // Allow use of default import syntax in TypeScript
 module.exports.default = axios;
+;
+
+var _temp = function () {
+  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+    return;
+  }
+
+  __REACT_HOT_LOADER__.register(createInstance, 'createInstance', 'C:/Users/090907/Documents/work/basic-cms/node_modules/axios/lib/axios.js');
+
+  __REACT_HOT_LOADER__.register(axios, 'axios', 'C:/Users/090907/Documents/work/basic-cms/node_modules/axios/lib/axios.js');
+}();
+
+;
 
 /***/ }),
 
@@ -361,6 +394,17 @@ Cancel.prototype.toString = function toString() {
 Cancel.prototype.__CANCEL__ = true;
 
 module.exports = Cancel;
+;
+
+var _temp = function () {
+  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+    return;
+  }
+
+  __REACT_HOT_LOADER__.register(Cancel, 'Cancel', 'C:/Users/090907/Documents/work/basic-cms/node_modules/axios/lib/cancel/Cancel.js');
+}();
+
+;
 
 /***/ }),
 
@@ -429,6 +473,17 @@ CancelToken.source = function source() {
 };
 
 module.exports = CancelToken;
+;
+
+var _temp = function () {
+  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+    return;
+  }
+
+  __REACT_HOT_LOADER__.register(CancelToken, 'CancelToken', 'C:/Users/090907/Documents/work/basic-cms/node_modules/axios/lib/cancel/CancelToken.js');
+}();
+
+;
 
 /***/ }),
 
@@ -445,6 +500,15 @@ module.exports = CancelToken;
 module.exports = function isCancel(value) {
   return !!(value && value.__CANCEL__);
 };
+;
+
+var _temp = function () {
+  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+    return;
+  }
+}();
+
+;
 
 /***/ }),
 
@@ -535,6 +599,17 @@ utils.forEach(['post', 'put', 'patch'], function forEachMethodWithData(method) {
 });
 
 module.exports = Axios;
+;
+
+var _temp = function () {
+  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+    return;
+  }
+
+  __REACT_HOT_LOADER__.register(Axios, 'Axios', 'C:/Users/090907/Documents/work/basic-cms/node_modules/axios/lib/core/Axios.js');
+}();
+
+;
 
 /***/ }),
 
@@ -598,6 +673,17 @@ InterceptorManager.prototype.forEach = function forEach(fn) {
 };
 
 module.exports = InterceptorManager;
+;
+
+var _temp = function () {
+  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+    return;
+  }
+
+  __REACT_HOT_LOADER__.register(InterceptorManager, 'InterceptorManager', 'C:/Users/090907/Documents/work/basic-cms/node_modules/axios/lib/core/InterceptorManager.js');
+}();
+
+;
 
 /***/ }),
 
@@ -627,6 +713,15 @@ module.exports = function createError(message, config, code, request, response) 
   var error = new Error(message);
   return enhanceError(error, config, code, request, response);
 };
+;
+
+var _temp = function () {
+  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+    return;
+  }
+}();
+
+;
 
 /***/ }),
 
@@ -705,6 +800,17 @@ module.exports = function dispatchRequest(config) {
     return Promise.reject(reason);
   });
 };
+;
+
+var _temp = function () {
+  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+    return;
+  }
+
+  __REACT_HOT_LOADER__.register(throwIfCancellationRequested, 'throwIfCancellationRequested', 'C:/Users/090907/Documents/work/basic-cms/node_modules/axios/lib/core/dispatchRequest.js');
+}();
+
+;
 
 /***/ }),
 
@@ -738,6 +844,15 @@ module.exports = function enhanceError(error, config, code, request, response) {
   error.response = response;
   return error;
 };
+;
+
+var _temp = function () {
+  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+    return;
+  }
+}();
+
+;
 
 /***/ }),
 
@@ -769,6 +884,15 @@ module.exports = function settle(resolve, reject, response) {
     reject(createError('Request failed with status code ' + response.status, response.config, null, response.request, response));
   }
 };
+;
+
+var _temp = function () {
+  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+    return;
+  }
+}();
+
+;
 
 /***/ }),
 
@@ -800,6 +924,15 @@ module.exports = function transformData(data, headers, fns) {
 
   return data;
 };
+;
+
+var _temp = function () {
+  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+    return;
+  }
+}();
+
+;
 
 /***/ }),
 
@@ -901,7 +1034,24 @@ utils.forEach(['post', 'put', 'patch'], function forEachMethodWithData(method) {
 });
 
 module.exports = defaults;
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../process/browser.js */ "./node_modules/process/browser.js")))
+;
+
+var _temp = function () {
+  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+    return;
+  }
+
+  __REACT_HOT_LOADER__.register(DEFAULT_CONTENT_TYPE, 'DEFAULT_CONTENT_TYPE', 'C:/Users/090907/Documents/work/basic-cms/node_modules/axios/lib/defaults.js');
+
+  __REACT_HOT_LOADER__.register(setContentTypeIfUnset, 'setContentTypeIfUnset', 'C:/Users/090907/Documents/work/basic-cms/node_modules/axios/lib/defaults.js');
+
+  __REACT_HOT_LOADER__.register(getDefaultAdapter, 'getDefaultAdapter', 'C:/Users/090907/Documents/work/basic-cms/node_modules/axios/lib/defaults.js');
+
+  __REACT_HOT_LOADER__.register(defaults, 'defaults', 'C:/Users/090907/Documents/work/basic-cms/node_modules/axios/lib/defaults.js');
+}();
+
+;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../node-libs-browser/node_modules/process/browser.js */ "./node_modules/node-libs-browser/node_modules/process/browser.js")))
 
 /***/ }),
 
@@ -924,6 +1074,15 @@ module.exports = function bind(fn, thisArg) {
     return fn.apply(thisArg, args);
   };
 };
+;
+
+var _temp = function () {
+  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+    return;
+  }
+}();
+
+;
 
 /***/ }),
 
@@ -970,6 +1129,21 @@ function btoa(input) {
 }
 
 module.exports = btoa;
+;
+
+var _temp = function () {
+  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+    return;
+  }
+
+  __REACT_HOT_LOADER__.register(chars, 'chars', 'C:/Users/090907/Documents/work/basic-cms/node_modules/axios/lib/helpers/btoa.js');
+
+  __REACT_HOT_LOADER__.register(E, 'E', 'C:/Users/090907/Documents/work/basic-cms/node_modules/axios/lib/helpers/btoa.js');
+
+  __REACT_HOT_LOADER__.register(btoa, 'btoa', 'C:/Users/090907/Documents/work/basic-cms/node_modules/axios/lib/helpers/btoa.js');
+}();
+
+;
 
 /***/ }),
 
@@ -1040,6 +1214,17 @@ module.exports = function buildURL(url, params, paramsSerializer) {
 
   return url;
 };
+;
+
+var _temp = function () {
+  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+    return;
+  }
+
+  __REACT_HOT_LOADER__.register(encode, 'encode', 'C:/Users/090907/Documents/work/basic-cms/node_modules/axios/lib/helpers/buildURL.js');
+}();
+
+;
 
 /***/ }),
 
@@ -1064,6 +1249,15 @@ module.exports = function buildURL(url, params, paramsSerializer) {
 module.exports = function combineURLs(baseURL, relativeURL) {
   return relativeURL ? baseURL.replace(/\/+$/, '') + '/' + relativeURL.replace(/^\/+/, '') : baseURL;
 };
+;
+
+var _temp = function () {
+  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+    return;
+  }
+}();
+
+;
 
 /***/ }),
 
@@ -1128,6 +1322,15 @@ function nonStandardBrowserEnv() {
     remove: function remove() {}
   };
 }();
+;
+
+var _temp = function () {
+  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+    return;
+  }
+}();
+
+;
 
 /***/ }),
 
@@ -1155,6 +1358,15 @@ module.exports = function isAbsoluteURL(url) {
   return (/^([a-z][a-z\d\+\-\.]*:)?\/\//i.test(url)
   );
 };
+;
+
+var _temp = function () {
+  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+    return;
+  }
+}();
+
+;
 
 /***/ }),
 
@@ -1229,6 +1441,15 @@ function nonStandardBrowserEnv() {
     return true;
   };
 }();
+;
+
+var _temp = function () {
+  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+    return;
+  }
+}();
+
+;
 
 /***/ }),
 
@@ -1252,6 +1473,15 @@ module.exports = function normalizeHeaderName(headers, normalizedName) {
     }
   });
 };
+;
+
+var _temp = function () {
+  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+    return;
+  }
+}();
+
+;
 
 /***/ }),
 
@@ -1313,6 +1543,17 @@ module.exports = function parseHeaders(headers) {
 
   return parsed;
 };
+;
+
+var _temp = function () {
+  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+    return;
+  }
+
+  __REACT_HOT_LOADER__.register(ignoreDuplicateOf, 'ignoreDuplicateOf', 'C:/Users/090907/Documents/work/basic-cms/node_modules/axios/lib/helpers/parseHeaders.js');
+}();
+
+;
 
 /***/ }),
 
@@ -1352,6 +1593,15 @@ module.exports = function spread(callback) {
     return callback.apply(null, arr);
   };
 };
+;
+
+var _temp = function () {
+  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+    return;
+  }
+}();
+
+;
 
 /***/ }),
 
@@ -1665,6 +1915,55 @@ module.exports = {
   extend: extend,
   trim: trim
 };
+;
+
+var _temp = function () {
+  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+    return;
+  }
+
+  __REACT_HOT_LOADER__.register(toString, 'toString', 'C:/Users/090907/Documents/work/basic-cms/node_modules/axios/lib/utils.js');
+
+  __REACT_HOT_LOADER__.register(isArray, 'isArray', 'C:/Users/090907/Documents/work/basic-cms/node_modules/axios/lib/utils.js');
+
+  __REACT_HOT_LOADER__.register(isArrayBuffer, 'isArrayBuffer', 'C:/Users/090907/Documents/work/basic-cms/node_modules/axios/lib/utils.js');
+
+  __REACT_HOT_LOADER__.register(isFormData, 'isFormData', 'C:/Users/090907/Documents/work/basic-cms/node_modules/axios/lib/utils.js');
+
+  __REACT_HOT_LOADER__.register(isArrayBufferView, 'isArrayBufferView', 'C:/Users/090907/Documents/work/basic-cms/node_modules/axios/lib/utils.js');
+
+  __REACT_HOT_LOADER__.register(isString, 'isString', 'C:/Users/090907/Documents/work/basic-cms/node_modules/axios/lib/utils.js');
+
+  __REACT_HOT_LOADER__.register(isNumber, 'isNumber', 'C:/Users/090907/Documents/work/basic-cms/node_modules/axios/lib/utils.js');
+
+  __REACT_HOT_LOADER__.register(isUndefined, 'isUndefined', 'C:/Users/090907/Documents/work/basic-cms/node_modules/axios/lib/utils.js');
+
+  __REACT_HOT_LOADER__.register(isObject, 'isObject', 'C:/Users/090907/Documents/work/basic-cms/node_modules/axios/lib/utils.js');
+
+  __REACT_HOT_LOADER__.register(isDate, 'isDate', 'C:/Users/090907/Documents/work/basic-cms/node_modules/axios/lib/utils.js');
+
+  __REACT_HOT_LOADER__.register(isFile, 'isFile', 'C:/Users/090907/Documents/work/basic-cms/node_modules/axios/lib/utils.js');
+
+  __REACT_HOT_LOADER__.register(isBlob, 'isBlob', 'C:/Users/090907/Documents/work/basic-cms/node_modules/axios/lib/utils.js');
+
+  __REACT_HOT_LOADER__.register(isFunction, 'isFunction', 'C:/Users/090907/Documents/work/basic-cms/node_modules/axios/lib/utils.js');
+
+  __REACT_HOT_LOADER__.register(isStream, 'isStream', 'C:/Users/090907/Documents/work/basic-cms/node_modules/axios/lib/utils.js');
+
+  __REACT_HOT_LOADER__.register(isURLSearchParams, 'isURLSearchParams', 'C:/Users/090907/Documents/work/basic-cms/node_modules/axios/lib/utils.js');
+
+  __REACT_HOT_LOADER__.register(trim, 'trim', 'C:/Users/090907/Documents/work/basic-cms/node_modules/axios/lib/utils.js');
+
+  __REACT_HOT_LOADER__.register(isStandardBrowserEnv, 'isStandardBrowserEnv', 'C:/Users/090907/Documents/work/basic-cms/node_modules/axios/lib/utils.js');
+
+  __REACT_HOT_LOADER__.register(forEach, 'forEach', 'C:/Users/090907/Documents/work/basic-cms/node_modules/axios/lib/utils.js');
+
+  __REACT_HOT_LOADER__.register(merge, 'merge', 'C:/Users/090907/Documents/work/basic-cms/node_modules/axios/lib/utils.js');
+
+  __REACT_HOT_LOADER__.register(extend, 'extend', 'C:/Users/090907/Documents/work/basic-cms/node_modules/axios/lib/utils.js');
+}();
+
+;
 
 /***/ }),
 
@@ -2654,6 +2953,16 @@ var _typeof2 = typeof Symbol === "function" && typeof Symbol.iterator === "symbo
 });
 //# sourceMappingURL=purify.js.map
 
+;
+
+var _temp = function () {
+  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+    return;
+  }
+}();
+
+;
+
 /***/ }),
 
 /***/ "./node_modules/is-buffer/index.js":
@@ -2687,13 +2996,26 @@ function isBuffer(obj) {
 function isSlowBuffer(obj) {
   return typeof obj.readFloatLE === 'function' && typeof obj.slice === 'function' && isBuffer(obj.slice(0, 0));
 }
+;
+
+var _temp = function () {
+  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+    return;
+  }
+
+  __REACT_HOT_LOADER__.register(isBuffer, 'isBuffer', 'C:/Users/090907/Documents/work/basic-cms/node_modules/is-buffer/index.js');
+
+  __REACT_HOT_LOADER__.register(isSlowBuffer, 'isSlowBuffer', 'C:/Users/090907/Documents/work/basic-cms/node_modules/is-buffer/index.js');
+}();
+
+;
 
 /***/ }),
 
-/***/ "./node_modules/process/browser.js":
-/*!*****************************************!*\
-  !*** ./node_modules/process/browser.js ***!
-  \*****************************************/
+/***/ "./node_modules/node-libs-browser/node_modules/process/browser.js":
+/*!************************************************************************!*\
+  !*** ./node_modules/node-libs-browser/node_modules/process/browser.js ***!
+  \************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -2885,6 +3207,45 @@ process.chdir = function (dir) {
 process.umask = function () {
     return 0;
 };
+;
+
+var _temp = function () {
+    if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+        return;
+    }
+
+    __REACT_HOT_LOADER__.register(process, 'process', 'C:/Users/090907/Documents/work/basic-cms/node_modules/node-libs-browser/node_modules/process/browser.js');
+
+    __REACT_HOT_LOADER__.register(cachedSetTimeout, 'cachedSetTimeout', 'C:/Users/090907/Documents/work/basic-cms/node_modules/node-libs-browser/node_modules/process/browser.js');
+
+    __REACT_HOT_LOADER__.register(cachedClearTimeout, 'cachedClearTimeout', 'C:/Users/090907/Documents/work/basic-cms/node_modules/node-libs-browser/node_modules/process/browser.js');
+
+    __REACT_HOT_LOADER__.register(defaultSetTimout, 'defaultSetTimout', 'C:/Users/090907/Documents/work/basic-cms/node_modules/node-libs-browser/node_modules/process/browser.js');
+
+    __REACT_HOT_LOADER__.register(defaultClearTimeout, 'defaultClearTimeout', 'C:/Users/090907/Documents/work/basic-cms/node_modules/node-libs-browser/node_modules/process/browser.js');
+
+    __REACT_HOT_LOADER__.register(runTimeout, 'runTimeout', 'C:/Users/090907/Documents/work/basic-cms/node_modules/node-libs-browser/node_modules/process/browser.js');
+
+    __REACT_HOT_LOADER__.register(runClearTimeout, 'runClearTimeout', 'C:/Users/090907/Documents/work/basic-cms/node_modules/node-libs-browser/node_modules/process/browser.js');
+
+    __REACT_HOT_LOADER__.register(queue, 'queue', 'C:/Users/090907/Documents/work/basic-cms/node_modules/node-libs-browser/node_modules/process/browser.js');
+
+    __REACT_HOT_LOADER__.register(draining, 'draining', 'C:/Users/090907/Documents/work/basic-cms/node_modules/node-libs-browser/node_modules/process/browser.js');
+
+    __REACT_HOT_LOADER__.register(currentQueue, 'currentQueue', 'C:/Users/090907/Documents/work/basic-cms/node_modules/node-libs-browser/node_modules/process/browser.js');
+
+    __REACT_HOT_LOADER__.register(queueIndex, 'queueIndex', 'C:/Users/090907/Documents/work/basic-cms/node_modules/node-libs-browser/node_modules/process/browser.js');
+
+    __REACT_HOT_LOADER__.register(cleanUpNextTick, 'cleanUpNextTick', 'C:/Users/090907/Documents/work/basic-cms/node_modules/node-libs-browser/node_modules/process/browser.js');
+
+    __REACT_HOT_LOADER__.register(drainQueue, 'drainQueue', 'C:/Users/090907/Documents/work/basic-cms/node_modules/node-libs-browser/node_modules/process/browser.js');
+
+    __REACT_HOT_LOADER__.register(Item, 'Item', 'C:/Users/090907/Documents/work/basic-cms/node_modules/node-libs-browser/node_modules/process/browser.js');
+
+    __REACT_HOT_LOADER__.register(noop, 'noop', 'C:/Users/090907/Documents/work/basic-cms/node_modules/node-libs-browser/node_modules/process/browser.js');
+}();
+
+;
 
 /***/ }),
 
@@ -2920,6 +3281,15 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 }
 
 console.log('javascripts indexzzz...');
+;
+
+var _temp = function () {
+	if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+		return;
+	}
+}();
+
+;
 
 /***/ }),
 
@@ -2955,6 +3325,19 @@ NodeList.prototype.on = NodeList.prototype.addEventListener = function (name, fn
 
 exports.$ = $;
 exports.$$ = $$;
+;
+
+var _temp = function () {
+  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+    return;
+  }
+
+  __REACT_HOT_LOADER__.register($, "$", "C:/Users/090907/Documents/work/basic-cms/src/public/javascripts/modules/bling.js");
+
+  __REACT_HOT_LOADER__.register($$, "$$", "C:/Users/090907/Documents/work/basic-cms/src/public/javascripts/modules/bling.js");
+}();
+
+;
 
 /***/ }),
 
@@ -3064,7 +3447,21 @@ function typeAhead(search, view) {
 	});
 }
 
-exports.default = typeAhead;
+var _default = typeAhead;
+exports.default = _default;
+;
+
+var _temp = function () {
+	if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+		return;
+	}
+
+	__REACT_HOT_LOADER__.register(typeAhead, 'typeAhead', 'C:/Users/090907/Documents/work/basic-cms/src/public/javascripts/modules/typeAhead.js');
+
+	__REACT_HOT_LOADER__.register(_default, 'default', 'C:/Users/090907/Documents/work/basic-cms/src/public/javascripts/modules/typeAhead.js');
+}();
+
+;
 
 /***/ }),
 

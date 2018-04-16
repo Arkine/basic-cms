@@ -41,6 +41,7 @@ if (process.env.NODE_ENV === 'production') {
 	});
 
 } else {
+	console.log('Starting server...');
 	const server = app.listen(app.get('port'), () => {
 		console.log(`Express running on port ${server.address().port}`);
 	});

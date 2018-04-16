@@ -61,7 +61,8 @@ const config = {
 			proxy: 'http://localhost:7777',
 			host: 'http://localhost',
 			port: 3000,
-			online: true
+			online: true,
+			files: ["src/public/**/*.scss", "src/**/*.js"]
 		})
 	]
 };
