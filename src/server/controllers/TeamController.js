@@ -4,7 +4,7 @@ const promisify = util.promisify;
 require('util.promisify').shim();
 const validator = require('validator');
 
-const Team = mongoose.model('Team'); 
+const Team = mongoose.model('Team');
 const consoleTypes = Team.schema.path('console').enumValues;
 const playStyles = Team.schema.path('playStyle').enumValues;
 
@@ -32,8 +32,6 @@ exports.getTeams = async (req, res) => {
 		req.flash('info', 'The requested page no longer exists.');
 		res.redirect(`/teams/pages/${pages}`);
 	}
-
-	console.log(teams);
 
 	res.render(`${viewsRoot}/teams`, {
 		title: 'Teams',
@@ -183,7 +181,7 @@ exports.searchTeams = async (req, res) => {
 			$text: {
 				$search: req.query.q
 			}
-		}, 
+		},
 		{
 			score: { $meta: 'textScore' }
 		})
