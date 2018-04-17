@@ -1,4 +1,4 @@
-const slug = require('slugs');
+import slug from 'slugs';
 
 exports.checkUniqueSlug = async function(next) {
 	if (!this.isModified('name')) {

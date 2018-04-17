@@ -1,8 +1,7 @@
-// const express = require('express');
 import express from 'express';
-const router = express.Router();
+import teamRoutes from './team';
 
-const teamRoutes = require('./team');
+const router = express.Router();
 
 router.use('/', teamRoutes);
 

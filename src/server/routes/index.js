@@ -1,10 +1,11 @@
-const express = require('express');
-const router = express.Router();
+import express from 'express';
 
 // Routes
-const userRoutes = require('./user');
-const adminRoutes = require('./admin');
-const apiRoutes = require('./api');
+import userRoutes from './user';
+import adminRoutes from './admin';
+import apiRoutes from './api';
+
+const router = express.Router();
 
 // Home
 router.get('/', (req, res) => {

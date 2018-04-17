@@ -1,10 +1,11 @@
-const express = require('express');
+import express from 'express';
+
+import { catchErrors } from '../../handlers/errorHandlers';
+
+import authController from '../../controllers/AuthController';
+import userController from '../../controllers/UserController';
+
 const router = express.Router();
-
-const { catchErrors } = require('../../handlers/errorHandlers');
-
-const authController = require('../../controllers/AuthController');
-const userController = require('../../controllers/UserController');
 
 // account page
 router.get('/account',

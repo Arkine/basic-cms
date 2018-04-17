@@ -1,9 +1,9 @@
-const express = require('express');
+import express from 'express';
+
+import { catchErrors } from '../../../handlers/errorHandlers';
+import teamController from '../../../controllers/TeamController';
+
 const router = express.Router();
-
-const { catchErrors } = require('../../../handlers/errorHandlers');
-
-const teamController = require('../../../controllers/TeamController');
 
 router.get('/api/v1/search/teams', catchErrors(teamController.searchTeams));
 

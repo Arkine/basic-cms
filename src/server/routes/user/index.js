@@ -1,16 +1,15 @@
-const express = require('express');
-const router = express.Router();
+import express from 'express';
 
-const auth = require('./auth');
-const account = require('./account');
-const team = require('./team');
-const events = require('./events'); 
-const api = require('../api');
+import auth from './auth';
+import account from './account';
+import team from './team';
+import events from './events';
+
+const router = express.Router();
 
 router.use('/', auth);
 router.use('/', account);
 router.use('/', team);
 router.use('/', events);
-router.use('/', api);
 
 module.exports = router;

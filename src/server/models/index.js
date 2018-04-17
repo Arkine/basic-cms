@@ -1,4 +1,4 @@
 // Import all models here
-const User = require('./User');
-const Team = require('./Team');
-const Event = require('./Event');
+import User from './User';
+import Team from './Team';
+import Event from './Event';

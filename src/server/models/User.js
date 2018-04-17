@@ -1,16 +1,16 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
+import md5 from 'md5';
+import validator from 'validator';
+import mongodbErrorHandler from 'mongoose-mongodb-errors';
+import passportLocalMongoose from 'passport-local-mongoose';
+
 const Schema = mongoose.Schema;
 mongoose.Promise = global.Promise;
 
-const md5 = require('md5');
-const validator = require('validator');
-const mongodbErrorHandler = require('mongoose-mongodb-errors');
-const passportLocalMongoose = require('passport-local-mongoose');
-
-// const roles = {
-// 	"admin",
-// 	"user"
-// };
+const roles = [
+	"admin",
+	"user"
+];
 
 const userSchema = new Schema({
 	email: {

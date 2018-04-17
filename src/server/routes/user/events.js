@@ -1,7 +1,11 @@
-const express = require('express');
-const router = express.Router();
+import express from 'express';
 
-const eventsController = require('../../controllers/EventsController');
+import { catchErrors } from '../../handlers/errorHandlers';
+
+import eventsController from '../../controllers/EventsController';
+// import userController from '../../controllers/UserController';
+
+const router = express.Router();
 
 router.get('/events', eventsController.events);
 router.get('/events/:id', eventsController.getEvent);

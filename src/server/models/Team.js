@@ -1,10 +1,11 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
+import slug from 'slugs';
+import validator from 'validator';
+
+import { checkUniqueSlug, hasLength } from './helpers';
+
 const Schema = mongoose.Schema;
 mongoose.Promise = global.Promise;
-const slug = require('slugs');
-const validator = require('validator');
-
-const { checkUniqueSlug, hasLength } = require('./helpers');
 
 const consoleTypes = ['PC', 'XBOX', 'PS'];
 const playStyles = ['Casual', 'Competitive'];

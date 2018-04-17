@@ -1,10 +1,11 @@
-const express = require('express');
+import express from 'express';
+
 const router = express.Router();
 
-const { catchErrors } = require('../../handlers/errorHandlers');
+import { catchErrors } from '../../handlers/errorHandlers';
 
-const authController = require('../../controllers/AuthController');
-const userController = require('../../controllers/UserController');
+import authController from '../../controllers/AuthController';
+import userController from '../../controllers/UserController';
 
 // TODO: Probably move this all to admin and make bnet only strat
 
