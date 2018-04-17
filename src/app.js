@@ -1,23 +1,23 @@
-const express = require('express');
-const session = require('express-session');
-const mongoose = require('mongoose');
+import express from 'express';
+import session from 'express-session';
+import mongoose from 'mongoose';
+import path from 'path';
+import cookieParser from 'cookie-parser';
+import bodyParser from 'body-parser';
+import passport from 'passport';
+import util from 'util';
+import flash from 'connect-flash';
+import expressValidator from 'express-validator';
+import http from 'http';
+
+import routes from './server/routes';
+import helpers from './helpers';
+import errorHandlers from './server/handlers/errorHandlers';
+import './server/handlers/passport';
+
 const MongoStore = require('connect-mongo')(session);
-const path = require('path');
-const cookieParser = require('cookie-parser');
-const bodyParser = require('body-parser');
-const passport = require('passport');
-const util = require('util');
 const promisify = util.promisify;
 require('util.promisify').shim();
-const flash = require('connect-flash');
-const expressValidator = require('express-validator');
-const http = require('http');
-
-const routes = require('./server/routes');
-
-const helpers = require('./helpers');
-const errorHandlers = require('./server/handlers/errorHandlers');
-require('./server/handlers/passport');
 
 const app = express();
 
