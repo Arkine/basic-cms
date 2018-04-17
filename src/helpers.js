@@ -1,8 +1,7 @@
 /*
   This is a file of data and helper functions that we can expose and use in our templating function
 */
-
-const fs = require('fs');
+import fs from 'fs';
 
 exports.moment = require('moment');
 
