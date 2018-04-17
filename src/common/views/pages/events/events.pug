@@ -2,10 +2,10 @@ extends ../../layout
 
 block content
 	.inner
-		pre= events
 		h1 #{title}
 		.events
-			each events in event
+			each event in events
 				.event
 					.event__wrapper
 						.event__title #{event.title}
+						.event__content #{event.description}

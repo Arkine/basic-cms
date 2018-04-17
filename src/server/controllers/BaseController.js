@@ -67,22 +67,26 @@ export default class BaseController {
 	}
 
 	async list() {
-		return await this.model
+		console.log('getting list...');
+
+		const items = await this.model
 			.find({})
-			.limit(MAX_RESULTS)
-			.then(modelInstances => {
-				return {
-					[pluralize(this.modelName)] : modelInstances
-				}
-			});
+			.limit(MAX_RESULTS);
+
+		return items;
 	}
 
 	route() {
-		router.get("/", (req, res) => {
-			this
-				.list()
-				.then(ok(res))
-				.then(null, fail(res));
+		router.get("/", async (req, res) => {
+			const items = await this.list()
+
+			if (items) {
+				res.render(`${viewsRoot}/teams`, {
+					title: 'Teams',
+					items
+				})
+			}
+
 		});
 
 		router.post("/", (req, res) => {
