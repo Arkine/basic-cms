@@ -54,6 +54,10 @@ exports.isLoggedIn = (req, res, next) => {
 	res.redirect('/login');
 };
 
+exports.isAdmin = (req, res, next) => {
+	res.json(req.user);
+};
+
 exports.forgotPassword = async (req, res, next) => {
 	// 1. See if user exists
 	const user = await User.findOne({ email: req.body.email })

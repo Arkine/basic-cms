@@ -36,12 +36,16 @@ const userSchema = new Schema({
 	lastLogin: Date,
 	photo: String,
 	team: mongoose.Schema.ObjectId,
-	guildRole: String,
 	friends: [{
 		type: mongoose.Schema.ObjectId,
 		ref: 'User'
 	}],
-	role: String
+	teamRole: String,
+	role: {
+		type: String,
+		enum: roles,
+		default: 'user'
+	}
 });
 
 userSchema.plugin(passportLocalMongoose, {
