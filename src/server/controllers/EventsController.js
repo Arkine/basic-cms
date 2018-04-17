@@ -1,4 +1,5 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
+
 const Event = mongoose.model('Event');
 const viewsRoot = 'pages/events';
 

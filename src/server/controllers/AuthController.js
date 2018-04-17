@@ -1,9 +1,9 @@
-const mongoose = require('mongoose');
-const passport = require('passport');
+import mongoose from 'mongoose';
+import passport from 'passport';
+import crypto from 'crypto';
+import util from 'util';
 
 const User = mongoose.model('User');
-const crypto = require('crypto');
-const util = require('util');
 const promisify = util.promisify;
 require('util.promisify').shim();
 

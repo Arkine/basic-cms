@@ -1,8 +1,9 @@
-const mongoose = require('mongoose');
-const util = require('util');
+import mongoose from 'mongoose';
+import util from 'util';
+import validator from 'validator';
+
 const promisify = util.promisify;
 require('util.promisify').shim();
-const validator = require('validator');
 
 const Team = mongoose.model('Team');
 const consoleTypes = Team.schema.path('console').enumValues;

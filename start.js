@@ -1,6 +1,10 @@
 const mongoose = require('mongoose');
 const https = require('https');
 const fs = require('fs');
+require('babel-register')({
+  presets: [ 'env' ]
+});
+require('babel-polyfill');
 
 // Make sure we are running node 7.6+
 const [major, minor] = process.versions.node.split('.').map(parseFloat);

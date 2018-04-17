@@ -1,11 +1,11 @@
-const mongoose = require('mongoose');
-const util = require('util');
+import mongoose from 'mongoose';
+import util from 'util';
+
 const promisify = util.promisify;
 require('util.promisify').shim();
 
 const User = mongoose.model('User');
 const Team = mongoose.model('Team');
-
 
 exports.loginForm = (req, res) => {
 	res.render('pages/login', {
