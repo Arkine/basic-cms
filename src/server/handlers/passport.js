@@ -1,5 +1,6 @@
-const passport = require('passport');
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
+import passport from 'passport';
+
 const User = mongoose.model('User');
 const BnetStrategy = require('passport-bnet').Strategy;
 

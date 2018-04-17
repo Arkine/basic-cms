@@ -1,8 +1,9 @@
-const nodemailer = require('nodemailer');
-const pug = require('pug');
-const juice = require('juice');
-const htmlToText = require('html-to-text');
-const util = require('util');
+import nodemailer from 'nodemailer';
+import pug from 'pug';
+import juice from 'juice';
+import htmlToText from 'html-to-text';
+import util from 'util';
+
 const promisify = util.promisify;
 require('util.promisify').shim();
 
