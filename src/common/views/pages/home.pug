@@ -4,5 +4,22 @@ include ../mixins/team/_searchTeams
 
 block content
 	.inner
-		+searchTeams()
-		
+		section.two-col
+
+			.two-col__col.two-col__col--left
+				+searchTeams()
+
+				.featured-stories
+					h2 Featured Stories
+
+				.team-announcements
+					h2 Team Announcements
+
+			.two-col__col.two-col__col--right
+
+				section.leaderboards
+					.leaderboard-team
+						h2 Team Leaderboard
+
+					.leaderboard-player
+						h2 Player Leaderboard
