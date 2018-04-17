@@ -2,12 +2,12 @@ import express from 'express';
 
 import { catchErrors } from '../../handlers/errorHandlers';
 
-import eventsController from '../../controllers/EventsController';
+import eventController from '../../controllers/EventController';
 // import userController from '../../controllers/UserController';
 
 const router = express.Router();
 
-router.get('/events', eventsController.events);
-router.get('/events/:id', eventsController.getEvent);
+router.use('/events', new eventController().route());
+// router.get('/events/:id', eventController.getEvent);
 
 module.exports = router;

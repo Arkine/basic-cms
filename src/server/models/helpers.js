@@ -34,4 +34,9 @@ exports.hasLength = function(fieldName, minLength, maxLength) {
 		},
 		message : `${fieldName} field length must be between ${minLength} and ${maxLength} characters in length.`
 	}
-}
+};
+
+exports.autoPopulate = function(next) {
+	this.populate('members');
+	next();
+};

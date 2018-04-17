@@ -3,6 +3,8 @@ import passport from 'passport';
 import crypto from 'crypto';
 import util from 'util';
 
+import BaseController from './BaseController';
+
 const User = mongoose.model('User');
 const promisify = util.promisify;
 require('util.promisify').shim();
