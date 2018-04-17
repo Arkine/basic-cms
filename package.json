@@ -3,10 +3,10 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon ./start.js",
+    "start": "node ./start.js",
     "watch": "nodemon ./start.js --ignore public/",
     "assets": "webpack -w --display-max-modules 0",
-    "dev": "concurrently \"npm run watch\" \"npm run assets\" --names, --prefix-name",
+    "dev": "concurrently \"npm run start\" \"npm run assets\" --names, --prefix-name",
     "test": "mocha test --recursive",
     "create-data": "node ./data/create-sample-data.js --create",
     "load-data": "node ./data/create-sample-data.js --load",

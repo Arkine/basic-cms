@@ -11,10 +11,7 @@ const promisify = util.promisify;
 require('util.promisify').shim();
 const flash = require('connect-flash');
 const expressValidator = require('express-validator');
-
 const http = require('http');
-// const enforce = require('express-sslify');
-// const fs = require('fs');
 
 const routes = require('./server/routes');
 
@@ -26,8 +23,6 @@ const app = express();
 
 // enforce HTTPS
 if (process.env.NODE_ENV === 'production') {
-	// app.use(enforce.HTTPS());
-
 	app.use((req, res, next) => {
 		if (req.secure) {
 			next();
