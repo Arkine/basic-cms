@@ -6,7 +6,7 @@ import userController from '../../controllers/UserController';
 
 const router = express.Router();
 
-router.get('/admin',
+router.get('/',
 	authController.isLoggedIn,
 	authController.isAdmin
 );

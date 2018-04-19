@@ -14,8 +14,8 @@ router.get('/', (req, res) => {
 	});
 });
 
-router.use('/', adminRoutes);
+router.use('/admin', adminRoutes);
 router.use('/', userRoutes);
-router.use('/', apiRoutes);
+router.use('/api', apiRoutes);
 
 module.exports = router;
