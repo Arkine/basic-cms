@@ -8,7 +8,7 @@ import eventController from '../../controllers/EventController';
 const router = express.Router();
 
 // router.use('/events', new eventController().route());
-router.get('/events', catchErrors(eventController.events));
-router.get('/events/:id', eventController.getEvent);
+router.get('/', catchErrors(eventController.events));
+router.get('/:id', eventController.getEvent);
 
 module.exports = router;

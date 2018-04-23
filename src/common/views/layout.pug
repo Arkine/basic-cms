@@ -28,6 +28,9 @@ html
 							if team
 								.nav__item
 									a(href=`/teams/${team.slug}`) View your team
+							else
+								.nav__item
+									a(href=`/teams/create`) Create a team
 			block messages
 				if locals.flashes
 					.inner

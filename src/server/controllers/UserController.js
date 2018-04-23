@@ -107,6 +107,25 @@ exports.updateAccount = async (req, res) => {
 	res.redirect('/account');
 };
 
+exports.addTeam = async (req, res, next) => {
+	const updates = {
+		team: req.team._id
+	};
+
+	const user = await User.findByIdAndUpdate(
+		req.user._id,
+		updates,
+		{ new: true }
+	);
+
+	if (!user) {
+		return next({message: 'There was an error adding team'}, false);
+	}
+
+	req.flash('success', 'Team was successfully created!');
+	res.redirect(`/teams/${req.team.slug}`);
+};
+
 exports.deleteTeam = async (req, res, next) => {
 	const user = await User.findOneAndUpdate(
 		{ _id: req.user._id },
@@ -126,21 +145,4 @@ exports.forgotPassword = (req, res) => {
 	});
 };
 
-exports.addTeam = async (req, res, next) => {
-	const updates = {
-		team: req.team._id
-	};
 
-	const user = await User.findByIdAndUpdate(
-		req.user._id,
-		updates,
-		{ new: true }
-	);
-
-	if (!user) {
-		return next({message: 'There was an error adding team'}, false);
-	}
-
-	req.flash('success', 'Team was successfully created!');
-	res.redirect(`/teams/${req.team.slug}`);
-};

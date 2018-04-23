@@ -6,11 +6,6 @@ block content
 	.inner
 		h1 #{title}
 		.teams
-			if user
-				if !user.team
-					a(href="/teams/create") Create A team
-				if user.team
-					a(href=`/teams/${team.slug}`) View your team
 			each team in teams
 				.team
 					.team__meta

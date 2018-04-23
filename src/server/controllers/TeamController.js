@@ -6,6 +6,8 @@ const promisify = util.promisify;
 require('util.promisify').shim();
 
 const Team = mongoose.model('Team');
+const User = mongoose.model('User');
+
 const consoleTypes = Team.schema.path('console').enumValues;
 const playStyles = Team.schema.path('playStyle').enumValues;
 
@@ -98,6 +100,10 @@ exports.createTeam = async (req, res, next) => {
 };
 
 exports.userCanUpdate = async (req, res, next) => {
+	if (req.user.role === 'admin') {
+		return next();
+	}
+
 	const team = await Team.findOne({ slug: req.params.slug });
 
 	const teamOwnerId = team.owner.toString();
@@ -157,6 +163,28 @@ exports.validateCreateTeam = (req, res, next) => {
 
 		return;
 	}
+
+	next();
+};
+
+exports.deleteTeamMembers = async (req, res, next) => {
+	console.log('DELETING TEAM MEMBERS');
+
+	// query all members
+	const team = await Team.findOne({ slug: req.params.slug });
+
+	if (!team) {
+		throw new Error('No team found by that name!');
+	}
+
+	const teamMembers = await User.updateMany(
+		{ team: team._id },
+		{
+			$set: {
+				team: undefined
+			}
+		}
+	);
 
 	next();
 };
