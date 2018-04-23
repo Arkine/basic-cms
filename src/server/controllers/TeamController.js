@@ -55,7 +55,7 @@ exports.getUserTeam = async (req, res, next) => {
 
 	const team = await Team.findById({ _id: req.user.team });
 
-	req.team = team;
+	req.userTeam = team;
 
 	next();
 };
@@ -170,13 +170,23 @@ exports.validateCreateTeam = (req, res, next) => {
 exports.deleteTeamMembers = async (req, res, next) => {
 	console.log('DELETING TEAM MEMBERS');
 
-	// query all members
 	const team = await Team.findOne({ slug: req.params.slug });
 
 	if (!team) {
 		throw new Error('No team found by that name!');
 	}
 
+	// TODO grab all of the team members on the team object and use that instead of querying
+	// const teamMembers = await User.updateMany(
+	// 	{ _id: { $in: team.members } },
+	// 	{
+	// 		$set: {
+	// 			team: undefined
+	// 		}
+	// 	}
+	// );
+
+	// query all members of the team and set their team to undefined
 	const teamMembers = await User.updateMany(
 		{ team: team._id },
 		{

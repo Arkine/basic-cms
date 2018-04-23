@@ -57,6 +57,7 @@ router.post('/:slug',
 router.post('/delete/:slug',
 	authController.isLoggedIn,
 	catchErrors(teamController.userCanUpdate),
-	catchErrors(teamController.deleteTeamMembers)
+	catchErrors(teamController.deleteTeamMembers),
+	catchErrors(teamController.deleteTeam)
 );
 module.exports = router;

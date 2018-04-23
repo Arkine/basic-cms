@@ -25,9 +25,9 @@ html
 							each item in h.menu
 								.nav__item
 									a(href=item.slug alt=item.title) #{item.title}
-							if team
+							if userTeam
 								.nav__item
-									a(href=`/teams/${team.slug}`) View your team
+									a(href=`/teams/${userTeam.slug}`) View your team
 							else
 								.nav__item
 									a(href=`/teams/create`) Create a team
