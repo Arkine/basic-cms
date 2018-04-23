@@ -7,18 +7,18 @@ const authController = require('../../controllers/AuthController');
 const userController = require('../../controllers/UserController');
 const teamController = require('../../controllers/TeamController');
 
-router.get('/teams',
+router.get('/',
 	catchErrors(teamController.getUserTeam),
 	catchErrors(teamController.getTeams)
 );
 
-router.get('/teams/create',
+router.get('/create',
 	authController.isLoggedIn,
 	teamController.createTeamForm
 );
 
 // Local file storage strat
-// router.post('/teams/create',
+// router.post('/create',
 // 	authController.isLoggedIn,
 // 	teamController.upload,
 // 	catchErrors(teamController.resize),
@@ -28,7 +28,7 @@ router.get('/teams/create',
 // );
 
 // S3 storage strat
-router.post('/teams/create',
+router.post('/create',
 	authController.isLoggedIn,
 	teamController.uploadPhoto,
 	teamController.validateCreateTeam,
@@ -37,17 +37,17 @@ router.post('/teams/create',
 );
 
 // team
-router.get('/teams/:slug',
+router.get('/:slug',
 	catchErrors(teamController.getTeamBySlug)
 );
 
-router.post('/teams/:slug',
+router.post('/:slug',
 	authController.isLoggedIn,
 	catchErrors(teamController.userCanUpdate),
 	catchErrors(teamController.updateTeam)
 );
 
-router.post('/teams/delete/:slug',
+router.post('/delete/:slug',
 	authController.isLoggedIn,
 	catchErrors(teamController.userCanUpdate),
 	catchErrors(userController.deleteTeam),

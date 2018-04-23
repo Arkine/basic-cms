@@ -7,9 +7,16 @@ import events from './events';
 
 const router = express.Router();
 
+// Home
+router.get('/', (req, res) => {
+	res.render('pages/home', {
+		title: 'Home Page'
+	});
+});
+
 router.use('/', auth);
 router.use('/', account);
-router.use('/', team);
-router.use('/', events);
+router.use('/teams', team);
+router.use('/events', events);
 
 module.exports = router;
