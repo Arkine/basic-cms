@@ -11,11 +11,13 @@ const playStyles = Team.schema.path('playStyle').enumValues;
 
 const upload = require('../handlers/multers3');
 
+import defaultConfig from './defaults';
+
 const viewsRoot = 'pages/team';
 
 exports.getTeams = async (req, res) => {
 	const page = req.params.page || 1;
-	const limit = 20;
+	const limit = defaultConfig.postsPerPage;
 	const skip = (page * limit) - limit;
 	const { team } = req;
 
