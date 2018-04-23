@@ -1,5 +1,7 @@
 extends ../../layout
 
+include ../../mixins/_pagination
+
 block content
 	.inner
 		h1 #{title}
@@ -15,3 +17,4 @@ block content
 						.team__title
 							if team.slug
 								a.link-mask(href=`/teams/${team.slug}`) #{team.name}
+		+pagination(page, pages, count)
