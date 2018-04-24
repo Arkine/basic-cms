@@ -79,7 +79,11 @@ exports.register = async (req, res, next) => {
 
 exports.account = async (req, res, next) => {
 	const team = await Team.findOne({ _id: req.user.team });
-
+	// Populate team data
+	//.populate({
+	// 	path: 'requests.team',
+	// 	select: 'name'
+	// });
 	res.render('pages/user/account', {
 		title: 'My Account',
 		team

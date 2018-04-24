@@ -61,7 +61,9 @@ exports.getUserTeam = async (req, res, next) => {
 };
 
 exports.getTeamBySlug = async (req, res, next) => {
-	const team = await Team.findOne({ slug: req.params.slug });
+	const team = await Team
+		.findOne({ slug: req.params.slug })
+		.populate('members');
 
 	if (!team) {
 		return next();

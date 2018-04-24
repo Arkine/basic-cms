@@ -57,8 +57,8 @@ const teamSchema = new Schema({
 });
 
 teamSchema.pre('save', checkUniqueSlug);
-teamSchema.pre('find', autoPopulate);
-teamSchema.pre('findOne', autoPopulate);
+// teamSchema.pre('find', autoPopulate);
+// teamSchema.pre('findOne', autoPopulate);
 
 // Define our indexes
 teamSchema.index({
@@ -66,10 +66,10 @@ teamSchema.index({
 });
 
 // Prepopulate the members list on
-function autoPopulate(next) {
-	this.populate('members');
-	next();
-}
+// function autoPopulate(next) {
+// 	this.populate('members');
+// 	next();
+// }
 
 // This is the same functionally as the checkUniqueSlug in our helper. Just needed to bring it into context
 teamSchema.statics.getUniqueSlug = async function(currentName, newName) {

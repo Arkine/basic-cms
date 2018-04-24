@@ -55,17 +55,6 @@ const userSchema = new Schema({
 	}]
 });
 
-userSchema.pre('find', autoPopulate);
-userSchema.pre('findOne', autoPopulate);
-
-// Prepopulate the requests
-function autoPopulate(next) {
-	this.populate({
-		path: 'requests.team',
-		select: 'name'
-	});
-	next();
-}
 
 userSchema.plugin(passportLocalMongoose, {
 	usernameField: 'email',
