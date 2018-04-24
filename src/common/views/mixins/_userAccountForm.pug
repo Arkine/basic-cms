@@ -1,5 +1,5 @@
 mixin userAccountForm(user)
-	form(action="/account" method="POST")
+	form.form(action="/account" method="POST")
 		label(for="username") Username
 		input(type="text" name="username" value=user.username)
 		label(for="email") Email

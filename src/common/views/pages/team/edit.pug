@@ -1,0 +1,7 @@
+form.form(method="POST")
+	label(for="name") Name
+		input(type="text" name="name" value=team.name)
+		input(type="submit" value="Update")
+
+form.form(action=`/teams/delete/${team.slug}` method="POST")
+	input(type="submit" value="Delete Team")

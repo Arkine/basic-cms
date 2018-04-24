@@ -46,8 +46,26 @@ const userSchema = new Schema({
 		enum: roles,
 		default: 'user'
 	},
-	requests: []
+	requests: [{
+		team: {
+			type: mongoose.Schema.ObjectId,
+			ref: 'Team'
+		},
+		status: String
+	}]
 });
+
+userSchema.pre('find', autoPopulate);
+userSchema.pre('findOne', autoPopulate);
+
+// Prepopulate the requests
+function autoPopulate(next) {
+	this.populate({
+		path: 'requests.team',
+		select: 'name'
+	});
+	next();
+}
 
 userSchema.plugin(passportLocalMongoose, {
 	usernameField: 'email',

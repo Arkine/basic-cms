@@ -5,5 +5,12 @@ include ../../mixins/_userAccountForm
 block content
 	.inner
 		h1 Account Page
+
 		+userAccountForm(user)
-		pre #{team}
+
+		.pending-invites
+			h2 My Invites
+			for request in user.requests
+				div(class=`pending-invites__invite pending-invites__invite--${request.status}`)
+					.name #{request.team.name}
+					.status #{request.status}

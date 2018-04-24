@@ -1,0 +1,5 @@
+mixin banner(imgUrl, text = '')
+	section.banner(style=`background-image: url(${imgUrl})`)
+		.banner__wrapper
+			.banner__text
+				h1 #{text}
