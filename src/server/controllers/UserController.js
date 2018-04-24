@@ -109,7 +109,8 @@ exports.updateAccount = async (req, res) => {
 
 exports.addTeam = async (req, res, next) => {
 	const updates = {
-		team: req.team._id
+		team: req.team._id,
+		teamRole: 'Team Master'
 	};
 
 	const user = await User.findByIdAndUpdate(
@@ -145,4 +146,25 @@ exports.forgotPassword = (req, res) => {
 	});
 };
 
+exports.applyForTeam = async (req, res, next) => {
+	const team = await Team.findOne({ slug: req.params.slug });
 
+	if (!team) {
+		throw new Error('That team was not found!');
+
+		return;
+	}
+
+	const { user } = req;
+
+	user.requests.push({
+		"team": team._id,
+		"status": 'pending'
+	});
+
+	await user.save();
+
+	req.flash('success', 'Team Invite sent!');
+
+	next();
+};

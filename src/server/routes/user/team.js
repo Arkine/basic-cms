@@ -60,4 +60,10 @@ router.post('/delete/:slug',
 	catchErrors(teamController.deleteTeamMembers),
 	catchErrors(teamController.deleteTeam)
 );
+
+router.post('/apply/:slug',
+	authController.isLoggedIn,
+	catchErrors(teamController.processInviteRequest),
+	catchErrors(userController.applyForTeam)
+);
 module.exports = router;

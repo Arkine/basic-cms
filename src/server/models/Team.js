@@ -49,6 +49,10 @@ const teamSchema = new Schema({
 	members: [{
 		type: mongoose.Schema.ObjectId,
 		ref: 'User'
+	}],
+	pendingMembers: [{
+		type: mongoose.Schema.ObjectId,
+		ref: 'User'
 	}]
 });
 
@@ -61,6 +65,7 @@ teamSchema.index({
 	name: 'text'
 });
 
+// Prepopulate the members list on
 function autoPopulate(next) {
 	this.populate('members');
 	next();

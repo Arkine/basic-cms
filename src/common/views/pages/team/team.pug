@@ -7,9 +7,22 @@ block content
 		img(src=team.photo)
 		if user
 			if user._id.toString() === team.owner.toString()
+
+		.team-members
+			h2 Team Members
+			for member in team.members
+				.team-members__member
+					name #{member.username}
+					role #{member.teamRole}
+
+
+		form.form(action=`/teams/apply/${team.slug}` method="POST")
+			input(class="button" type="submit" value=" Join This team")
+
 		form.form(method="POST")
 			label(for="name") Name
 				input(type="text" name="name" value=team.name)
 				input(type="submit" value="Update")
+
 		form.form(action=`/teams/delete/${team.slug}` method="POST")
 			input(type="submit" value="Delete Team")

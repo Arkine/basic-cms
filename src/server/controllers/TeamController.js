@@ -233,3 +233,32 @@ exports.searchTeams = async (req, res) => {
 
 	res.json(teams);
 };
+
+exports.processInviteRequest = async (req, res, next) => {
+	const team = await Team.findOne({ slug: req.params.slug });
+	if (!team) {
+		throw new Error('Could not find that team!');
+
+		return;
+	}
+
+	const alreadyApplied = team.pendingMembers.some((member) => {
+		return member.equals(req.user._id);
+	});
+
+	const alreadyMember = team.members.some((member) => {
+		return member.equals(req.user._id);
+	});
+
+	if (alreadyApplied || alreadyMember) {
+		req.flash('You already are a member or have already sent a request.');
+
+		return;
+	}
+
+	team.pendingMembers.push(req.user);
+
+	await team.save();
+
+	next();
+};

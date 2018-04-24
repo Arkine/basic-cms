@@ -45,7 +45,8 @@ const userSchema = new Schema({
 		type: String,
 		enum: roles,
 		default: 'user'
-	}
+	},
+	requests: []
 });
 
 userSchema.plugin(passportLocalMongoose, {
