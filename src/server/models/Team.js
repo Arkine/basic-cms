@@ -1,10 +1,9 @@
-import mongoose from 'mongoose';
+import mongoose, { Schema } from 'mongoose';
 import slug from 'slugs';
 import validator from 'validator';
 
 import { checkUniqueSlug, hasLength } from './helpers';
-
-const Schema = mongoose.Schema;
+// const Schema = mongoose.Schema;
 mongoose.Promise = global.Promise;
 
 const consoleTypes = ['PC', 'XBOX', 'PS'];

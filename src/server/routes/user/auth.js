@@ -1,21 +1,20 @@
 import express from 'express';
 
-const router = express.Router();
-
 import { catchErrors } from '../../handlers/errorHandlers';
 
 import authController from '../../controllers/AuthController';
 import userController from '../../controllers/UserController';
 
-// TODO: Probably move this all to admin and make bnet only strat
+const router = express.Router();
 
-// login
-router.get('/login', userController.loginForm);
-router.post('/login', authController.login);
 
 // Bnet login
 router.get('/auth/bnet', authController.loginBnet);
 router.get('/auth/bnet/callback', authController.loginBnet);
+
+// login
+router.get('/login', userController.loginForm);
+router.post('/login', authController.login);
 
 // logout
 router.get('/logout', authController.logout);

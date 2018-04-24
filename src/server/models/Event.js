@@ -1,7 +1,7 @@
-import mongoose from 'mongoose';
+import mongoose, { Schema } from 'mongoose';
 import { checkUniqueSlug } from './helpers';
 
-const Schema = mongoose.Schema;
+// const Schema = mongoose.Schema;
 
 const eventSchema = new Schema({
 	title: String,

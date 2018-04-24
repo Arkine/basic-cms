@@ -4,13 +4,13 @@ include ../../mixins/_userAccountForm
 
 block content
 	.inner
-		h1 Account Page
+		h1 #{title}
 
 		+userAccountForm(user)
 
 		.pending-invites
 			h2 My Invites
 			for request in user.requests
-				div(class=`pending-invites__invite pending-invites__invite--${request.status}`)
+				.pending-invites__invite(class=`pending-invites__invite--${request.status}`)
 					.name #{request.team.name}
 					.status #{request.status}

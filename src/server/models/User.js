@@ -1,10 +1,10 @@
-import mongoose from 'mongoose';
+import mongoose, { Schema } from 'mongoose';
 import md5 from 'md5';
 import validator from 'validator';
 import mongodbErrorHandler from 'mongoose-mongodb-errors';
 import passportLocalMongoose from 'passport-local-mongoose';
 
-const Schema = mongoose.Schema;
+// const Schema = mongoose.Schema;
 mongoose.Promise = global.Promise;
 
 const roles = [
