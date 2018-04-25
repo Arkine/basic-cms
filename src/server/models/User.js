@@ -46,6 +46,10 @@ const userSchema = new Schema({
 		enum: roles,
 		default: 'user'
 	},
+	favoriteTeams: [{
+		type: mongoose.Schema.ObjectId,
+		ref: 'Team'
+	}],
 	requests: [{
 		team: {
 			type: mongoose.Schema.ObjectId,
